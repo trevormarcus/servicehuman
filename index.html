@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Service Human, Inc.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Service Human, Inc. is a 501(c)(3) nonprofit dedicated to helping people directly, with transparent funding and no corporate bloat.">
+  <style>
+    /* Layout */
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      background: #f5f5f5;
+      color: #111;
+      line-height: 1.6;
+    }
+    a { color: #0056b3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header, main, footer {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px 16px 0;
+    }
+
+    header {
+      padding-top: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 24px;
+    }
+
+    .site-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+    .site-subtitle {
+      margin: 0 0 8px;
+      font-size: 0.95rem;
+      color: #555;
+    }
+    .meta-line {
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    nav {
+      margin-top: 12px;
+      font-size: 0.9rem;
+    }
+    nav a {
+      margin-right: 12px;
+      white-space: nowrap;
+    }
+
+    /* Sections */
+    section {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      padding: 16px 18px;
+      margin-bottom: 16px;
+    }
+    section h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 6px;
+    }
+
+    ul {
+      margin-top: 8px;
+      padding-left: 20px;
+    }
+
+    .donate-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .donate-btn {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 4px;
+      border: 1px solid #0056b3;
+      font-size: 0.95rem;
+      background: #fafcff;
+      cursor: pointer;
+    }
+    .donate-btn.primary {
+      background: #0056b3;
+      color: #fff;
+    }
+    .donate-btn:hover {
+      filter: brightness(0.96);
+      text-decoration: none;
+    }
+
+    .allocation-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+    .allocation-table th,
+    .allocation-table td {
+      border: 1px solid #e0e0e0;
+      padding: 4px 6px;
+      text-align: left;
+    }
+    .allocation-table th {
+      background: #fafafa;
+      font-weight: 600;
+    }
+
+    .blog-post {
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed #eee;
+    }
+    .blog-post:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+    .blog-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .blog-meta {
+      font-size: 0.8rem;
+      color: #777;
+      margin-bottom: 4px;
+    }
+
+    .small {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    footer {
+      padding-top: 12px;
+      padding-bottom: 32px;
+      font-size: 0.8rem;
+      color: #777;
+      text-align: left;
+    }
+
+    @media (max-width: 600px) {
+      header, main, footer {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="site-title">Service Human, Inc.</div>
+  <p class="site-subtitle">
+    A 501(c)(3) nonprofit dedicated to helping human beings directly – with no corporate bloat, no executive excess, and radical transparency.
+  </p>
+  <p class="meta-line">
+    EIN: <strong>XX-XXXXXXX</strong> <!-- TODO: replace with your real EIN --> ·
+    Based in <strong>Tampa, Florida</strong> <!-- adjust as needed -->
+  </p>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#donate">Donate</a>
+    <a href="#usage">How funds are used</a>
+    <a href="#blog">Updates</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Service Human</h2>
+    <p>
+      Service Human, Inc. exists for one purpose: to help people. We do not exist to make a profit,
+      to chase status, or to build an empire. We exist to make it easier for one human being to help another.
+    </p>
+    <p>
+      Our commitments are simple:
+    </p>
+    <ul>
+      <li><strong>People first.</strong> We help individuals without conditions or labels.</li>
+      <li><strong>No executive bloat.</strong> No sky-high salaries, bonuses, or perks.</li>
+      <li><strong>Transparency.</strong> Donors can see how funds are allocated and what has been accomplished.</li>
+      <li><strong>Collaboration.</strong> We work with governments and partners, but we are not controlled by them.</li>
+    </ul>
+    <p class="small">
+      If you want a glossy marketing campaign, this probably isn’t the organization for you.
+      If you want your money to quietly go to work for people who need it, you’re in the right place.
+    </p>
+  </section>
+
+  <!-- DONATE -->
+  <section id="donate">
+    <h2>Donate</h2>
+    <p>
+      Every contribution goes toward practical help for real people. We keep this page simple so that
+      the work — not the website — gets the resources.
+    </p>
+
+    <div class="donate-options">
+      <!-- TODO: Replace href values with your real donation links -->
+      <a class="donate-btn primary" href="https://example.com/donate-once" target="_blank" rel="noopener">
+        Give a one-time gift
+      </a>
+      <a class="donate-btn" href="https://example.com/donate-monthly" target="_blank" rel="noopener">
+        Become a monthly supporter
+      </a>
+      <a class="donate-btn" href="https://example.com/donor-advised" target="_blank" rel="noopener">
+        Donor-advised / large gifts
+      </a>
+    </div>
+
+    <p class="small">
+      Prefer to give by check or bank transfer? See the contact section below for mailing and wiring details.
+    </p>
+  </section>
+
+  <!-- USAGE / ALLOCATION -->
+  <section id="usage">
+    <h2>How Funds Are Used</h2>
+    <p>
+      Our principle is straightforward: <strong>keep overhead light and help heavy.</strong>
+    </p>
+
+    <table class="allocation-table" aria-label="Example allocation of donated funds">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Target Allocation</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Direct support to people</td>
+          <td>80–90%</td>
+          <td>Housing, food, transit, basic needs, emergency support.</td>
+        </tr>
+        <tr>
+          <td>Service Human HUB operations</td>
+          <td>5–15%</td>
+          <td>Safe spaces, staff, supplies, and local partnerships.</td>
+        </tr>
+        <tr>
+          <td>Administration &amp; compliance</td>
+          <td>0–5%</td>
+          <td>Accounting, legal, required filings. No unnecessary layers.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="small">
+      These percentages are targets, not guarantees. We publish periodic summaries so donors can see
+      how actual funds were used over time.
+    </p>
+  </section>
+
+  <!-- BLOG / UPDATES -->
+  <section id="blog">
+    <h2>Updates &amp; Field Notes</h2>
+    <p class="small">
+      This section is intentionally simple. To add a new update, copy one of the blocks below,
+      change the date/title, and paste your text in.
+    </p>
+
+    <!-- BLOG POST TEMPLATE - copy/paste to add more -->
+    <article class="blog-post">
+      <div class="blog-title">Service Human – Site Relaunch</div>
+      <div class="blog-meta">Updated: <time datetime="2025-11-15">November 15, 2025</time></div>
+      <p>
+        We’ve simplified everything. The old multi-page site has been replaced with this single,
+        text-based page. Less time on design, more time on Service Human HUB planning, direct
+        assistance, and building the systems that matter.
+      </p>
+    </article>
+
+    <article class="blog-post">
+      <div class="blog-title">What Your Support Makes Possible</div>
+      <div class="blog-meta">Example entry</div>
+      <p>
+        This is a placeholder example. Replace it with a short note about a person helped, a HUB
+        milestone, or a new initiative. Keep it honest, specific, and simple. No stock photos needed.
+      </p>
+    </article>
+
+    <!-- END BLOG POSTS -->
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact &amp; Mailing Information</h2>
+    <p>
+      For questions, partnership conversations, or documentation requests, you can reach us here:
+    </p>
+    <ul>
+      <li>Email: <a href="mailto:info@servicehumaninc.org">info@servicehumaninc.org</a></li>
+      <li>Mailing address: <br>
+        Service Human, Inc.<br>
+        <!-- TODO: replace with your real mailing address -->
+        P.O. Box 00000<br>
+        Tampa, FL 00000
+      </li>
+    </ul>
+    <p class="small">
+      For receipts, large gifts, or employer / foundation matching paperwork, please mention
+      “donor documentation” in your email subject line.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <div>
+    Service Human, Inc. is a registered 501(c)(3) nonprofit organization. Contributions may be
+    tax-deductible to the extent allowed by law. Please consult your tax advisor.
+  </div>
+  <div style="margin-top:6px;">
+    &copy; <span id="year">2025</span> Service Human, Inc. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  // Keep the year current without adding complexity
+  (function () {
+    var el = document.getElementById('year');
+    if (el) el.textContent = new Date().getFullYear();
+  }());
+</script>
+
+</body>
+</html>
