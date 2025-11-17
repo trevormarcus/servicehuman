@@ -148,6 +148,25 @@
       text-align: left;
     }
 
+    footer {
+      max-width: 650px;    /* same width as main text column */
+      margin: 40px auto 0; /* center + spacing above */
+      padding: 0 16px;     /* same horizontal padding as mobile */
+      font-size: 0.9rem;   /* tighten slightly for small screens */
+      line-height: 1.4;    /* consistent rhythm */
+    }
+
+    footer .legal {
+  margin-top: 16px;
+  color: #555;         /* same gray used for meta-line */
+    }
+
+@media (max-width: 600px) {
+    footer {
+    padding: 0 12px;   /* keeps it clean on small screens */
+    }
+}
+    
     @media (max-width: 600px) {
       header, main, footer {
         padding-left: 12px;
@@ -174,8 +193,9 @@
     IRS Tax Exempt Organization Search
   </a>
   <br>
-  Deductibility status: <strong>Public charity (PC)</strong> – contributions are generally tax-deductible 
-  (up to 60% of AGI for cash gifts, subject to IRS limits). Based in <strong>Tampa, Florida</strong>.
+  Deductibility status: <strong>Public charity (PC)</strong> – contributions are generally tax-deductible (up to 60% of AGI for cash gifts, subject to IRS limits).
+  <br>
+  Based in <strong>Tampa, Florida</strong>
 </p>
 
   <nav>
@@ -382,23 +402,20 @@
     if (el) el.textContent = new Date().getFullYear();
   }());
 </script>
-<!-- your site content ends here -->
-
-<hr>
-
-<p style="font-size: 12px; color: #666; margin-top: 20px;">
-Service Human, Inc. is a 501(c)(3) nonprofit organization dedicated to direct human assistance.  
-Information provided on this site may be updated without notice.  
-For official documentation, donor receipts, or foundation matching materials, please contact 
-<a href="mailto:trevor@servicehumaninc.org">trevor@servicehumaninc.org</a>.
-
-<br><br>
-We do not use tracking cookies or analytics software.  
-We do not sell, share, or distribute personal information.  
-
-<br><br>
-© 2025 Service Human, Inc. All rights reserved.
-</p>
-
+<footer>
+  <p class="legal">
+    Service Human, Inc. is a 501(c)(3) nonprofit organization dedicated to direct human assistance.
+    Information provided on this site may be updated without notice.
+    For official documentation, donor receipts, or foundation matching materials, please contact
+    <a href="mailto:trevor@servicehumaninc.org">trevor@servicehumaninc.org</a>.
+    <br>
+    We do not use tracking cookies or analytics software.
+    <br>
+    We do not sell, share, or distribute personal information.
+    <br><br>
+    &copy; <span id="year"></span> Service Human, Inc. All rights reserved.
+  </p>
+</footer>
+  
 </body>
 </html>
