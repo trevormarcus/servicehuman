@@ -444,19 +444,112 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+  /* ---------------------------------
+     1. Accordion + per-post "read" logic
+     --------------------------------- */
 
-  /* Accordion */
   const toggles = document.querySelectorAll('.accordion-toggle');
-  toggles.forEach(btn => {
+
+  // Helper to update the nav badge count
+  function updateBadgeCount(delta) {
+    const updatesLink = document.querySelector('a[href="#blog"]');
+    if (!updatesLink) return;
+
+    const badge = updatesLink.querySelector('.nav-badge');
+    if (!badge) return;
+
+    let count = parseInt(badge.textContent, 10) || 0;
+    count = count + delta;
+
+    if (count > 0) {
+      badge.textContent = count;
+    } else {
+      badge.remove();
+    }
+  }
+
+  toggles.forEach(function (btn) {
     btn.addEventListener('click', function () {
+      // Standard accordion open/close
       btn.classList.toggle('active');
       const content = btn.nextElementSibling;
-      content.style.maxHeight = btn.classList.contains('active')
-        ? content.scrollHeight + 'px'
-        : null;
+
+      if (btn.classList.contains('active')) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      } else {
+        content.style.maxHeight = null;
+      }
+
+      // When this accordion is opened for the first time, clear its NEW pill
+      const block = btn.closest('.update-block');
+      if (block && block.classList.contains('is-new')) {
+        block.classList.remove('is-new');
+
+        const pill = block.querySelector('.update-title .new-pill');
+        if (pill) pill.remove();
+
+        // One fewer "new" item
+        updateBadgeCount(-1);
+      }
     });
   });
 
+  /* ---------------------------------
+     2. Detect "new" updates since last visit
+     --------------------------------- */
+
+  const LAST_VISIT_KEY = 'sh_lastVisitUpdates';
+  const now = new Date();
+
+  const lastVisitStr = localStorage.getItem(LAST_VISIT_KEY);
+  const lastVisit = lastVisitStr ? new Date(lastVisitStr) : null;
+
+  const updateBlocks = document.querySelectorAll('.update-block[data-published]');
+  let newCount = 0;
+
+  updateBlocks.forEach(function (block) {
+    const publishedStr = block.getAttribute('data-published'); // e.g. "2025-11-18"
+    if (!publishedStr) return;
+
+    const published = new Date(publishedStr + 'T00:00:00');
+
+    // First visit ever, or this post is newer than the last visit
+    if (!lastVisit || published > lastVisit) {
+      block.classList.add('is-new');
+      newCount++;
+
+      const titleEl = block.querySelector('.update-title');
+      if (titleEl && !titleEl.querySelector('.new-pill')) {
+        const pill = document.createElement('span');
+        pill.className = 'new-pill';
+        pill.textContent = 'NEW';
+        titleEl.appendChild(pill);
+      }
+    }
+  });
+
+  const updatesLink = document.querySelector('a[href="#blog"]');
+
+  // Create nav badge with total new count
+  if (newCount > 0 && updatesLink && !updatesLink.querySelector('.nav-badge')) {
+    const badge = document.createElement('span');
+    badge.className = 'nav-badge';
+    badge.textContent = newCount;
+    updatesLink.appendChild(badge);
+  }
+
+  // Clicking "Updates" clears the badge immediately (classic inbox behavior)
+  if (updatesLink) {
+    updatesLink.addEventListener('click', function () {
+      const badge = updatesLink.querySelector('.nav-badge');
+      if (badge) badge.remove();
+    });
+  }
+
+  // Record this visit timestamp for next time
+  localStorage.setItem(LAST_VISIT_KEY, now.toISOString());
+});
+</script>
   /* New Update Indicator */
   const LAST_VISIT_KEY = 'sh_lastVisitUpdates';
   const now = new Date();
@@ -492,7 +585,23 @@ document.addEventListener('DOMContentLoaded', function () {
       updatesLink.appendChild(badge);
     }
   }
-
+// When clicking the Updates link, remove the badge visually
+if (updatesLink) {
+  updatesLink.addEventListener('click', () => {
+    const badge = updatesLink.querySelector('.nav-badge');
+    if (badge) badge.remove();
+    localStorage.setItem('updatesSeen', now.toISOString());
+  });
+}
+  // Hide the badge if user has already clicked it
+const updatesSeen = localStorage.getItem('updatesSeen');
+if (updatesSeen && lastVisit && new Date(updatesSeen) >= new Date(lastVisit)) {
+  const updatesLink = document.querySelector('a[href="#blog"]');
+  if (updatesLink) {
+    const badge = updatesLink.querySelector('.nav-badge');
+    if (badge) badge.remove();
+  }
+}
   localStorage.setItem(LAST_VISIT_KEY, now.toISOString());
 });
 </script>
