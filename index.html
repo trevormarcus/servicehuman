@@ -230,6 +230,42 @@
 }
   </style>
 </head>
+  /* Accordion container */
+.accordion {
+  margin-top: 20px;
+}
+
+/* Button */
+.accordion-toggle {
+  width: 100%;
+  padding: 15px 20px;
+  background: #111;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.accordion-toggle:hover {
+  background: #333;
+}
+
+/* Content area – hidden by default */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding: 0 5px;
+}
+
+/* Expanded state */
+.accordion-toggle.active + .accordion-content {
+    padding-top: 20px;
+    max-height: 1200px; /* adjust if needed */
+}    
 <body>
 
 <header>
@@ -381,80 +417,41 @@
     </p>
 
     <!-- BLOG POST TEMPLATE - copy/paste to add more -->
-
+ 
   <section class="update-block">
   <div class="update-container">
+
     <h2 class="update-title">Founder’s Note</h2>
     <p class="update-date">By Trevor Marcus • Service Human, Inc.</p>
 
-    <div class="update-body">
+    <div class="accordion">
+      <button class="accordion-toggle">Read Founder’s Note</button>
 
-      <p>This morning, while trying to do something as simple as log into a dashboard, everything broke. Every button froze, every screen failed, every system stalled. For a moment, it felt like the universe was saying “not today.”</p>
+      <div class="accordion-content">
+        <p>Today was a reminder that nothing in this world can stop a mission whose only purpose is to serve humanity...</p>
 
-      <p>But here’s what I realized in that moment:</p>
+        <p>Systems failed. Panels crashed. Dashboards refused to load.  
+        But instead of derailing me, all it did was sharpen the truth:</p>
 
-      <p class="emphasis">There is no version of reality where I fail.</p>
+        <p><strong>If it breaks, I rebuild it stronger.  
+        If it’s blocked, I reroute.  
+        If it’s taken, I reinvent.  
+        If I’m slowed down, I prepare.</strong></p>
 
-      <p>My default mode has always been the same:</p>
+        <p>This morning wasn’t an inconvenience — it was proof of concept.  
+        It showed me that even on my worst technical day, the mission keeps moving.</p>
 
-      <ul class="quote-list">
-        <li>If it breaks, I rebuild it stronger.</li>
-        <li>If it’s blocked, I reroute.</li>
-        <li>If it’s taken, I reinvent.</li>
-        <li>If I’m slowed down, I prepare.</li>
-      </ul>
+        <p>I am not dependent on tools, platforms, or flawless conditions.  
+        I am dependent on purpose — and purpose is unbreakable.</p>
 
-      <p>That’s not just a motivational phrase — that’s how I’ve survived my life. That’s how I’ve created everything I’ve ever built from nothing. That’s why Service Human exists at all.</p>
+        <p>Service Human was created to exist outside the limits, outside the noise, outside the systems that fail people every day.</p>
 
-      <p>And ironically, the more resistance I feel, the more confirmation I get that this mission is necessary.</p>
+        <p>And today, those same systems reminded me exactly why it needs to exist.</p>
 
-      <p class="emphasis">Because the truth is simple:</p>
-
-      <p><strong>If one person can be stopped by a broken login page, a hacked account, a delay, or a barrier, then the system was never built for them.</strong></p>
-
-      <p>And the system should be built for them.</p>
-
-      <p>Service Human, Inc. was created out of the belief that human dignity should not depend on money, status, or access. It should not depend on whether you can afford the “premium tier.” It should not depend on whether algorithms or corporate structures decide your value.</p>
-
-      <p>Our mission is to build a world where:</p>
-
-      <ul class="quote-list">
-        <li>People who fall through the cracks have a place to land.</li>
-        <li>People who were forgotten finally get remembered.</li>
-        <li>People who were blocked their entire life finally get a clear path forward.</li>
-      </ul>
-
-      <p>And the irony is that today — while everything “failed” — I became even more certain of what I’m building.</p>
-
-      <p>I wasn’t angry. I wasn’t panicking. I wasn’t defeated.</p>
-
-      <p>I was calm.</p>
-
-      <p>Because deep down, I know something most people never learn:</p>
-
-      <ul class="quote-list">
-        <li>If they block me, I’ll build a new path.</li>
-        <li>If they limit me, I’ll expand beyond the limit.</li>
-        <li>If they try to stop the mission, the mission will only evolve.</li>
-      </ul>
-
-      <p>You cannot stop someone whose purpose is bigger than the obstacle.</p>
-
-      <p>Service Human isn’t just a nonprofit. It isn’t a brand. It isn’t a project.</p>
-
-      <p class="emphasis">It’s a new model of what humanity can be.</p>
-
-      <p>Every roadblock that tries to stand in the way — technical, human, or systemic — only proves the need for what we’re building.</p>
-
-      <p>I don’t quit. I don’t break. I don’t give up.</p>
-
-      <p>I adapt. I rebuild. I return stronger.</p>
-
-      <p>And that is exactly what we will do for the world.</p>
-
-      <p class="signature">— Trevor Marcus<br>Founder, Service Human, Inc.</p>
-
+        <p class="signature">— Trevor Marcus<br>Founder, Service Human, Inc.</p>
+      </div>
     </div>
+
   </div>
 </section>
     
@@ -543,6 +540,23 @@
     &copy; <span id="year"></span> Service Human, Inc. All rights reserved.
   </p>
 </footer>
-  
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const toggles = document.querySelectorAll('.accordion-toggle');
+
+  toggles.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btn.classList.toggle('active');
+      const content = btn.nextElementSibling;
+
+      if (btn.classList.contains('active')) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+      } else {
+        content.style.maxHeight = null;
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
