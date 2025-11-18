@@ -1,10 +1,11 @@
- <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Service Human, Inc.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Service Human, Inc. is a 501(c)(3) nonprofit dedicated to helping people directly, with transparent funding and no corporate bloat.">
+
   <style>
     /* Layout */
     * { box-sizing: border-box; }
@@ -149,25 +150,22 @@
     }
 
     footer {
-      max-width: 900px;    /* same width as main text column */
-      margin: 40px auto 0; /* center + spacing above */
-      padding: 0 16px;     /* same horizontal padding as mobile */
-      font-size: 0.9rem;   /* tighten slightly for small screens */
-      line-height: 1.4;    /* consistent rhythm */
+      max-width: 900px;
+      margin: 40px auto 0;
+      padding: 0 16px;
+      font-size: 0.9rem;
+      line-height: 1.4;
     }
 
     footer .legal {
-  margin-top: 16px;
-  color: #555;         /* same gray used for meta-line */
+      margin-top: 16px;
+      color: #555;
     }
 
-@media (max-width: 600px) {
-    footer {
-    padding: 0 12px;   /* keeps it clean on small screens */
-    }
-}
-    
     @media (max-width: 600px) {
+      footer {
+        padding: 0 12px;
+      }
       header, main, footer {
         padding-left: 12px;
         padding-right: 12px;
@@ -178,94 +176,108 @@
         gap: 4px 10px;
       }
     }
+
+    /* Updates / Blog */
     .update-block {
-  padding: 60px 20px;
-  background: #ffffff;
-  color: #111;
-  border-bottom: 1px solid #eee;
-}
+      padding: 60px 20px;
+      background: #ffffff;
+      color: #111;
+      border-bottom: 1px solid #eee;
+    }
 
-.update-container {
-  max-width: 800px;
-  margin: 0 auto;
-}
+    .update-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
 
-.update-title {
-  font-size: 32px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
+    .update-title {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
 
-.update-date {
-  font-size: 14px;
-  color: #777;
-  margin-bottom: 25px;
-}
+    .update-date {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 25px;
+    }
 
-.update-body p {
-  line-height: 1.6;
-  margin-bottom: 20px;
-  font-size: 18px;
-}
+    .signature {
+      margin-top: 40px;
+      font-style: italic;
+      font-size: 18px;
+    }
 
-.emphasis {
-  font-weight: 600;
-  font-size: 20px;
-}
+    /* Accordion */
+    .accordion {
+      margin-top: 20px;
+    }
 
-.quote-list {
-  margin: 15px 0 25px 20px;
-  padding: 0;
-}
+    .accordion-toggle {
+      width: 100%;
+      padding: 15px 20px;
+      background: #111;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
 
-.quote-list li {
-  margin-bottom: 10px;
-  font-size: 18px;
-}
+    .accordion-toggle:hover {
+      background: #333;
+    }
 
-.signature {
-  margin-top: 40px;
-  font-style: italic;
-  font-size: 18px;
-}
-      /* Accordion container */
-.accordion {
-  margin-top: 20px;
-}
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      padding: 0 5px;
+    }
 
-/* Button */
-.accordion-toggle {
-  width: 100%;
-  padding: 15px 20px;
-  background: #111;
-  color: #fff;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  border-radius: 6px;
-  transition: background 0.3s ease;
-}
+    .accordion-toggle.active + .accordion-content {
+      padding-top: 20px;
+      max-height: 1200px;
+    }
 
-.accordion-toggle:hover {
-  background: #333;
-}
+    /* New Update Highlight */
+    .update-block.is-new {
+      border-left: 4px solid #111;
+      background: #fafafa;
+    }
 
-/* Content area – hidden by default */
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-  padding: 0 5px;
-}
+    .update-title .new-pill {
+      display: inline-block;
+      margin-left: 8px;
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      background: #111;
+      color: #fff;
+    }
 
-/* Expanded state */
-.accordion-toggle.active + .accordion-content {
-    padding-top: 20px;
-    max-height: 1200px; /* adjust if needed */
-}   
+    .nav-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 6px;
+      min-width: 18px;
+      padding: 0 5px;
+      height: 18px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      background: #111;
+      color: #fff;
+    }
   </style>
-</head> 
+</head>
+
 <body>
 
 <header>
@@ -273,16 +285,17 @@
   <p class="site-subtitle">
     A 501(c)(3) nonprofit dedicated to helping human beings directly – with no corporate bloat, no executive excess, and radical transparency.
   </p>
-<p class="meta-line">
-  <strong>EIN:</strong> 93-1924051 •
-  <a href="https://apps.irs.gov/app/eos/" target="_blank" rel="noopener">
-    IRS Tax Exempt Organization Search
-  </a>
-  <br>
-  Deductibility status: <strong>Public charity (PC)</strong> – contributions are generally tax-deductible (up to 60% of AGI for cash gifts, subject to IRS limits).
-  <br>
-  Based in <strong>Tampa, Florida</strong>
-</p>
+
+  <p class="meta-line">
+    <strong>EIN:</strong> 93-1924051 •
+    <a href="https://apps.irs.gov/app/eos/" target="_blank" rel="noopener">
+      IRS Tax Exempt Organization Search
+    </a>
+    <br>
+    Deductibility status: <strong>Public charity (PC)</strong> – contributions are generally tax-deductible.
+    <br>
+    Based in <strong>Tampa, Florida</strong>
+  </p>
 
   <nav>
     <a href="#about">About</a>
@@ -291,6 +304,7 @@
     <a href="#blog">Updates</a>
     <a href="#contact">Contact</a>
   </nav>
+
 </header>
 
 <main>
@@ -302,312 +316,190 @@
       Service Human, Inc. exists for one purpose: to help people. We do not exist to make a profit,
       to chase status, or to build an empire. We exist to make it easier for one human being to help another.
     </p>
-    <p>
-      Our commitments are simple:
-    </p>
+
     <ul>
       <li><strong>People first.</strong> We help individuals without conditions or labels.</li>
-      <li><strong>No executive bloat.</strong> No sky-high salaries, bonuses, or perks.</li>
-      <li><strong>Transparency.</strong> Donors can see how funds are allocated and what has been accomplished.</li>
-      <li><strong>Collaboration.</strong> We work with governments and partners, but we are not controlled by them.</li>
+      <li><strong>No executive bloat.</strong> No excess salaries.</li>
+      <li><strong>Transparency.</strong> Donors can see how funds are allocated.</li>
+      <li><strong>Collaboration.</strong> We work with governments, but we are not controlled by them.</li>
     </ul>
-    <p class="small">
-      If you want a glossy marketing campaign, this probably isn’t the organization for you.
-      If you want your money to quietly go to work for people who need it, you’re in the right place.
-    </p>
   </section>
 
   <!-- DONATE -->
   <section id="donate">
     <h2>Donate</h2>
-    <p>
-      Every contribution goes toward practical help for real people. We keep this page simple so that
-      the work — not the website — gets the resources.
-    </p>
+    <p>Every contribution directly helps real people.</p>
 
     <div class="donate-options">
-      <!-- TODO: Replace href values with your real donation links -->
-     <!-- One-time gift -->
-<a class="button primary"
-   href="mailto:trevor@servicehumaninc.org
-          ?subject=Service%20Human%20donation%20-%20one-time
-          &body=Hi%20Trevor,%0D%0A%0D%0A
-          I%27d%20like%20to%20make%20a%20one-time%20donation.%0D%0A
-          Name:%20%0D%0A
-          Amount%20I%27m%20considering:%20%0D%0A
-          Best%20way%20to%20reach%20me:%20">
-  Give a one-time gift
-</a>
 
-<!-- Monthly supporter -->
-<a class="button"
-   href="mailto:trevor@servicehumaninc.org
-          ?subject=Service%20Human%20donation%20-%20monthly
-          &body=Hi%20Trevor,%0D%0A%0D%0A
-          I%27d%20like%20to%20become%20a%20monthly%20supporter.%0D%0A
-          Name:%20%0D%0A
-          Approx.%20monthly%20amount:%20%0D%0A
-          Best%20way%20to%20reach%20me:%20">
-  Become a monthly supporter
-</a>
+      <!-- One-time -->
+      <a class="donate-btn primary"
+         href="mailto:trevor@servicehumaninc.org
+                ?subject=Service%20Human%20donation%20-%20one-time">
+        Give a one-time gift
+      </a>
 
-<!-- Donor-advised / large gifts -->
-<a class="button"
-   href="mailto:trevor@servicehumaninc.org
-          ?subject=Service%20Human%20donation%20-%20DAF%20or%20large%20gift
-          &body=Hi%20Trevor,%0D%0A%0D%0A
-          I%27d%20like%20to%20discuss%20a%20donor-advised%20fund%20or%20large%20gift.%0D%0A
-          Name:%20%0D%0A
-          Organization%20(if%20any):%20%0D%0A
-          Best%20way%20to%20reach%20me:%20">
-  Donor-advised / large gifts
-</a>
+      <!-- Monthly -->
+      <a class="donate-btn"
+         href="mailto:trevor@servicehumaninc.org
+                ?subject=Service%20Human%20donation%20-%20monthly">
+        Become a monthly supporter
+      </a>
+
+      <!-- Large Gifts -->
+      <a class="donate-btn"
+         href="mailto:trevor@servicehumaninc.org
+                ?subject=Service%20Human%20donation%20-%20DAF%20or%20large%20gift">
+        Donor-advised / large gifts
+      </a>
+
     </div>
-
-    <p class="small">
-      Prefer to give by check or bank transfer? See the contact section below for mailing and wiring details.
-    </p>
   </section>
 
-  <!-- USAGE / ALLOCATION -->
+  <!-- USAGE -->
   <section id="usage">
     <h2>How Funds Are Used</h2>
-    <p>
-      Our principle is straightforward: <strong>keep overhead light and help heavy.</strong>
-    </p>
-
-    <table class="allocation-table" aria-label="Example allocation of donated funds">
-      <thead>
-        <tr>
-          <th>Category</th>
-          <th>Target Allocation</th>
-          <th>Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Direct support to people</td>
-          <td>80–90%</td>
-          <td>Housing, food, transit, basic needs, emergency support.</td>
-        </tr>
-        <tr>
-          <td>Service Human HUB operations</td>
-          <td>5–15%</td>
-          <td>Safe spaces, staff, supplies, and local partnerships.</td>
-        </tr>
-        <tr>
-          <td>Administration &amp; compliance</td>
-          <td>0–5%</td>
-          <td>Accounting, legal, required filings. No unnecessary layers.</td>
-        </tr>
-      </tbody>
+    <table class="allocation-table">
+      <tr><th>Category</th><th>Target</th><th>Notes</th></tr>
+      <tr><td>Direct support</td><td>80–90%</td><td>Housing, food, emergency help</td></tr>
+      <tr><td>HUB operations</td><td>5–15%</td><td>Safe spaces, staff, supplies</td></tr>
+      <tr><td>Administration</td><td>0–5%</td><td>Required filings only</td></tr>
     </table>
-
-    <p class="small">
-      These percentages are targets, not guarantees. We publish periodic summaries so donors can see
-      how actual funds were used over time.
-    </p>
   </section>
 
-  <!-- BLOG / UPDATES -->
+  <!-- BLOG -->
   <section id="blog">
-    <h2>Updates &amp; Field Notes</h2>
-    <p class="small">
-      This section is intentionally simple.
-    </p>
+    <h2>Updates & Field Notes</h2>
+    <p class="small">This section is intentionally simple.</p>
 
-    <!-- BLOG POST TEMPLATE - copy/paste to add more -->
- 
-  <section class="update-block">
-  <div class="update-container">
+    <!-- UPDATE 1 -->
+    <section class="update-block" data-published="2025-11-18">
+      <div class="update-container">
+        <h2 class="update-title">Founder’s Note</h2>
+        <p class="update-date">By Trevor Marcus • Service Human, Inc.</p>
 
-    <h2 class="update-title">Founder’s Note</h2>
-    <p class="update-date">By Trevor Marcus • Service Human, Inc.</p>
+        <div class="accordion">
+          <button class="accordion-toggle">Read Founder’s Note</button>
+          <div class="accordion-content">
+            <p>Today was a reminder that nothing in this world can stop a mission…</p>
 
-    <div class="accordion">
-      <button class="accordion-toggle">Read Founder’s Note</button>
+            <p><strong>If it breaks, I rebuild it stronger.<br>
+            If it’s blocked, I reroute.<br>
+            If it’s taken, I reinvent.<br>
+            If I’m slowed down, I prepare.</strong></p>
 
-      <div class="accordion-content">
-        <p>Today was a reminder that nothing in this world can stop a mission whose only purpose is to serve humanity...</p>
-
-        <p>Systems failed. Panels crashed. Dashboards refused to load.  
-        But instead of derailing me, all it did was sharpen the truth:</p>
-
-        <p><strong>If it breaks, I rebuild it stronger.  
-        If it’s blocked, I reroute.  
-        If it’s taken, I reinvent.  
-        If I’m slowed down, I prepare.</strong></p>
-
-        <p>This morning wasn’t an inconvenience — it was proof of concept.  
-        It showed me that even on my worst technical day, the mission keeps moving.</p>
-
-        <p>I am not dependent on tools, platforms, or flawless conditions.  
-        I am dependent on purpose — and purpose is unbreakable.</p>
-
-        <p>Service Human was created to exist outside the limits, outside the noise, outside the systems that fail people every day.</p>
-
-        <p>And today, those same systems reminded me exactly why it needs to exist.</p>
-
-        <p class="signature">— Trevor Marcus<br>Founder, Service Human, Inc.</p>
+            <p class="signature">— Trevor Marcus<br>Founder, Service Human, Inc.</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-  </div>
-</section>
-    <section class="update-block">
-  <div class="update-container">
+    <!-- UPDATE 2 -->
+    <section class="update-block" data-published="2025-11-18">
+      <div class="update-container">
+        <h2 class="update-title">Humanity Investing in Humanity</h2>
+        <p class="update-date">By Trevor Marcus • Service Human, Inc. • November 18, 2025</p>
 
-    <h2 class="update-title">Humanity Investing in Humanity</h2>
-    <p class="update-date">By Trevor Marcus • Service Human, Inc. • November 18, 2025</p>
+        <div class="accordion">
+          <button class="accordion-toggle">Read Article</button>
+          <div class="accordion-content">
 
-    <div class="accordion">
-      <button class="accordion-toggle">Read Article</button>
+            <p><strong>The craziest part about Service Human is that the math isn’t complicated.</strong></p>
 
-      <div class="accordion-content">
-        <p><strong>The craziest part about Service Human is that the math isn’t complicated.<br>
-        The impact isn’t complicated.<br>
-        The mission isn’t complicated.</strong></p>
+            <p>If <strong>1,000,000 people</strong> each gave <strong>$25–$250/month</strong>…  
+            Service Human would out-impact billion-dollar programs.</p>
 
-        <p>What’s complicated is the world we live in — the bureaucracy, the delays, the layers of approval, the wasted overhead, the systems that were supposed to help people but ended up helping themselves.</p>
+            <p><strong>Movements don’t start with millions.  
+            They start with a handful of people who believe first.</strong></p>
 
-        <p>But the solution?<br>
-        <strong>It’s simple. Ridiculously simple.</strong></p>
-
-        <p>If <strong>one million people</strong> commit between <strong>$25 and $250/month</strong>, and just <strong>1% of them choose to be angels</strong>, we won’t just match the impact of billion-dollar government programs — <strong>we will outperform them</strong> at a fraction of the cost and with none of the inefficiency.</p>
-
-        <p>No taxes.<br>
-        No politics.<br>
-        No red tape.<br>
-        Just people helping people.</p>
-
-        <p>This is not a dream.<br>
-        It’s not a pitch.<br>
-        It’s <strong>a model</strong> — one where transparency is the default, impact is measurable, and every dollar goes toward human beings, not bureaucracy.</p>
-
-        <p>And the only thing standing between where we are and where we could be?</p>
-
-        <p><strong>Awareness.<br>
-        One share.<br>
-        One conversation.<br>
-        One person telling another, “Hey, this exists.”</strong></p>
-
-        <p>Movements don’t start with millions.<br>
-        They start with a handful of people who believe before anyone else does.</p>
-
-        <p><strong>Service Human is what happens when humanity chooses itself again.</strong></p>
-
-        <p>If you feel called, explore the mission:  
-        <a href="https://servicehumaninc.org">servicehumaninc.org</a><br>
-        Every voice that shares it pushes the world one step closer to the future we all deserve.</p>
-
-        <p class="signature">— Trevor Marcus<br>Founder, Service Human, Inc.</p>
+            <p class="signature">— Trevor Marcus<br>Founder, Service Human, Inc.</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-  </div>
-</section>
-    <article class="blog-post">
-      <div class="blog-title">Service Human – Site Relaunch</div>
-      <div class="blog-meta">Updated: <time datetime="2025-11-15">November 15, 2025</time></div>
-      <p>
-        We’ve simplified everything. The old multi-page site has been replaced with this single,
-        text-based page. Less time on design, more time on Service Human HUB planning, direct
-        assistance, and building the systems that matter.
-      </p>
-    </article>
-
-    <article class="blog-post">
-  <div class="blog-title">Why We Built Service Human This Way</div>
-  <div class="blog-meta">Coming soon</div>
-  <p class="small">
-    This Founder’s Note will explain the principles behind Service Human,
-    why we chose a zero-overhead model, and the mission that drives every
-    HUB, every decision, and every action. Check back soon.
-  </p>
-</article>
-    <article class="blog-post">
-  <div class="blog-title">How We Think About “100% to Programs”</div>
-  <div class="blog-meta">Coming soon</div>
-  <p class="small">
-    A breakdown of how Service Human allocates donations with full
-    transparency, why we take nothing for overhead, and how each dollar
-    passes directly to impact initiatives. Full write-up coming soon.
-  </p>
-</article>
-    <article class="blog-post">
-  <div class="blog-title">First Impact Report</div>
-  <div class="blog-meta">Coming soon</div>
-  <p class="small">
-    Our initial summary of outcomes achieved, HUB activity, direct
-    assistance delivered, and measurable results. The full impact report
-    will be published soon.
-  </p>
-</article>
-    <!-- END BLOG POSTS -->
   </section>
 
   <!-- CONTACT -->
   <section id="contact">
-    <h2>Contact &amp; Mailing Information</h2>
-    <p>
-      For questions, partnership conversations, or documentation requests, you can reach us here:
-    </p>
+    <h2>Contact & Mailing Information</h2>
     <ul>
       <li>Email: <a href="mailto:trevor@servicehumaninc.org">trevor@servicehumaninc.org</a></li>
-      <li>Mailing address: <br>
-        Service Human, Inc.<br>
-        <!-- TODO: replace with your real mailing address -->
-        100 S Ashley Dr STE 600<br>
-        Tampa, FL 33602
+      <li>Mailing:  
+        <br>Service Human, Inc.  
+        <br>100 S Ashley Dr STE 600  
+        <br>Tampa, FL 33602
       </li>
     </ul>
-    <p class="small">
-      For receipts, large gifts, or employer / foundation matching paperwork, please mention
-      “donor documentation” in your email subject line.
-    </p>
   </section>
 
 </main>
-  
 
-<script>
-  // Keep the year current without adding complexity
-  (function () {
-    var el = document.getElementById('year');
-    if (el) el.textContent = new Date().getFullYear();
-  }());
-</script>
 <footer>
   <p class="legal">
-    Service Human, Inc. is a 501(c)(3) nonprofit organization dedicated to direct human assistance.
-    Information provided on this site may be updated without notice.
-    For official documentation, donor receipts, or foundation matching materials, please contact
-    <a href="mailto:trevor@servicehumaninc.org">trevor@servicehumaninc.org</a>.
-    <br>
-    We do not use tracking cookies or analytics software.
-    <br>
-    We do not sell, share, or distribute personal information.
-    <br><br>
+    Service Human, Inc. is a 501(c)(3) nonprofit organization.  
     &copy; <span id="year"></span> Service Human, Inc. All rights reserved.
   </p>
 </footer>
-  <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const toggles = document.querySelectorAll('.accordion-toggle');
 
-  toggles.forEach(function (btn) {
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* Accordion */
+  const toggles = document.querySelectorAll('.accordion-toggle');
+  toggles.forEach(btn => {
     btn.addEventListener('click', function () {
       btn.classList.toggle('active');
       const content = btn.nextElementSibling;
-
-      if (btn.classList.contains('active')) {
-        content.style.maxHeight = content.scrollHeight + 'px';
-      } else {
-        content.style.maxHeight = null;
-      }
+      content.style.maxHeight = btn.classList.contains('active')
+        ? content.scrollHeight + 'px'
+        : null;
     });
   });
+
+  /* New Update Indicator */
+  const LAST_VISIT_KEY = 'sh_lastVisitUpdates';
+  const now = new Date();
+  const lastVisit = localStorage.getItem(LAST_VISIT_KEY)
+    ? new Date(localStorage.getItem(LAST_VISIT_KEY))
+    : null;
+
+  const updateBlocks = document.querySelectorAll('.update-block[data-published]');
+  let newCount = 0;
+
+  updateBlocks.forEach(block => {
+    const published = new Date(block.getAttribute('data-published') + 'T00:00:00');
+    if (!lastVisit || published > lastVisit) {
+      block.classList.add('is-new');
+      newCount++;
+
+      const title = block.querySelector('.update-title');
+      if (title && !title.querySelector('.new-pill')) {
+        const pill = document.createElement('span');
+        pill.className = 'new-pill';
+        pill.textContent = 'NEW';
+        title.appendChild(pill);
+      }
+    }
+  });
+
+  if (newCount > 0) {
+    const updatesLink = document.querySelector('a[href="#blog"]');
+    if (updatesLink && !updatesLink.querySelector('.nav-badge')) {
+      const badge = document.createElement('span');
+      badge.className = 'nav-badge';
+      badge.textContent = newCount;
+      updatesLink.appendChild(badge);
+    }
+  }
+
+  localStorage.setItem(LAST_VISIT_KEY, now.toISOString());
 });
 </script>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
