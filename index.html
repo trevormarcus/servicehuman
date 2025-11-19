@@ -6,276 +6,383 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Service Human, Inc. is a 501(c)(3) nonprofit dedicated to helping people directly, with transparent funding and no corporate bloat.">
 
-  <style>
-    /* Layout */
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-      background: #f5f5f5;
-      color: #111;
-      line-height: 1.6;
-    }
-    a { color: #0056b3; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+<style>
+  /* ---------- Color system (light & dark) ---------- */
+  :root {
+    --bg: #f5f5f5;
+    --text: #111;
+    --card-bg: #ffffff;
+    --border: #e0e0e0;
+    --border-soft: #eeeeee;
+    --muted: #666666;
+    --meta: #777777;
+    --link: #0056b3;
+    --accent: #111111;
+    --accent-soft: #333333;
+    --pill-bg: #111111;
+    --pill-text: #ffffff;
+    --table-head-bg: #fafafa;
+    --new-bg: #fafafa;
+  }
 
+  body.dark {
+    --bg: #050505;
+    --text: #f5f5f5;
+    --card-bg: #111111;
+    --border: #333333;
+    --border-soft: #222222;
+    --muted: #aaaaaa;
+    --meta: #999999;
+    --link: #8fb5ff;
+    --accent: #f5f5f5;
+    --accent-soft: #cccccc;
+    --pill-bg: #f5f5f5;
+    --pill-text: #000000;
+    --table-head-bg: #181818;
+    --new-bg: #181818;
+  }
+
+  /* ---------- Layout ---------- */
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  a {
+    color: var(--link);
+    text-decoration: none;
+  }
+
+  a:hover { text-decoration: underline; }
+
+  header, main, footer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 16px 16px 0;
+  }
+
+  header {
+    padding-top: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-soft);
+    margin-bottom: 24px;
+  }
+
+  .site-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
+
+  .site-subtitle {
+    margin: 0 0 8px;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+
+  .meta-line {
+    font-size: 0.85rem;
+    color: var(--meta);
+  }
+
+  /* ---------- Nav + theme toggle ---------- */
+  nav {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 10px;
+  }
+
+  nav a {
+    margin-right: 12px;
+    white-space: nowrap;
+  }
+
+  .theme-toggle {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: transparent;
+    font-size: 0.8rem;
+    cursor: pointer;
+    color: var(--muted);
+  }
+
+  .theme-toggle:hover {
+    background: rgba(0, 0, 0, 0.03);
+  }
+
+  body.dark .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .theme-toggle-icon {
+    font-size: 0.9rem;
+  }
+
+  /* ---------- Sections / cards ---------- */
+  section {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 16px 18px;
+    margin-bottom: 16px;
+  }
+
+  section h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    border-bottom: 1px solid var(--border-soft);
+    padding-bottom: 6px;
+  }
+
+  ul {
+    margin-top: 8px;
+    padding-left: 20px;
+  }
+
+  .donate-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+  }
+
+  .donate-btn,
+  .button {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 4px;
+    border: 1px solid var(--link);
+    font-size: 0.95rem;
+    background: var(--card-bg);
+    cursor: pointer;
+    color: var(--text);
+  }
+
+  .donate-btn.primary,
+  .button.primary {
+    background: var(--link);
+    color: #ffffff;
+  }
+
+  .donate-btn:hover,
+  .button:hover {
+    filter: brightness(0.96);
+    text-decoration: none;
+  }
+
+  /* ---------- Allocation table ---------- */
+  .allocation-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-top: 8px;
+  }
+
+  .allocation-table th,
+  .allocation-table td {
+    border: 1px solid var(--border);
+    padding: 4px 6px;
+    text-align: left;
+  }
+
+  .allocation-table th {
+    background: var(--table-head-bg);
+    font-weight: 600;
+  }
+
+  /* ---------- Blog posts ---------- */
+  .blog-post {
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--border-soft);
+  }
+
+  .blog-post:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .blog-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .blog-meta {
+    font-size: 0.8rem;
+    color: var(--meta);
+    margin-bottom: 4px;
+  }
+
+  .small {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    padding-top: 12px;
+    padding-bottom: 32px;
+    font-size: 0.8rem;
+    color: var(--meta);
+    text-align: left;
+    max-width: 900px;
+    margin: 40px auto 0;
+    padding: 0 16px;
+    line-height: 1.4;
+  }
+
+  footer .legal {
+    margin-top: 16px;
+    color: var(--muted);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 600px) {
     header, main, footer {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 16px 16px 0;
+      padding-left: 12px;
+      padding-right: 12px;
     }
+  }
 
-    header {
-      padding-top: 32px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid #ddd;
-      margin-bottom: 24px;
-    }
+  /* ---------- Update blocks & accordion ---------- */
+  .update-block {
+    padding: 60px 20px;
+    background: var(--card-bg);
+    color: var(--text);
+    border-bottom: 1px solid var(--border-soft);
+  }
 
-    .site-title {
-      font-size: 1.8rem;
-      font-weight: 600;
-      margin: 0 0 4px;
-    }
-    .site-subtitle {
-      margin: 0 0 8px;
-      font-size: 0.95rem;
-      color: #555;
-    }
-    .meta-line {
-      font-size: 0.85rem;
-      color: #777;
-    }
+  .update-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
 
-    nav {
-      margin-top: 12px;
-      font-size: 0.9rem;
-    }
-    nav a {
-      margin-right: 12px;
-      white-space: nowrap;
-    }
+  .update-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
 
-    /* Sections */
-    section {
-      background: #fff;
-      border: 1px solid #e0e0e0;
-      padding: 16px 18px;
-      margin-bottom: 16px;
-    }
-    section h2 {
-      margin-top: 0;
-      font-size: 1.2rem;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 6px;
-    }
+  .update-date {
+    font-size: 14px;
+    color: var(--meta);
+    margin-bottom: 25px;
+  }
 
-    ul {
-      margin-top: 8px;
-      padding-left: 20px;
-    }
+  .update-body p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
 
-    .donate-options {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 12px 0;
-    }
-    .donate-btn {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 4px;
-      border: 1px solid #0056b3;
-      font-size: 0.95rem;
-      background: #fafcff;
-      cursor: pointer;
-    }
-    .donate-btn.primary {
-      background: #0056b3;
-      color: #fff;
-    }
-    .donate-btn:hover {
-      filter: brightness(0.96);
-      text-decoration: none;
-    }
+  .emphasis {
+    font-weight: 600;
+    font-size: 20px;
+  }
 
-    .allocation-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-      margin-top: 8px;
-    }
-    .allocation-table th,
-    .allocation-table td {
-      border: 1px solid #e0e0e0;
-      padding: 4px 6px;
-      text-align: left;
-    }
-    .allocation-table th {
-      background: #fafafa;
-      font-weight: 600;
-    }
+  .quote-list {
+    margin: 15px 0 25px 20px;
+    padding: 0;
+  }
 
-    .blog-post {
-      margin-bottom: 14px;
-      padding-bottom: 10px;
-      border-bottom: 1px dashed #eee;
-    }
-    .blog-post:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-    }
-    .blog-title {
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .blog-meta {
-      font-size: 0.8rem;
-      color: #777;
-      margin-bottom: 4px;
-    }
+  .quote-list li {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
 
-    .small {
-      font-size: 0.85rem;
-      color: #666;
-    }
+  .signature {
+    margin-top: 40px;
+    font-style: italic;
+    font-size: 18px;
+  }
 
-    footer {
-      padding-top: 12px;
-      padding-bottom: 32px;
-      font-size: 0.8rem;
-      color: #777;
-      text-align: left;
-    }
+  /* Accordion container */
+  .accordion {
+    margin-top: 20px;
+  }
 
-    footer {
-      max-width: 900px;
-      margin: 40px auto 0;
-      padding: 0 16px;
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
+  /* Button */
+  .accordion-toggle {
+    width: 100%;
+    padding: 15px 20px;
+    background: var(--accent);
+    color: var(--card-bg);
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+  }
 
-    footer .legal {
-      margin-top: 16px;
-      color: #555;
-    }
+  .accordion-toggle:hover {
+    background: var(--accent-soft);
+  }
 
-    @media (max-width: 600px) {
-      footer {
-        padding: 0 12px;
-      }
-      header, main, footer {
-        padding-left: 12px;
-        padding-right: 12px;
-      }
-      nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 4px 10px;
-      }
-    }
+  /* Content area – hidden by default */
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    padding: 0 5px;
+  }
 
-    /* Updates / Blog */
-    .update-block {
-      padding: 60px 20px;
-      background: #ffffff;
-      color: #111;
-      border-bottom: 1px solid #eee;
-    }
+  /* Expanded state */
+  .accordion-toggle.active + .accordion-content {
+    padding-top: 20px;
+    max-height: 1200px; /* adjust if needed */
+  }
 
-    .update-container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
+  /* Highlight "new" updates */
+  .update-block.is-new {
+    border-left: 4px solid var(--accent);
+    background: var(--new-bg);
+  }
 
-    .update-title {
-      font-size: 32px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
+  /* Tiny "NEW" pill next to the title */
+  .update-title .new-pill {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    background: var(--pill-bg);
+    color: var(--pill-text);
+  }
 
-    .update-date {
-      font-size: 14px;
-      color: #777;
-      margin-bottom: 25px;
-    }
-
-    .signature {
-      margin-top: 40px;
-      font-style: italic;
-      font-size: 18px;
-    }
-
-    /* Accordion */
-    .accordion {
-      margin-top: 20px;
-    }
-
-    .accordion-toggle {
-      width: 100%;
-      padding: 15px 20px;
-      background: #111;
-      color: #fff;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-      text-align: left;
-      border-radius: 6px;
-      transition: background 0.3s ease;
-    }
-
-    .accordion-toggle:hover {
-      background: #333;
-    }
-
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-      padding: 0 5px;
-    }
-
-    .accordion-toggle.active + .accordion-content {
-      padding-top: 20px;
-      max-height: 1200px;
-    }
-
-    /* New Update Highlight */
-    .update-block.is-new {
-      border-left: 4px solid #111;
-      background: #fafafa;
-    }
-
-    .update-title .new-pill {
-      display: inline-block;
-      margin-left: 8px;
-      padding: 2px 8px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      border-radius: 999px;
-      background: #111;
-      color: #fff;
-    }
-
-    .nav-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: 6px;
-      min-width: 18px;
-      padding: 0 5px;
-      height: 18px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 600;
-      background: #111;
-      color: #fff;
-    }
-  </style>
+  /* Badge in the nav next to "Updates" */
+  .nav-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 6px;
+    min-width: 18px;
+    padding: 0 5px;
+    height: 18px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    background: var(--pill-bg);
+    color: var(--pill-text);
+  }
+</style>
+  
 </head>
 
 <body>
@@ -283,16 +390,17 @@
 <header>
   <div class="site-title">Service Human, Inc.</div>
   <p class="site-subtitle">
-    A 501(c)(3) nonprofit dedicated to helping human beings directly – with no corporate bloat, no executive excess, and radical transparency.
+    A 501(c)(3) nonprofit dedicated to helping human beings directly – with no corporate bloat,
+    no executive excess, and radical transparency.
   </p>
-
   <p class="meta-line">
     <strong>EIN:</strong> 93-1924051 •
     <a href="https://apps.irs.gov/app/eos/" target="_blank" rel="noopener">
       IRS Tax Exempt Organization Search
     </a>
     <br>
-    Deductibility status: <strong>Public charity (PC)</strong> – contributions are generally tax-deductible.
+    Deductibility status: <strong>Public charity (PC)</strong> – contributions are generally tax-deductible
+    (up to 60% of AGI for cash gifts, subject to IRS limits).
     <br>
     Based in <strong>Tampa, Florida</strong>
   </p>
@@ -303,8 +411,13 @@
     <a href="#usage">How funds are used</a>
     <a href="#blog">Updates</a>
     <a href="#contact">Contact</a>
-  </nav>
 
+    <!-- Light / dark mode toggle -->
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
+      <span class="theme-toggle-icon">☾</span>
+      <span class="theme-toggle-label">Theme</span>
+    </button>
+  </nav>
 </header>
 
 <main>
@@ -444,44 +557,112 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  /* ---------------------------------
-     1. Accordion + per-post "read" logic
-     --------------------------------- */
+  /* -------------------------------------
+     Light/Dark theme toggle
+     ------------------------------------- */
+  const THEME_KEY = 'sh_theme';
+  const storedTheme = localStorage.getItem(THEME_KEY);
+  const prefersDark = window.matchMedia &&
+                      window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
 
+  if (initialTheme === 'dark') {
+    document.body.classList.add('dark');
+  }
+
+  const themeToggle = document.getElementById('theme-toggle');
+
+  function updateToggleLabel(theme) {
+    const icon = document.querySelector('.theme-toggle-icon');
+    if (!icon) return;
+    // Moon when in light mode, sun when in dark mode
+    icon.textContent = theme === 'dark' ? '☀︎' : '☾';
+  }
+
+  updateToggleLabel(initialTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.body.classList.toggle('dark');
+      const theme = isDark ? 'dark' : 'light';
+      localStorage.setItem(THEME_KEY, theme);
+      updateToggleLabel(theme);
+    });
+  }
+
+  /* --------------------------
+     Accordion toggle behavior
+     -------------------------- */
   const toggles = document.querySelectorAll('.accordion-toggle');
 
-<script>
-/* New Update Indicator */
-const LAST_VISIT_KEY = 'sh_lastVisitUpdates';
-const now = new Date();
-const lastVisit = localStorage.getItem(LAST_VISIT_KEY)
-  ? new Date(localStorage.getItem(LAST_VISIT_KEY))
-  : null;
+  toggles.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btn.classList.toggle('active');
+      const content = btn.nextElementSibling;
 
-const updateBlocks = document.querySelectorAll('.update-block[data-published]');
-let newCount = 0;
+      if (btn.classList.contains('active')) {
+        // expand
+        content.style.maxHeight = content.scrollHeight + 'px';
+      } else {
+        // collapse
+        content.style.maxHeight = null;
+      }
+    });
+  });
 
-updateBlocks.forEach(block => {
-  const published = new Date(block.getAttribute('data-published') + 'T00:00:00');
-  if (!lastVisit || published > lastVisit) {
-    block.classList.add('is-new');
-    newCount++;
+  /* -------------------------------------
+     "New updates" – MySpace-style indicator
+     ------------------------------------- */
+  const LAST_VISIT_KEY = 'sh_lastVisitUpdates';
+  const now = new Date();
 
-    const title = block.querySelector('.update-title');
-    if (title && !title.querySelector('.new-pill')) {
-      const pill = document.createElement('span');
-      pill.className = 'new-pill';
-      pill.textContent = 'NEW';
-      title.appendChild(pill);
+  const lastVisitStr = localStorage.getItem(LAST_VISIT_KEY);
+  const lastVisit = lastVisitStr ? new Date(lastVisitStr) : null;
+
+  const updateBlocks = document.querySelectorAll('.update-block[data-published]');
+  let newCount = 0;
+
+  updateBlocks.forEach(function (block) {
+    const publishedStr = block.getAttribute('data-published');
+    if (!publishedStr) return;
+
+    const published = new Date(publishedStr + 'T00:00:00');
+
+    if (!lastVisit || published > lastVisit) {
+      block.classList.add('is-new');
+      newCount++;
+
+      const titleEl = block.querySelector('.update-title');
+      if (titleEl && !titleEl.querySelector('.new-pill')) {
+        const pill = document.createElement('span');
+        pill.className = 'new-pill';
+        pill.textContent = 'NEW';
+        titleEl.appendChild(pill);
+      }
+    }
+  });
+
+  if (newCount > 0) {
+    const updatesLink = document.querySelector('a[href="#blog"]');
+    if (updatesLink && !updatesLink.querySelector('.nav-badge')) {
+      const badge = document.createElement('span');
+      badge.className = 'nav-badge';
+      badge.textContent = newCount;
+      updatesLink.appendChild(badge);
+
+      // When clicking the Updates link, remove the badge visually
+      updatesLink.addEventListener('click', () => {
+        const badge = updatesLink.querySelector('.nav-badge');
+        if (badge) badge.remove();
+        localStorage.setItem('updatesSeen', now.toISOString());
+      });
     }
   }
-    }
 
-    // Store last visit timestamp
-    localStorage.setItem(LAST_VISIT_KEY, now.toISOString());
+  // Store last visit timestamp
+  localStorage.setItem(LAST_VISIT_KEY, now.toISOString());
 });
 </script>
-
 <script>
 // Dynamic year in footer
 document.getElementById('year').textContent = new Date().getFullYear();
