@@ -450,6 +450,62 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const toggles = document.querySelectorAll('.accordion-toggle');
 
+  </script>
+  /* New Update Indicator */
+  const LAST_VISIT_KEY = 'sh_lastVisitUpdates';
+  const now = new Date();
+  const lastVisit = localStorage.getItem(LAST_VISIT_KEY)
+    ? new Date(localStorage.getItem(LAST_VISIT_KEY))
+    : null;
+
+  const updateBlocks = document.querySelectorAll('.update-block[data-published]');
+  let newCount = 0;
+
+  updateBlocks.forEach(block => {
+    const published = new Date(block.getAttribute('data-published') + 'T00:00:00');
+    if (!lastVisit || published > lastVisit) {
+      block.classList.add('is-new');
+      newCount++;
+
+      const title = block.querySelector('.update-title');
+      if (title && !title.querySelector('.new-pill')) {
+        const pill = document.createElement('span');
+        pill.className = 'new-pill';
+        pill.textContent = 'NEW';
+        title.appendChild(pill);
+      }
+    }
+  });
+
+  if (newCount > 0) {
+    const updatesLink = document.querySelector('a[href="#blog"]');
+    if (updatesLink && !updatesLink.querySelector('.nav-badge')) {
+      const badge = document.createElement('span');
+      badge.className = 'nav-badge';
+      badge.textContent = newCount;
+      updatesLink.appendChild(badge);
+    }
+  }
+// When clicking the Updates link, remove the badge visually
+if (updatesLink) {
+  updatesLink.addEventListener('click', () => {
+    const badge = updatesLink.querySelector('.nav-badge');
+    if (badge) badge.remove();
+    localStorage.setItem('updatesSeen', now.toISOString());
+  });
+}
+  // Hide the badge if user has already clicked it
+const updatesSeen = localStorage.getItem('updatesSeen');
+if (updatesSeen && lastVisit && new Date(updatesSeen) >= new Date(lastVisit)) {
+  const updatesLink = document.querySelector('a[href="#blog"]');
+  if (updatesLink) {
+    const badge = updatesLink.querySelector('.nav-badge');
+    if (badge) badge.remove();
+  }
+}
+  localStorage.setItem(LAST_VISIT_KEY, now.toISOString());
+});
+</script>
   // Helper to update the nav badge count
   function updateBadgeCount(delta) {
     const updatesLink = document.querySelector('a[href="#blog"]');
@@ -545,66 +601,9 @@ document.addEventListener('DOMContentLoaded', function () {
       if (badge) badge.remove();
     });
   }
-
   // Record this visit timestamp for next time
   localStorage.setItem(LAST_VISIT_KEY, now.toISOString());
 });
-</script>
-  /* New Update Indicator */
-  const LAST_VISIT_KEY = 'sh_lastVisitUpdates';
-  const now = new Date();
-  const lastVisit = localStorage.getItem(LAST_VISIT_KEY)
-    ? new Date(localStorage.getItem(LAST_VISIT_KEY))
-    : null;
-
-  const updateBlocks = document.querySelectorAll('.update-block[data-published]');
-  let newCount = 0;
-
-  updateBlocks.forEach(block => {
-    const published = new Date(block.getAttribute('data-published') + 'T00:00:00');
-    if (!lastVisit || published > lastVisit) {
-      block.classList.add('is-new');
-      newCount++;
-
-      const title = block.querySelector('.update-title');
-      if (title && !title.querySelector('.new-pill')) {
-        const pill = document.createElement('span');
-        pill.className = 'new-pill';
-        pill.textContent = 'NEW';
-        title.appendChild(pill);
-      }
-    }
-  });
-
-  if (newCount > 0) {
-    const updatesLink = document.querySelector('a[href="#blog"]');
-    if (updatesLink && !updatesLink.querySelector('.nav-badge')) {
-      const badge = document.createElement('span');
-      badge.className = 'nav-badge';
-      badge.textContent = newCount;
-      updatesLink.appendChild(badge);
-    }
-  }
-// When clicking the Updates link, remove the badge visually
-if (updatesLink) {
-  updatesLink.addEventListener('click', () => {
-    const badge = updatesLink.querySelector('.nav-badge');
-    if (badge) badge.remove();
-    localStorage.setItem('updatesSeen', now.toISOString());
-  });
-}
-  // Hide the badge if user has already clicked it
-const updatesSeen = localStorage.getItem('updatesSeen');
-if (updatesSeen && lastVisit && new Date(updatesSeen) >= new Date(lastVisit)) {
-  const updatesLink = document.querySelector('a[href="#blog"]');
-  if (updatesLink) {
-    const badge = updatesLink.querySelector('.nav-badge');
-    if (badge) badge.remove();
-  }
-}
-  localStorage.setItem(LAST_VISIT_KEY, now.toISOString());
-});
-</script>
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
