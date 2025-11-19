@@ -386,6 +386,135 @@
     background: var(--pill-bg);
     color: var(--pill-text);
   }
+
+  /* Media / video stage */
+#media {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+
+#media h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 6px;
+}
+
+.video-stage {
+  margin-top: 14px;
+  padding: 16px;
+  background: #111;
+  color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.video-frame {
+  position: relative;
+  width: 100%;
+  /* 16:9 aspect ratio */
+  padding-top: 56.25%;
+  background: #000;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-meta {
+  margin-top: 14px;
+}
+
+.video-title {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.video-description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+/* Talk list */
+.talk-list {
+  margin-top: 20px;
+}
+
+.talk-list h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.talk-list ul {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+}
+
+.talk-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  font-size: 0.9rem;
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.talk-list li:last-child {
+  border-bottom: none;
+}
+
+.talk-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  padding: 2px 8px;
+  margin-right: 8px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: #eee;
+  color: #333;
+}
+
+.talk-label.vimeo {
+  background: #e0f4ff;
+}
+
+.talk-list a {
+  margin-right: 6px;
+}
+
+.talk-meta {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .video-stage {
+    padding: 12px;
+  }
+  .talk-list li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .talk-label {
+    margin-bottom: 2px;
+  }
+}
 </style>
   
 </head>
@@ -412,6 +541,7 @@
 
   <nav>
     <a href="#about">About</a>
+    <a href=#media">Videos</a>
     <a href="#donate">Donate</a>
     <a href="#usage">How funds are used</a>
     <a href="#blog">Updates</a>
@@ -443,6 +573,62 @@
     </ul>
   </section>
 
+    <!-- MEDIA / TALKS -->
+  <section id="media">
+    <h2>Talks &amp; Video Messages</h2>
+    <p>
+      This is our digital stage. When there’s something worth saying to the world,
+      it will live here — free, open, and accessible to anyone who needs it.
+    </p>
+
+    <!-- Featured “TED-style” stage -->
+    <div class="video-stage">
+      <div class="video-frame">
+        <!-- Replace this src with your YouTube / Vimeo embed URL -->
+        <iframe
+          src="https://www.youtube.com/embed/VIDEO_ID"
+          title="Service Human – Featured Talk"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-meta">
+        <h3 class="video-title">[Title of featured talk]</h3>
+        <p class="video-description">
+          A brief description of the talk goes here — what it covers, who it’s for,
+          and why it matters for humanity.
+        </p>
+      </div>
+    </div>
+
+    <!-- Talk list – add new entries as you publish them -->
+    <div class="talk-list">
+      <h3>All Talks &amp; Appearances</h3>
+      <ul>
+        <li>
+          <span class="talk-label">YouTube</span>
+          <a href="https://youtube.com/watch?v=VIDEO_ID" target="_blank" rel="noopener">
+            Service Human – Why We Built It This Way
+          </a>
+          <span class="talk-meta">• 18 min</span>
+        </li>
+        <li>
+          <span class="talk-label vimeo">Vimeo</span>
+          <a href="https://vimeo.com/VIDEO_ID" target="_blank" rel="noopener">
+            Service Human – Humanity Investing in Humanity
+          </a>
+          <span class="talk-meta">• 24 min</span>
+        </li>
+        <!-- Copy/paste <li> blocks like this for each new video -->
+      </ul>
+      <p class="small">
+        As new talks go live on YouTube, Vimeo, or other platforms, we’ll add them here
+        so everything stays in one simple, permanent place.
+      </p>
+    </div>
+  </section>
+  
   <!-- DONATE -->
   <section id="donate">
     <h2>Donate</h2>
