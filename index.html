@@ -387,7 +387,7 @@
     color: var(--pill-text);
   }
 
-  /* Media / video stage */
+/* Media / video stage */
 #media {
   background: #fff;
   border: 1px solid #e0e0e0;
@@ -410,17 +410,26 @@
   border-radius: 8px;
 }
 
+/* Frame that holds the placeholder image (or future iframe) */
 .video-frame {
   position: relative;
   width: 100%;
-  /* 16:9 aspect ratio */
-  padding-top: 56.25%;
+  max-width: 720px;      /* keeps it from getting too huge on desktop */
+  margin: 0 auto;        /* center it */
   background: #000;
-  border-radius: 6px;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
+/* Placeholder image – full bleed inside the frame */
+.video-frame img.video-placeholder {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* If/when you bring back an iframe, these rules will still work */
 .video-frame iframe {
   position: absolute;
   inset: 0;
@@ -445,7 +454,7 @@
   color: #ddd;
 }
 
-/* Talk list */
+/* Talk list (unchanged) */
 .talk-list {
   margin-top: 20px;
 }
@@ -507,6 +516,9 @@
   .video-stage {
     padding: 12px;
   }
+  .video-frame {
+    max-width: 100%;
+  }
   .talk-list li {
     flex-direction: column;
     align-items: flex-start;
@@ -514,7 +526,7 @@
   .talk-label {
     margin-bottom: 2px;
   }
-}
+  
 </style>
   
 </head>
@@ -581,26 +593,25 @@
       it will live here — free, open, and accessible to anyone who needs it.
     </p>
 
-    <!-- Featured “TED-style” stage -->
-    <div class="video-stage">
-      <div class="video-frame">
-        <!-- Replace this src with your YouTube / Vimeo embed URL -->
-        <iframe
-          src="https://www.youtube.com/embed/VIDEO_ID"
-          title="Service Human – Featured Talk"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
-      </div>
-      <div class="video-meta">
-        <h3 class="video-title">[Title of featured talk]</h3>
-        <p class="video-description">
-          A brief description of the talk goes here — what it covers, who it’s for,
-          and why it matters for humanity.
-        </p>
-      </div>
-    </div>
+<!-- Featured “TED-style” stage -->
+<div class="video-stage">
+  <div class="video-frame">
+    <!-- Static placeholder image for now -->
+    <img
+      src="media/service-human-stage.png"
+      alt="Service Human digital stage – talks coming soon"
+      class="video-placeholder"
+    />
+  </div>
+  <div class="video-meta">
+    <h3 class="video-title">Talks coming soon</h3>
+    <p class="video-description">
+      This is our digital stage. Long-form talks, briefings, and messages
+      from Service Human will live here — free, open, and accessible to anyone
+      who needs them.
+    </p>
+  </div>
+</div>
 
     <!-- Talk list – add new entries as you publish them -->
     <div class="talk-list">
