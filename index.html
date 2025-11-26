@@ -46,7 +46,12 @@
     --table-head-bg: #181818;
     --new-bg: #181818;
   }
-
+/* Fix Talks & Video Messages section in dark mode */
+[data-theme="dark"] .section-heading,
+[data-theme="dark"] .section-heading p {
+  color: var(--text-color);
+  background-color: transparent;
+}
   /* ---------- Layout ---------- */
   * { box-sizing: border-box; }
 
