@@ -593,6 +593,87 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+  /* ---------- Status / Live tracker ---------- */
+
+#status {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+
+#status h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--border-soft);
+  padding-bottom: 6px;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.status-card {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+}
+
+.status-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-value {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.status-note {
+  margin-top: 4px;
+}
+
+/* Progress bar */
+.status-progress {
+  margin-top: 8px;
+}
+
+.status-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+.status-progress-bar {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--border-soft);
+  overflow: hidden;
+}
+
+.status-progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: var(--accent);
+  transition: width 0.4s ease;
+}
+
+/* Two or three columns on wider screens */
+@media (min-width: 700px) {
+  .status-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
 </style>
   
 </head>
@@ -780,6 +861,52 @@
   </div>
 </section>
 
+  </section>
+  <!-- STATUS / LIVE TRACKER -->
+  <section id="status">
+    <h2>Live Status</h2>
+    <p class="small">
+      This status is updated manually as donations come in. Simple on purpose, so anyone can see where things stand at a glance.
+    </p>
+
+    <div class="status-grid">
+      <div class="status-card">
+        <div class="status-label">Total raised</div>
+        <div class="status-value">$0</div>
+        <div class="status-note small">Since launch</div>
+      </div>
+
+      <div class="status-card">
+        <div class="status-label">Humans helped</div>
+        <div class="status-value">0</div>
+        <div class="status-note small">Direct assistance delivered</div>
+      </div>
+
+      <div class="status-card">
+        <div class="status-label">Service Human HUBs</div>
+        <div class="status-value">0</div>
+        <div class="status-note small">Active or in development</div>
+      </div>
+    </div>
+
+    <div class="status-progress">
+      <div class="status-progress-header">
+        <span class="small">Next milestone</span>
+        <span class="small">$25,000 goal</span>
+      </div>
+      <div class="status-progress-bar">
+        <!-- Set this width manually to match your progress -->
+        <div class="status-progress-fill" style="width: 0%;"></div>
+      </div>
+      <p class="small">
+        As donations come in, we’ll update this bar so anyone can see how close we are in real time.
+      </p>
+    </div>
+  </section>
+
+  <!-- USAGE / ALLOCATION -->
+  <section id="usage">
+  
   <!-- USAGE -->
   <section id="usage">
     <h2>How Funds Are Used</h2>
