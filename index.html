@@ -534,7 +534,68 @@
   .talk-label {
     margin-bottom: 2px;
   }
-  
+  /* Stripe quick donate box */
+.stripe-donate-box {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+}
+
+.stripe-donate-box h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+/* Grid of tiers */
+.stripe-options {
+    display: grid;
+    gap: 1rem;
+}
+
+/* Each tier button */
+.stripe-tier {
+    display: block;
+    padding: 1rem;
+    border-radius: 10px;
+    background: var(--card-bg-alt);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.stripe-tier:hover {
+    background: var(--hover);
+    border-color: var(--accent);
+}
+
+.stripe-tier strong {
+    font-size: 1.2rem;
+    display: block;
+}
+
+.stripe-tier span {
+    display: block;
+    margin-top: 0.25rem;
+    font-weight: 600;
+}
+
+.stripe-tier em {
+    display: block;
+    margin-top: 0.25rem;
+    opacity: 0.75;
+    font-style: normal;
+    font-size: 0.9rem;
+}
+
+/* Mobile-friendly */
+@media (min-width: 700px) {
+    .stripe-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 </style>
   
 </head>
@@ -651,8 +712,59 @@
   <!-- DONATE -->
   <section id="donate">
     <h2>Donate</h2>
+
+    <!-- Quick Stripe donations -->
+    <div class="stripe-donate-box">
+      <h3>Donate Quickly — Protected by Stripe</h3>
+
+      <div class="stripe-options">
+
+        <!-- $25 -->
+        <a class="stripe-tier"
+           href="https://buy.stripe.com/9B600kffIbpi2aJ6OV9Zm00"
+           target="_blank"
+           rel="noopener noreferrer">
+          <strong>$25</strong>
+          <span>Feed One Human</span>
+          <em>Direct relief &amp; essentials</em>
+        </a>
+
+        <!-- $100 -->
+        <a class="stripe-tier"
+           href="https://buy.stripe.com/eVqcN6gjp64Y9Dbb5b9Zm01"
+           target="_blank"
+           rel="noopener noreferrer">
+          <strong>$100</strong>
+          <span>Fund a Day of Shelter</span>
+          <em>Safe nights &amp; support services</em>
+        </a>
+
+        <!-- $250 -->
+        <a class="stripe-tier"
+           href="https://buy.stripe.com/5kQ5kEaZ5dxq4iR2yF9Zm02"
+           target="_blank"
+           rel="noopener noreferrer">
+          <strong>$250</strong>
+          <span>Build the Future</span>
+          <em>Support long-term impact</em>
+        </a>
+
+        <!-- Custom -->
+        <a class="stripe-tier"
+           href="https://donate.stripe.com/bJe6oI9V1aleaHf4GN9Zm03"
+           target="_blank"
+           rel="noopener noreferrer">
+          <strong>Custom Amount</strong>
+          <span>Set your own amount</span>
+          <em>Your gift powers real change</em>
+        </a>
+
+      </div>
+    </div>
+
     <p>Every contribution directly helps real people.</p>
 
+    <!-- Email-based donation options -->
     <div class="donate-options">
 
       <!-- One-time -->
