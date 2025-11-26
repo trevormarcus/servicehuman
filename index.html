@@ -17,6 +17,7 @@
     --bg: #f5f5f5;
     --text: #111;
     --card-bg: #ffffff;
+    --card-bg-alt: #fafafa;
     --border: #e0e0e0;
     --border-soft: #eeeeee;
     --muted: #666666;
@@ -28,12 +29,16 @@
     --pill-text: #ffffff;
     --table-head-bg: #fafafa;
     --new-bg: #fafafa;
+    --hover: #f2f6ff;
+    --card-border: var(--border);
+    --text-main: var(--text);
   }
 
   body.dark {
     --bg: #050505;
     --text: #f5f5f5;
     --card-bg: #111111;
+    --card-bg-alt: #181818;
     --border: #333333;
     --border-soft: #222222;
     --muted: #aaaaaa;
@@ -45,13 +50,18 @@
     --pill-text: #000000;
     --table-head-bg: #181818;
     --new-bg: #181818;
+    --hover: #181818;
+    --card-border: var(--border);
+    --text-main: var(--text);
   }
-/* Fix Talks & Video Messages section in dark mode */
-[data-theme="dark"] .section-heading,
-[data-theme="dark"] .section-heading p {
-  color: var(--text-color);
-  background-color: transparent;
-}
+
+  /* Fix Talks & Video Messages section in dark mode */
+  [data-theme="dark"] .section-heading,
+  [data-theme="dark"] .section-heading p {
+    color: var(--text-main);
+    background-color: transparent;
+  }
+
   /* ---------- Layout ---------- */
   * { box-sizing: border-box; }
 
@@ -259,7 +269,7 @@
     color: var(--muted);
   }
 
-  /* ---------- Responsive ---------- */
+  /* ---------- Responsive: core layout ---------- */
   @media (max-width: 600px) {
     header, main, footer {
       padding-left: 12px;
@@ -392,288 +402,287 @@
     color: var(--pill-text);
   }
 
-/* Media / video stage */
-#media {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  color: var(--text-main);
-  padding: 16px 18px;
-  margin-bottom: 16px;
-}
+  /* ---------- Media / video stage ---------- */
+  #media {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--text-main);
+    padding: 16px 18px;
+    margin-bottom: 16px;
+  }
 
-#media h2 {
-  margin-top: 0;
-  font-size: 1.2rem;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 6px;
-}
+  #media h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 6px;
+  }
 
-.video-stage {
-  margin-top: 14px;
-  padding: 16px;
-  background: #111;
-  color: #f5f5f5;
-  border-radius: 8px;
-}
-
-/* Frame that holds the placeholder image (or future iframe) */
-.video-frame {
-  position: relative;
-  width: 100%;
-  max-width: 720px;      /* keeps it from getting too huge on desktop */
-  margin: 0 auto;        /* center it */
-  background: #000;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-}
-
-/* Placeholder image – full bleed inside the frame */
-  .video-frame img.video-placeholder {
-  display: block;
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  height: auto;
-}
-
-/* If/when you bring back an iframe, these rules will still work */
-.video-frame iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.video-meta {
-  margin-top: 14px;
-}
-
-.video-title {
-  margin: 0 0 6px;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.video-description {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #ddd;
-}
-
-/* Talk list (unchanged) */
-.talk-list {
-  margin-top: 20px;
-}
-
-.talk-list h3 {
-  font-size: 1rem;
-  margin-bottom: 8px;
-}
-
-.talk-list ul {
-  list-style: none;
-  margin: 0 0 8px;
-  padding: 0;
-}
-
-.talk-list li {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  font-size: 0.9rem;
-  padding: 6px 0;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.talk-list li:last-child {
-  border-bottom: none;
-}
-
-.talk-label {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 60px;
-  padding: 2px 8px;
-  margin-right: 8px;
-  border-radius: 999px;
-  font-size: 0.7rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  background: #eee;
-  color: #333;
-}
-
-.talk-label.vimeo {
-  background: #e0f4ff;
-}
-
-.talk-list a {
-  margin-right: 6px;
-}
-
-.talk-meta {
-  font-size: 0.8rem;
-  color: #777;
-}
-
-/* Mobile tweaks */
-@media (max-width: 600px) {
   .video-stage {
-    padding: 12px;
+    margin-top: 14px;
+    padding: 16px;
+    background: #111;
+    color: #f5f5f5;
+    border-radius: 8px;
   }
+
+  /* Frame that holds the placeholder image (or future iframe) */
   .video-frame {
-    max-width: 100%;
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   }
+
+  /* Placeholder image – full bleed inside the frame */
+  .video-frame img.video-placeholder {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    height: auto;
+  }
+
+  /* If/when you bring back an iframe, these rules will still work */
+  .video-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .video-meta {
+    margin-top: 14px;
+  }
+
+  .video-title {
+    margin: 0 0 6px;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .video-description {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #ddd;
+  }
+
+  /* Talk list */
+  .talk-list {
+    margin-top: 20px;
+  }
+
+  .talk-list h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+
+  .talk-list ul {
+    list-style: none;
+    margin: 0 0 8px;
+    padding: 0;
+  }
+
   .talk-list li {
-    flex-direction: column;
-    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    font-size: 0.9rem;
+    padding: 6px 0;
+    border-bottom: 1px solid #f0f0f0;
   }
+
+  .talk-list li:last-child {
+    border-bottom: none;
+  }
+
   .talk-label {
-    margin-bottom: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    padding: 2px 8px;
+    margin-right: 8px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: #eee;
+    color: #333;
   }
-}  /* <-- close the mobile media query here */
 
+  .talk-label.vimeo {
+    background: #e0f4ff;
+  }
 
-/* STRIPE DONATION GRID */
-.stripe-donate-box {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  background: var(--card-bg);
-  border-radius: 10px;
-  border: 1px solid var(--border);
-}
+  .talk-list a {
+    margin-right: 6px;
+  }
 
-.stripe-options {
-  display: grid;
-  grid-template-columns: 1fr;   /* 1 column by default */
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
+  .talk-meta {
+    font-size: 0.8rem;
+    color: #777;
+  }
 
-.stripe-tier {
-  display: block;
-  padding: 1rem;
-  border-radius: 10px;
-  background: var(--card-bg-alt);
-  border: 1px solid var(--border);
-  text-decoration: none;
-  transition: 0.2s ease;
-}
+  /* Mobile tweaks for media section */
+  @media (max-width: 600px) {
+    .video-stage {
+      padding: 12px;
+    }
+    .video-frame {
+      max-width: 100%;
+    }
+    .talk-list li {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .talk-label {
+      margin-bottom: 2px;
+    }
+  }
 
-.stripe-tier:hover {
-  background: var(--hover);
-  border-color: var(--accent);
-}
+  /* ---------- STRIPE DONATION GRID ---------- */
+  .stripe-donate-box {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
 
-.stripe-tier strong {
-  font-size: 1.2rem;
-  display: block;
-}
-
-.stripe-tier span {
-  display: block;
-  margin-top: 0.25rem;
-  font-weight: 600;
-}
-
-.stripe-tier em {
-  display: block;
-  margin-top: 0.25rem;
-  opacity: 0.75;
-  font-style: normal;
-  font-size: 0.9rem;
-}
-
-/* 2 columns on wider screens */
-@media (min-width: 700px) {
   .stripe-options {
-    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-template-columns: 1fr;   /* 1 column by default */
+    gap: 1rem;
+    margin: 1.5rem 0;
   }
-}
+
+  .stripe-tier {
+    display: block;
+    padding: 1rem;
+    border-radius: 10px;
+    background: var(--card-bg-alt);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: 0.2s ease;
+  }
+
+  .stripe-tier:hover {
+    background: var(--hover);
+    border-color: var(--accent);
+  }
+
+  .stripe-tier strong {
+    font-size: 1.2rem;
+    display: block;
+  }
+
+  .stripe-tier span {
+    display: block;
+    margin-top: 0.25rem;
+    font-weight: 600;
+  }
+
+  .stripe-tier em {
+    display: block;
+    margin-top: 0.25rem;
+    opacity: 0.75;
+    font-style: normal;
+    font-size: 0.9rem;
+  }
+
+  /* 2 columns for donate tiers on wider screens */
+  @media (min-width: 700px) {
+    .stripe-options {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   /* ---------- Status / Live tracker ---------- */
-
-#status {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  padding: 16px 18px;
-  margin-bottom: 16px;
-}
-
-#status h2 {
-  margin-top: 0;
-  font-size: 1.2rem;
-  border-bottom: 1px solid var(--border-soft);
-  padding-bottom: 6px;
-}
-
-.status-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  margin: 16px 0;
-}
-
-.status-card {
-  padding: 12px 14px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--card-bg);
-}
-
-.status-label {
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-bottom: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.status-value {
-  font-size: 1.4rem;
-  font-weight: 600;
-}
-
-.status-note {
-  margin-top: 4px;
-}
-
-/* Progress bar */
-.status-progress {
-  margin-top: 8px;
-}
-
-.status-progress-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 6px;
-}
-
-.status-progress-bar {
-  width: 100%;
-  height: 10px;
-  border-radius: 999px;
-  background: var(--border-soft);
-  overflow: hidden;
-}
-
-.status-progress-fill {
-  height: 100%;
-  width: 0%;
-  border-radius: 999px;
-  background: var(--accent);
-  transition: width 0.4s ease;
-}
-
-/* Two or three columns on wider screens */
-@media (min-width: 700px) {
-  .status-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  #status {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 16px 18px;
+    margin-bottom: 16px;
   }
-}
+
+  #status h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    border-bottom: 1px solid var(--border-soft);
+    padding-bottom: 6px;
+  }
+
+  .status-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  .status-card {
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+  }
+
+  .status-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .status-value {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  .status-note {
+    margin-top: 4px;
+  }
+
+  /* Progress bar */
+  .status-progress {
+    margin-top: 8px;
+  }
+
+  .status-progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+
+  .status-progress-bar {
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--border-soft);
+    overflow: hidden;
+  }
+
+  .status-progress-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 999px;
+    background: var(--accent);
+    transition: width 0.4s ease;
+  }
+
+  /* 3 columns for status cards on wider screens */
+  @media (min-width: 700px) {
+    .status-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
 </style>
   
 </head>
