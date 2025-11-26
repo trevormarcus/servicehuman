@@ -534,28 +534,27 @@
   .talk-label {
     margin-bottom: 2px;
   }
-/* Stripe donate styles */
+
+  /* STRIPE DONATION GRID */
 .stripe-donate-box {
-  margin-top: 1.5rem;
+  margin: 2rem 0;
   padding: 1.5rem;
-  border-radius: 12px;
   background: var(--card-bg);
+  border-radius: 10px;
   border: 1px solid var(--border);
 }
 
-.stripe-donate-box h3 {
-  margin: 0 0 1rem;
-  font-size: 1.25rem;
-}
-
+/* container holding the four links */
 .stripe-options {
   display: grid;
+  grid-template-columns: 1fr;   /* 1 column on mobile */
   gap: 1rem;
   margin: 1.5rem 0;
 }
 
+/* each Stripe link as its own card */
 .stripe-tier {
-  display: block;
+  display: block;              /* <- THIS is the big one */
   padding: 1rem;
   border-radius: 10px;
   background: var(--card-bg-alt);
@@ -588,7 +587,7 @@
   font-size: 0.9rem;
 }
 
-/* Mobile-friendly grid */
+/* 2 columns on wider screens */
 @media (min-width: 700px) {
   .stripe-options {
     grid-template-columns: repeat(2, 1fr);
