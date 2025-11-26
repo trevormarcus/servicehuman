@@ -534,67 +534,65 @@
   .talk-label {
     margin-bottom: 2px;
   }
-  /* Stripe quick donate box */
+/* Stripe donate styles */
 .stripe-donate-box {
-    margin-top: 1.5rem;
-    padding: 1.5rem;
-    border-radius: 12px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
 }
 
 .stripe-donate-box h3 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
 }
 
-/* Grid of tiers */
 .stripe-options {
-    display: grid;
-    gap: 1rem;
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0;
 }
 
-/* Each tier button */
 .stripe-tier {
-    display: block;
-    padding: 1rem;
-    border-radius: 10px;
-    background: var(--card-bg-alt);
-    border: 1px solid var(--border);
-    text-decoration: none;
-    transition: 0.2s ease;
+  display: block;
+  padding: 1rem;
+  border-radius: 10px;
+  background: var(--card-bg-alt);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: 0.2s ease;
 }
 
 .stripe-tier:hover {
-    background: var(--hover);
-    border-color: var(--accent);
+  background: var(--hover);
+  border-color: var(--accent);
 }
 
 .stripe-tier strong {
-    font-size: 1.2rem;
-    display: block;
+  font-size: 1.2rem;
+  display: block;
 }
 
 .stripe-tier span {
-    display: block;
-    margin-top: 0.25rem;
-    font-weight: 600;
+  display: block;
+  margin-top: 0.25rem;
+  font-weight: 600;
 }
 
 .stripe-tier em {
-    display: block;
-    margin-top: 0.25rem;
-    opacity: 0.75;
-    font-style: normal;
-    font-size: 0.9rem;
+  display: block;
+  margin-top: 0.25rem;
+  opacity: 0.75;
+  font-style: normal;
+  font-size: 0.9rem;
 }
 
-/* Mobile-friendly */
+/* Mobile-friendly grid */
 @media (min-width: 700px) {
-    .stripe-options {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .stripe-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 </style>
   
