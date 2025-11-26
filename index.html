@@ -535,63 +535,60 @@
     margin-bottom: 2px;
   }
   /* STRIPE DONATION GRID */
-  .stripe-donate-box {
-    margin: 2rem 0;
-    padding: 1.5rem;
-    background: var(--card-bg);
-    border-radius: 10px;
-    border: 1px solid var(--border);
-  }
+.stripe-donate-box {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
 
-  /* container holding the four links */
+.stripe-options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.stripe-tier {
+  display: block;
+  padding: 1rem;
+  border-radius: 10px;
+  background: var(--card-bg-alt);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.stripe-tier:hover {
+  background: var(--hover);
+  border-color: var(--accent);
+}
+
+.stripe-tier strong {
+  font-size: 1.2rem;
+  display: block;
+}
+
+.stripe-tier span {
+  display: block;
+  margin-top: 0.25rem;
+  font-weight: 600;
+}
+
+.stripe-tier em {
+  display: block;
+  margin-top: 0.25rem;
+  opacity: 0.75;
+  font-style: normal;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 700px) {
   .stripe-options {
-    display: grid;
-    grid-template-columns: 1fr;  /* 1 column on mobile */
-    gap: 1rem;
-    margin: 1.5rem 0;
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  /* each Stripe link as its own card */
-  .stripe-tier {
-    display: block;
-    padding: 1rem;
-    border-radius: 10px;
-    background: var(--card-bg-alt);
-    border: 1px solid var(--border);
-    text-decoration: none;
-    transition: 0.2s ease;
-  }
-
-  .stripe-tier:hover {
-    background: var(--hover);
-    border-color: var(--accent);
-  }
-
-  .stripe-tier strong {
-    font-size: 1.2rem;
-    display: block;
-  }
-
-  .stripe-tier span {
-    display: block;
-    margin-top: 0.25rem;
-    font-weight: 600;
-  }
-
-  .stripe-tier em {
-    display: block;
-    margin-top: 0.25rem;
-    opacity: 0.75;
-    font-style: normal;
-    font-size: 0.9rem;
-  }
-
-  /* 2 columns on wider screens */
-  @media (min-width: 700px) {
-    .stripe-options {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
+}
 </style>
   
 </head>
@@ -705,87 +702,42 @@
     </div>
   </section>
   
-  <!-- DONATE -->
-  <section id="donate">
-    <h2>Donate</h2>
+<section id="donate">
+  <h2>Donate</h2>
 
-    <!-- Stripe quick-donate box -->
-    <div class="stripe-donate-box">
-      <h3>Donate Quickly — Protected by Stripe</h3>
+  <div class="stripe-donate-box">
+    <h3>Donate Quickly — Protected by Stripe</h3>
 
-      <div class="stripe-options">
+    <div class="stripe-options">
+      <a class="stripe-tier" href="https://donate.stripe.com/eVqaEY7MTbpi4iR7SZ9Zm04" target="_blank" rel="noopener noreferrer">
+        <strong>$25</strong>
+        <span>Feed One Human</span>
+        <em>Direct relief & essentials</em>
+      </a>
 
-        <!-- $25 -->
-        <a class="stripe-tier"
-           href="https://donate.stripe.com/eVqaEY7MTbpi4iR7SZ9Zm04"
-           target="_blank"
-           rel="noopener noreferrer">
-          <strong>$25</strong>
-          <span>Feed One Human</span>
-          <em>Direct relief &amp; essentials</em>
-        </a>
+      <a class="stripe-tier" href="https://buy.stripe.com/eVqcN6gjp64Y9Dbb5b9Zm01" target="_blank" rel="noopener noreferrer">
+        <strong>$100</strong>
+        <span>Fund a Day of Shelter</span>
+        <em>Safe nights & support services</em>
+      </a>
 
-        <!-- $100 -->
-        <a class="stripe-tier"
-           href="https://buy.stripe.com/eVqcN6gjp64Y9Dbb5b9Zm01"
-           target="_blank"
-           rel="noopener noreferrer">
-          <strong>$100</strong>
-          <span>Fund a Day of Shelter</span>
-          <em>Safe nights &amp; support services</em>
-        </a>
+      <a class="stripe-tier" href="https://buy.stripe.com/5kQ5kEaZ5dxq4iR2yF9Zm02" target="_blank" rel="noopener noreferrer">
+        <strong>$250</strong>
+        <span>Build the Future</span>
+        <em>Support long-term impact</em>
+      </a>
 
-        <!-- $250 -->
-        <a class="stripe-tier"
-           href="https://buy.stripe.com/5kQ5kEaZ5dxq4iR2yF9Zm02"
-           target="_blank"
-           rel="noopener noreferrer">
-          <strong>$250</strong>
-          <span>Build the Future</span>
-          <em>Support long-term impact</em>
-        </a>
-
-        <!-- Custom -->
-        <a class="stripe-tier"
-           href="https://donate.stripe.com/bJe6oI9V1aleaHf4GN9Zm03"
-           target="_blank"
-           rel="noopener noreferrer">
-          <strong>Custom Amount</strong>
-          <span>Set your own amount</span>
-          <em>Your gift powers real change</em>
-        </a>
-
-      </div>
+      <a class="stripe-tier" href="https://donate.stripe.com/bJe6oI9V1aleaHf4GN9Zm03" target="_blank" rel="noopener noreferrer">
+        <strong>Custom Amount</strong>
+        <span>Set your own amount</span>
+        <em>Your gift powers real change</em>
+      </a>
     </div>
+  </div>
 
-    <p>Every contribution directly helps real people.</p>
-
-    <!-- Existing email-based options -->
-    <div class="donate-options">
-
-      <!-- One-time -->
-      <a class="donate-btn primary"
-         href="mailto:trevor@servicehumaninc.org
-                ?subject=Service%20Human%20donation%20-%20one-time">
-        Give a one-time gift
-      </a>
-
-      <!-- Monthly -->
-      <a class="donate-btn"
-         href="mailto:trevor@servicehumaninc.org
-                ?subject=Service%20Human%20donation%20-%20monthly">
-        Become a monthly supporter
-      </a>
-
-      <!-- Large Gifts -->
-      <a class="donate-btn"
-         href="mailto:trevor@servicehumaninc.org
-                ?subject=Service%20Human%20donation%20-%20DAF%20or%20large%20gift">
-        Donor-advised / large gifts
-      </a>
-
-    </div>
-  </section>
+  <p>Every contribution directly helps real people.</p>
+  <!-- existing email buttons below... -->
+</section>
 
   <!-- USAGE -->
   <section id="usage">
