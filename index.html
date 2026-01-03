@@ -688,6 +688,27 @@
 #media {
   display: none;
   }
+    .update-toggle {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.update-toggle:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 6px;
+}
+
+.update-content {
+  margin-top: 12px;
+}
 </style>
   
 </head>
@@ -1019,16 +1040,26 @@
   <p><em>This record is maintained as part of Service Human, Inc.’s official organizational documentation.</em></p>
 
 </section>
-  <!-- First Donation / Proof-of-concept -->
-  <section class="update-block is-new" data-published="2025-11-09">
-    <div class="update-container">
-      <h2 class="update-title">
-        Our First Donation & What It Means
-        <span class="new-pill">NEW</span>
-      </h2>
+<!-- First Donation / Proof-of-concept -->
+<section class="update-block" data-published="2025-11-09">
+  <div class="update-container">
 
-      <p class="update-date">November 26, 2025</p>
+    <button
+      class="update-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="update-2025-11-09"
+    >
+      <span class="update-title">
+        Our First Donation &amp; What It Means
+        <!-- Remove the pill or keep it but hide it via CSS when not NEW -->
+        <!-- <span class="new-pill">NEW</span> -->
+      </span>
 
+      <span class="update-date">November 26, 2025</span>
+    </button>
+
+    <div id="update-2025-11-09" class="update-content" hidden>
       <div class="update-body">
         <p>On November 9, 2025, Service Human received its very first donation: <strong>$25</strong>.</p>
 
@@ -1042,13 +1073,14 @@
 
         <p><em>Radical transparency works, and the world is ready for it.</em></p>
       </div>
-      
+
       <p class="small" style="margin-top: 20px; font-style: italic; color: var(--muted);">
         Logged on November 26, 2025 — documenting events from November 9, 2025, in the interest of radical transparency.
       </p>
-      
     </div>
-  </section>
+
+  </div>
+</section>
 
     <!-- UPDATE 1 -->
     <section class="update-block" data-published="2025-11-18">
@@ -1238,5 +1270,28 @@ document.addEventListener('DOMContentLoaded', function () {
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
+<script>
+  document.querySelectorAll(".update-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("aria-controls");
+      const content = document.getElementById(id);
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+
+      // OPTIONAL: true accordion (close others)
+      document.querySelectorAll(".update-toggle[aria-expanded='true']").forEach((openBtn) => {
+        if (openBtn !== btn) {
+          const openId = openBtn.getAttribute("aria-controls");
+          const openContent = document.getElementById(openId);
+          openBtn.setAttribute("aria-expanded", "false");
+          if (openContent) openContent.hidden = true;
+        }
+      });
+
+      btn.setAttribute("aria-expanded", String(!isOpen));
+      content.hidden = isOpen;
+    });
+  });
+</script>
+  
 </body>
 </html>
