@@ -7,311 +7,282 @@
   <meta name="description" content="Service Human HUBs: 24/7 centers that turn compassion into infrastructure—transparent, repeatable, and measurable." />
 
   <style>
-    :root{
-      --bg:#ffffff;
-      --text:#0f172a;
-      --muted:#475569;
-      --border:#e5e7eb;
-      --card:#f8fafc;
-      --link:#2563eb;
-      --shadow: 0 10px 30px rgba(2,6,23,.08);
-      --radius:18px;
+    /* ============================================================
+       Service Human (site-wide continuity)
+       Uses the same theme system as main index.html:
+       - body.dark toggles
+       - localStorage key: sh_theme
+       ============================================================ */
+
+    :root {
+      --bg: #f5f5f5;
+      --text: #111;
+      --card-bg: #ffffff;
+      --card-bg-alt: #fafafa;
+      --border: #e0e0e0;
+      --border-soft: #eeeeee;
+      --muted: #666666;
+      --meta: #777777;
+      --link: #0056b3;
+      --accent: #111111;
+      --hover: #f2f6ff;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+      --radius: 18px;
       --max: 980px;
     }
-      body.dark{
-      --bg:#050505;
-      --text:#f5f5f5;
-      --muted:#a1a1aa;
-      --border:#333333;
-      --card:#111111;
-      --link:#8fb5ff;
-      --shadow: 0 10px 30px rgba(0,0,0,.55);
-}
-    *{box-sizing:border-box}
-    body{
-      margin:0;
+
+    body.dark {
+      --bg: #050505;
+      --text: #f5f5f5;
+      --card-bg: #111111;
+      --card-bg-alt: #181818;
+      --border: #333333;
+      --border-soft: #222222;
+      --muted: #aaaaaa;
+      --meta: #999999;
+      --link: #8fb5ff;
+      --accent: #f5f5f5;
+      --hover: #181818;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background:var(--bg);
-      line-height:1.45;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.45;
     }
 
-    a{ color:var(--link); text-decoration:none; }
-    a:hover{ text-decoration:underline; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    header{
+    header {
       padding: 28px 18px 10px;
-      border-bottom:1px solid var(--border);
-      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      border-bottom: 1px solid var(--border-soft);
+      background: linear-gradient(180deg, var(--card-bg) 0%, var(--card-bg-alt) 100%);
     }
 
-    .wrap{ max-width: var(--max); margin: 0 auto; }
+    .wrap { max-width: var(--max); margin: 0 auto; }
 
-    .brand{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
+    .brand {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
       gap: 14px;
     }
 
-    .brand h1{
+    .brand h1 {
       font-size: 28px;
       margin: 0 0 6px;
       letter-spacing: -0.02em;
     }
 
-    .brand p{
+    .brand p {
       margin: 0;
       color: var(--muted);
       max-width: 62ch;
     }
 
-    nav{
+    nav {
       margin-top: 14px;
-      display:flex;
+      display: flex;
       gap: 16px;
       flex-wrap: wrap;
-      align-items:center;
+      align-items: center;
       padding: 10px 0 6px;
+      font-size: 0.95rem;
     }
 
-    nav a{
+    nav a {
       font-weight: 600;
-      color: #0f172a;
-      opacity: .85;
+      color: var(--text);
+      opacity: 0.85;
+      white-space: nowrap;
     }
 
-    nav a.active{
+    nav a.active {
       opacity: 1;
       text-decoration: underline;
       text-underline-offset: 6px;
     }
-    .theme-toggle{
-      margin-left:auto;
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:transparent;
-      font-size:13px;
-      font-weight:800;
-      cursor:pointer;
-      color:var(--muted);
-}
 
-.theme-toggle:hover{
-  background: rgba(0,0,0,.03);
-}
-
-body.dark .theme-toggle:hover{
-  background: rgba(255,255,255,.06);
-}
-
-.theme-toggle-icon{ font-size:14px; }
-    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
-      <span class="theme-toggle-icon">☾</span>
-      <span class="theme-toggle-label">Theme</span>
-    </button>
-    main{
-      padding: 22px 18px 70px;
+    /* Theme toggle (same behavior + vibe as main) */
+    .theme-toggle {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: transparent;
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: var(--muted);
     }
 
-    .grid{
-      display:grid;
-      gap: 16px;
-    }
+    .theme-toggle:hover { background: rgba(0, 0, 0, 0.03); }
+    body.dark .theme-toggle:hover { background: rgba(255, 255, 255, 0.06); }
+    .theme-toggle-icon { font-size: 0.9rem; }
 
-    .card{
-      background: var(--card);
+    main { padding: 22px 18px 70px; }
+
+    .grid { display: grid; gap: 16px; }
+
+    .card {
+      background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 18px;
       box-shadow: var(--shadow);
     }
 
-    .card h2{
+    .card h2 {
       margin: 0 0 10px;
       font-size: 18px;
       letter-spacing: -0.01em;
     }
 
-    .card p{ margin: 0 0 12px; color: var(--muted); }
+    .card p { margin: 0 0 12px; color: var(--muted); }
 
-    .pillrow{
-      display:flex;
-      flex-wrap:wrap;
+    .pillrow {
+      display: flex;
+      flex-wrap: wrap;
       gap: 10px;
       margin-top: 12px;
     }
 
-    .pill{
-      background:#fff;
-      border:1px solid var(--border);
+    .pill {
+      background: var(--card-bg-alt);
+      border: 1px solid var(--border);
       padding: 10px 12px;
       border-radius: 999px;
       font-weight: 700;
       font-size: 13px;
-      color:#0f172a;
+      color: var(--text);
     }
 
-    .two{
-      display:grid;
-      gap: 16px;
+    .two { display: grid; gap: 16px; }
+
+    @media (min-width: 900px) {
+      .two { grid-template-columns: 1.2fr 0.8fr; }
+      .three { grid-template-columns: repeat(3, 1fr); }
     }
 
-    @media(min-width: 900px){
-      .two{ grid-template-columns: 1.2fr .8fr; }
-      .three{ grid-template-columns: repeat(3, 1fr); }
-    }
+    .hero { display: grid; gap: 16px; align-items: stretch; }
+    .hero .card { padding: 20px; }
 
-    .hero{
-      display:grid;
-      gap: 16px;
-      align-items: stretch;
-    }
-
-    .hero .card{
-      padding: 20px;
-    }
-
-    .hero-title{
-      display:flex;
+    .hero-title {
+      display: flex;
       gap: 10px;
       align-items: baseline;
       flex-wrap: wrap;
     }
 
-    .hero-title h2{
-      font-size: 22px;
-      margin: 0;
-    }
+    .hero-title h2 { font-size: 22px; margin: 0; }
 
-    .hero-title span{
+    .hero-title span {
       font-size: 13px;
       font-weight: 800;
       padding: 6px 10px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: #fff;
-      color: #0f172a;
+      background: var(--card-bg-alt);
+      color: var(--text);
     }
 
-    .imggrid{
-      display:grid;
+    .imggrid {
+      display: grid;
       grid-template-columns: 1fr;
       gap: 12px;
       margin-top: 14px;
     }
 
-    @media(min-width: 700px){
-      .imggrid{ grid-template-columns: 1fr 1fr; }
+    @media (min-width: 700px) {
+      .imggrid { grid-template-columns: 1fr 1fr; }
     }
 
-    figure{
-      margin:0;
-      background:#fff;
+    figure {
+      margin: 0;
+      background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 14px;
-      overflow:hidden;
+      overflow: hidden;
     }
 
-    figure img{
-      width:100%;
-      display:block;
-      height:auto;
-    }
+    figure img { width: 100%; display: block; height: auto; }
 
-    figcaption{
+    figcaption {
       padding: 10px 12px;
       font-size: 13px;
       color: var(--muted);
+      background: var(--card-bg);
+      border-top: 1px solid var(--border-soft);
     }
 
-    .list{
+    .list {
       margin: 10px 0 0;
       padding-left: 18px;
       color: var(--muted);
     }
 
-    .list li{ margin: 8px 0; }
+    .list li { margin: 8px 0; }
 
-    .cta{
-      display:flex;
+    .cta {
+      display: flex;
       gap: 10px;
       flex-wrap: wrap;
       margin-top: 12px;
     }
 
-    .btn{
-      display:inline-block;
+    .btn {
+      display: inline-block;
       padding: 12px 14px;
       border-radius: 12px;
-      border:1px solid var(--border);
-      background:#fff;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
       font-weight: 800;
-      color:#0f172a;
+      color: var(--text);
     }
 
-    .btn.primary{
-      background:#0f172a;
-      color:#fff;
-      border-color:#0f172a;
+    .btn:hover { background: var(--hover); text-decoration: none; }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+    body:not(.dark) .btn.primary {
+      color: #fff;
     }
 
-    footer{
-      border-top:1px solid var(--border);
+    footer {
+      border-top: 1px solid var(--border-soft);
       padding: 22px 18px;
       color: var(--muted);
       font-size: 13px;
-      text-align:center;
-      background: #ffffff;
+      text-align: center;
+      background: var(--card-bg);
     }
 
-    .tiny{
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 10px;
-    }
+    .tiny { font-size: 12px; color: var(--muted); margin-top: 10px; }
 
-    code{
-      background:#fff;
-      border:1px solid var(--border);
+    code {
+      background: var(--card-bg-alt);
+      border: 1px solid var(--border);
       padding: 2px 6px;
       border-radius: 8px;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       font-size: 12px;
-      color:#0f172a;
+      color: var(--text);
     }
   </style>
 </head>
-<script>
-(function () {
-  const STORAGE_KEY = "sh_theme";
-  const btn = document.getElementById("theme-toggle");
-  const body = document.body;
-  if (!btn) return;
 
-  function setTheme(mode) {
-    const isDark = mode === "dark";
-    body.classList.toggle("dark", isDark);
-
-    const icon = btn.querySelector(".theme-toggle-icon");
-    if (icon) icon.textContent = isDark ? "☀" : "☾";
-
-    localStorage.setItem(STORAGE_KEY, mode);
-  }
-
-  const saved = localStorage.getItem(STORAGE_KEY);
-  const systemPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-  setTheme(saved || (systemPrefersDark ? "dark" : "light"));
-
-  btn.addEventListener("click", () => {
-    setTheme(body.classList.contains("dark") ? "light" : "dark");
-  });
-})();
-</script>
 <body>
   <header>
     <div class="wrap">
@@ -329,15 +300,19 @@ body.dark .theme-toggle:hover{
       </div>
 
       <nav aria-label="Primary">
-        <a href="/" >About</a>
+        <a href="/">About</a>
         <a href="/#donate">Donate</a>
         <a href="/#funds">How funds are used</a>
         <a href="/#updates">Updates</a>
         <a href="/#contact">Contact</a>
         <a class="active" href="/hubs/">HUBs</a>
+        <a href="/verification/">Verification</a>
         <a href="/live/">LIVE</a>
-        <!-- future -->
-        <!-- <a href="/verification/">Verification</a> -->
+
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
+          <span class="theme-toggle-icon">☾</span>
+          <span class="theme-toggle-label">Theme</span>
+        </button>
       </nav>
     </div>
   </header>
@@ -352,7 +327,7 @@ body.dark .theme-toggle:hover{
         </div>
 
         <p>
-          A Service Human HUB is a always-open, calm, well-run space where people can get immediate help
+          A Service Human HUB is an always-open, calm, well-run space where people can get immediate help
           without judgment, hoops, or performative bureaucracy.
           Think: the reliability of an airport + the warmth of a community center + the transparency of a public ledger.
         </p>
@@ -406,37 +381,27 @@ body.dark .theme-toggle:hover{
           These are early concept renders to help you picture what we’re building in major metropolitan areas.
         </p>
 
-        <!--
-          HOW TO ADD IMAGES:
-          1) Put images in /hubs/assets/
-          2) Update the src paths below
-          Example filenames:
-            /hubs/assets/hub-exterior.png
-            /hubs/assets/hub-lobby.png
-        -->
-
-      <div class="imggrid">
-        <figure>
+        <div class="imggrid">
+          <figure>
             <img src="/hubs/assets/hub-1.png" alt="Service Human HUB concept rendering 01" />
             <figcaption>Exterior concept — modern, welcoming, calm.</figcaption>
-        </figure>
+          </figure>
 
-        <figure>
-          <img src="/hubs/assets/hub-2.png" alt="Service Human HUB concept rendering 02" />
-          <figcaption>Reception + navigation — clear, respectful, human-first.</figcaption>
-        </figure>
+          <figure>
+            <img src="/hubs/assets/hub-2.png" alt="Service Human HUB concept rendering 02" />
+            <figcaption>Reception + navigation — clear, respectful, human-first.</figcaption>
+          </figure>
 
-        <figure>
-          <img src="/hubs/assets/hub-3.png" alt="Service Human HUB concept rendering 03" />
-          <figcaption>Support zones — showers, laundry, essentials, stabilization.</figcaption>
-        </figure>
+          <figure>
+            <img src="/hubs/assets/hub-3.png" alt="Service Human HUB concept rendering 03" />
+            <figcaption>Support zones — showers, laundry, essentials, stabilization.</figcaption>
+          </figure>
 
-        <figure>
-          <img src="/hubs/assets/hub-4.png" alt="Service Human HUB concept rendering 04" />
-          <figcaption>Operations — repeatable standards for every major metro.</figcaption>
-        </figure>
-      </div>
-
+          <figure>
+            <img src="/hubs/assets/hub-4.png" alt="Service Human HUB concept rendering 04" />
+            <figcaption>Operations — repeatable standards for every major metro.</figcaption>
+          </figure>
+        </div>
       </section>
 
       <section class="two">
@@ -482,5 +447,39 @@ body.dark .theme-toggle:hover{
   <footer>
     Service Human, Inc. — Radical transparency in motion.
   </footer>
+
+  <!-- Theme script: placed at end so elements exist -->
+  <script>
+  (function () {
+    const STORAGE_KEY = "sh_theme";
+    const body = document.body;
+
+    function setTheme(mode) {
+      const isDark = mode === "dark";
+      body.classList.toggle("dark", isDark);
+
+      const btn = document.getElementById("theme-toggle");
+      if (btn) {
+        const icon = btn.querySelector(".theme-toggle-icon");
+        if (icon) icon.textContent = isDark ? "☀" : "☾";
+      }
+
+      localStorage.setItem(STORAGE_KEY, mode);
+    }
+
+    const saved = localStorage.getItem(STORAGE_KEY);
+    const systemPrefersDark =
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    setTheme(saved || (systemPrefersDark ? "dark" : "light"));
+
+    const btn = document.getElementById("theme-toggle");
+    if (!btn) return;
+
+    btn.addEventListener("click", () => {
+      setTheme(body.classList.contains("dark") ? "light" : "dark");
+    });
+  })();
+  </script>
 </body>
 </html>
