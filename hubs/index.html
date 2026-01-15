@@ -6,480 +6,154 @@
   <title>Service Human — HUBs</title>
   <meta name="description" content="Service Human HUBs: 24/7 centers that turn compassion into infrastructure—transparent, repeatable, and measurable." />
 
-  <style>
-    /* ============================================================
-       Service Human (site-wide continuity)
-       Uses the same theme system as main index.html:
-       - body.dark toggles
-       - localStorage key: sh_theme
-       ============================================================ */
-
-    :root {
-      --bg: #f5f5f5;
-      --text: #111;
-      --card-bg: #ffffff;
-      --card-bg-alt: #fafafa;
-      --border: #e0e0e0;
-      --border-soft: #eeeeee;
-      --muted: #666666;
-      --meta: #777777;
-      --link: #0056b3;
-      --accent: #111111;
-      --hover: #f2f6ff;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-
-      --radius: 18px;
-      --max: 980px;
-    }
-
-    body.dark {
-      --bg: #050505;
-      --text: #f5f5f5;
-      --card-bg: #111111;
-      --card-bg-alt: #181818;
-      --border: #333333;
-      --border-soft: #222222;
-      --muted: #aaaaaa;
-      --meta: #999999;
-      --link: #8fb5ff;
-      --accent: #f5f5f5;
-      --hover: #181818;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.45;
-    }
-
-    a { color: var(--link); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    header {
-      padding: 28px 18px 10px;
-      border-bottom: 1px solid var(--border-soft);
-      background: linear-gradient(180deg, var(--card-bg) 0%, var(--card-bg-alt) 100%);
-    }
-
-    .wrap { max-width: var(--max); margin: 0 auto; }
-
-    .brand {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .brand h1 {
-      font-size: 28px;
-      margin: 0 0 6px;
-      letter-spacing: -0.02em;
-    }
-
-    .brand p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 62ch;
-    }
-
-    nav {
-      margin-top: 14px;
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      align-items: center;
-      padding: 10px 0 6px;
-      font-size: 0.95rem;
-    }
-
-    nav a {
-      font-weight: 600;
-      color: var(--text);
-      opacity: 0.85;
-      white-space: nowrap;
-    }
-
-    nav a.active {
-      opacity: 1;
-      text-decoration: underline;
-      text-underline-offset: 6px;
-    }
-
-    /* Theme toggle (same behavior + vibe as main) */
-    .theme-toggle {
-      margin-left: auto;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: transparent;
-      font-size: 0.8rem;
-      cursor: pointer;
-      color: var(--muted);
-    }
-
-    .theme-toggle:hover { background: rgba(0, 0, 0, 0.03); }
-    body.dark .theme-toggle:hover { background: rgba(255, 255, 255, 0.06); }
-    .theme-toggle-icon { font-size: 0.9rem; }
-
-    main { padding: 22px 18px 70px; }
-
-    .grid { display: grid; gap: 16px; }
-
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .card h2 {
-      margin: 0 0 10px;
-      font-size: 18px;
-      letter-spacing: -0.01em;
-    }
-
-    .card p { margin: 0 0 12px; color: var(--muted); }
-
-    .pillrow {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .pill {
-      background: var(--card-bg-alt);
-      border: 1px solid var(--border);
-      padding: 10px 12px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 13px;
-      color: var(--text);
-    }
-
-    .two { display: grid; gap: 16px; }
-
-    @media (min-width: 900px) {
-      .two { grid-template-columns: 1.2fr 0.8fr; }
-      .three { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    .hero { display: grid; gap: 16px; align-items: stretch; }
-    .hero .card { padding: 20px; }
-
-    .hero-title {
-      display: flex;
-      gap: 10px;
-      align-items: baseline;
-      flex-wrap: wrap;
-    }
-
-    .hero-title h2 { font-size: 22px; margin: 0; }
-
-    .hero-title span {
-      font-size: 13px;
-      font-weight: 800;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--card-bg-alt);
-      color: var(--text);
-    }
-
-    .imggrid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    @media (min-width: 700px) {
-      .imggrid { grid-template-columns: 1fr 1fr; }
-    }
-
-    figure {
-      margin: 0;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-
-    figure img { width: 100%; display: block; height: auto; }
-
-    figcaption {
-      padding: 10px 12px;
-      font-size: 13px;
-      color: var(--muted);
-      background: var(--card-bg);
-      border-top: 1px solid var(--border-soft);
-    }
-
-    .list {
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-
-    .list li { margin: 8px 0; }
-
-    .cta {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: var(--card-bg);
-      font-weight: 800;
-      color: var(--text);
-    }
-
-    .btn:hover { background: var(--hover); text-decoration: none; }
-
-    .btn.primary {
-      background: var(--accent);
-      color: #000;
-      border-color: var(--accent);
-    }
-    body:not(.dark) .btn.primary {
-      color: #fff;
-    }
-
-    footer {
-      border-top: 1px solid var(--border-soft);
-      padding: 22px 18px;
-      color: var(--muted);
-      font-size: 13px;
-      text-align: center;
-      background: var(--card-bg);
-    }
-
-    .tiny { font-size: 12px; color: var(--muted); margin-top: 10px; }
-
-    code {
-      background: var(--card-bg-alt);
-      border: 1px solid var(--border);
-      padding: 2px 6px;
-      border-radius: 8px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 12px;
-      color: var(--text);
-    }
-  </style>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/theme.js" defer></script>
 </head>
 
 <body>
   <header>
-    <div class="wrap">
-      <div class="brand">
-        <div>
-          <h1>Service Human — HUBs</h1>
-          <p>
-            The physical backbone: 24/7 centers that turn compassion into infrastructure —
-            <strong>safe, repeatable, measurable</strong>.
-          </p>
-          <p class="tiny">
-            Based in Tampa, Florida • Radical transparency • Built for scale
-          </p>
-        </div>
-      </div>
+    <div class="site-title">Service Human — HUBs</div>
+    <p class="site-subtitle">
+      The physical backbone: 24/7 centers that turn compassion into infrastructure — safe, repeatable, measurable.
+    </p>
+    <p class="meta-line">
+      Based in <strong>Tampa, Florida</strong> • Radical transparency • Built for scale
+    </p>
 
-      <nav aria-label="Primary">
-        <a href="/">About</a>
-        <a href="/#donate">Donate</a>
-        <a href="/#funds">How funds are used</a>
-        <a href="/#updates">Updates</a>
-        <a href="/#contact">Contact</a>
-        <a class="active" href="/hubs/">HUBs</a>
-        <a href="/verification/">Verification</a>
-        <a href="/live/">LIVE</a>
+    <nav aria-label="Primary">
+      <a href="/#about">About</a>
+      <a href="/hubs/" class="active">HUBs</a>
+      <a href="/verification/">Verification</a>
+      <a href="/#donate">Donate</a>
+      <a href="/#usage">How funds are used</a>
+      <a href="/#blog">Updates</a>
+      <a href="/#contact">Contact</a>
+      <a href="/live/">LIVE</a>
 
-        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
-          <span class="theme-toggle-icon">☾</span>
-          <span class="theme-toggle-label">Theme</span>
-        </button>
-      </nav>
-    </div>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
+        <span class="theme-toggle-icon">☾</span>
+        <span class="theme-toggle-label">Theme</span>
+      </button>
+    </nav>
   </header>
 
   <main>
-    <div class="wrap grid hero">
+    <section>
+      <h2>What a HUB is</h2>
+      <p>
+        A Service Human HUB is an always-open, calm, well-run space where people can get immediate help
+        without judgment, hoops, or performative bureaucracy.
+        Think: the reliability of an airport + the warmth of a community center + the transparency of a public ledger.
+      </p>
 
-      <section class="card">
-        <div class="hero-title">
-          <h2>What a HUB is</h2>
-          <span>24/7 • Human-first • Accountable</span>
-        </div>
+      <div class="pillrow" aria-label="Core outcomes">
+        <div class="pill">Emergency stabilization</div>
+        <div class="pill">Basic needs + navigation</div>
+        <div class="pill">Casework & follow-up</div>
+        <div class="pill">Workforce on-ramps</div>
+        <div class="pill">Data-backed accountability</div>
+      </div>
 
-        <p>
-          A Service Human HUB is an always-open, calm, well-run space where people can get immediate help
-          without judgment, hoops, or performative bureaucracy.
-          Think: the reliability of an airport + the warmth of a community center + the transparency of a public ledger.
-        </p>
+      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn primary" href="/live/">See LIVE accountability</a>
+        <a class="btn" href="/#donate">Fund the mission</a>
+      </div>
+    </section>
 
-        <div class="pillrow" aria-label="Core outcomes">
-          <div class="pill">Emergency stabilization</div>
-          <div class="pill">Basic needs + navigation</div>
-          <div class="pill">Casework & follow-up</div>
-          <div class="pill">Workforce on-ramps</div>
-          <div class="pill">Data-backed accountability</div>
-        </div>
-
-        <div class="cta">
-          <a class="btn primary" href="/live/">See LIVE accountability</a>
-          <a class="btn" href="/#donate">Fund the mission</a>
-        </div>
+    <div class="grid two">
+      <section>
+        <h2>What happens inside</h2>
+        <p class="small">Not a vague promise — a real workflow.</p>
+        <ul>
+          <li><strong>Front Desk:</strong> quick intake, triage, calm navigation.</li>
+          <li><strong>Basics:</strong> water, food, hygiene kits, showers, laundry, charging, rest space.</li>
+          <li><strong>Stabilization:</strong> safe rooms, crisis de-escalation, medical referrals.</li>
+          <li><strong>Case Support:</strong> ID help, benefits, housing placement support.</li>
+          <li><strong>Forward Motion:</strong> job readiness, partners, and follow-up.</li>
+        </ul>
       </section>
 
-      <section class="two">
-        <section class="card">
-          <h2>What happens inside</h2>
-          <p>Not a vague promise — a real workflow.</p>
-          <ul class="list">
-            <li><strong>Front Desk:</strong> quick intake, triage, and calm navigation.</li>
-            <li><strong>Basics:</strong> water, food, hygiene kits, showers, laundry, charging, rest space.</li>
-            <li><strong>Stabilization:</strong> safe rooms, crisis de-escalation, medical referrals.</li>
-            <li><strong>Case Support:</strong> ID/birth certificate help, benefits, housing placement support.</li>
-            <li><strong>Forward Motion:</strong> job readiness, community partners, and follow-up.</li>
-          </ul>
-        </section>
-
-        <section class="card">
-          <h2>Design principles</h2>
-          <p>
-            We build HUBs the way great systems are built:
-            clear standards, repeatable operations, and receipts.
-          </p>
-          <ul class="list">
-            <li><strong>24/7</strong> means 24/7. No “come back tomorrow.”</li>
-            <li><strong>Safety</strong> without intimidation.</li>
-            <li><strong>Dignity</strong> without paternalism.</li>
-            <li><strong>Transparency</strong> without spin.</li>
-            <li><strong>Scalable</strong> across major metros.</li>
-          </ul>
-        </section>
+      <section>
+        <h2>Design principles</h2>
+        <p class="small">Clear standards. Repeatable operations. Receipts.</p>
+        <ul>
+          <li><strong>24/7</strong> means 24/7. No “come back tomorrow.”</li>
+          <li><strong>Safety</strong> without intimidation.</li>
+          <li><strong>Dignity</strong> without paternalism.</li>
+          <li><strong>Transparency</strong> without spin.</li>
+          <li><strong>Scalable</strong> across major metros.</li>
+        </ul>
       </section>
-
-      <section class="card">
-        <h2>Concept visuals</h2>
-        <p>
-          These are early concept renders to help you picture what we’re building in major metropolitan areas.
-        </p>
-
-        <div class="imggrid">
-          <figure>
-            <img src="/hubs/assets/hub-1.png" alt="Service Human HUB concept rendering 01" />
-            <figcaption>Exterior concept — modern, welcoming, calm.</figcaption>
-          </figure>
-
-          <figure>
-            <img src="/hubs/assets/hub-2.png" alt="Service Human HUB concept rendering 02" />
-            <figcaption>Reception + navigation — clear, respectful, human-first.</figcaption>
-          </figure>
-
-          <figure>
-            <img src="/hubs/assets/hub-3.png" alt="Service Human HUB concept rendering 03" />
-            <figcaption>Support zones — showers, laundry, essentials, stabilization.</figcaption>
-          </figure>
-
-          <figure>
-            <img src="/hubs/assets/hub-4.png" alt="Service Human HUB concept rendering 04" />
-            <figcaption>Operations — repeatable standards for every major metro.</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="two">
-        <section class="card">
-          <h2>Rollout model</h2>
-          <p>How we go from “one HUB” to a national backbone.</p>
-          <ul class="list">
-            <li><strong>Phase 1:</strong> Prototype (Tampa) — prove operations, prove outcomes.</li>
-            <li><strong>Phase 2:</strong> Regional scale — copy/paste the playbook into 3–5 metros.</li>
-            <li><strong>Phase 3:</strong> National network — shared standards, local partners, unified visibility.</li>
-          </ul>
-        </section>
-
-        <section class="card">
-          <h2>How this ties into LIVE</h2>
-          <p>
-            The HUB page is the “vision.” The <a href="/live/">LIVE page</a> is the “heartbeat.”
-            Every HUB can have its own public panel: funds in, funds out, people served, and goals.
-          </p>
-          <ul class="list">
-            <li>Public numbers → public trust</li>
-            <li>Transparency → pressure to perform</li>
-            <li>Receipts → less room for corruption</li>
-          </ul>
-        </section>
-      </section>
-
-      <section class="card">
-        <h2>Want to bring a HUB to your city?</h2>
-        <p>
-          If you’re a partner, donor, operator, or leader who wants to help establish a Service Human HUB,
-          reach out. We’ll start with the basics: location, needs, staffing model, and transparent reporting.
-        </p>
-        <div class="cta">
-          <a class="btn primary" href="/#contact">Contact Service Human</a>
-          <a class="btn" href="/live/">View LIVE accountability</a>
-        </div>
-      </section>
-
     </div>
+
+    <section>
+      <h2>Concept visuals</h2>
+      <p class="small">
+        Early concept renders to help you picture what we’re building in major metropolitan areas.
+      </p>
+
+      <div class="imggrid">
+        <figure>
+          <img src="/hubs/assets/hub-1.png" alt="Service Human HUB concept rendering 01">
+          <figcaption>Exterior concept — modern, welcoming, calm.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="/hubs/assets/hub-2.png" alt="Service Human HUB concept rendering 02">
+          <figcaption>Reception + navigation — clear, respectful, human-first.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="/hubs/assets/hub-3.png" alt="Service Human HUB concept rendering 03">
+          <figcaption>Support zones — showers, laundry, essentials, stabilization.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="/hubs/assets/hub-4.png" alt="Service Human HUB concept rendering 04">
+          <figcaption>Operations — repeatable standards for every major metro.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="grid two">
+      <section>
+        <h2>Rollout model</h2>
+        <ul>
+          <li><strong>Phase 1:</strong> Prototype (Tampa) — prove operations, prove outcomes.</li>
+          <li><strong>Phase 2:</strong> Regional scale — copy/paste playbook into 3–5 metros.</li>
+          <li><strong>Phase 3:</strong> National network — shared standards, local partners, unified visibility.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>How this ties into LIVE</h2>
+        <p>
+          The HUB page is the “vision.” The <a href="/live/">LIVE page</a> is the “heartbeat.”
+          Every HUB can have its own public panel: funds in, funds out, people served, and goals.
+        </p>
+        <ul>
+          <li>Public numbers → public trust</li>
+          <li>Transparency → pressure to perform</li>
+          <li>Receipts → less room for corruption</li>
+        </ul>
+      </section>
+    </div>
+
+    <section>
+      <h2>Want to bring a HUB to your city?</h2>
+      <p>
+        If you’re a partner, donor, operator, or leader who wants to help establish a Service Human HUB,
+        reach out. We’ll start with the basics: location, needs, staffing model, and transparent reporting.
+      </p>
+      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn primary" href="/#contact">Contact Service Human</a>
+        <a class="btn" href="/live/">View LIVE accountability</a>
+      </div>
+    </section>
   </main>
 
   <footer>
-    Service Human, Inc. — Radical transparency in motion.
+    <p class="legal">Service Human, Inc. — Radical transparency in motion.</p>
   </footer>
-
-  <!-- Theme script: placed at end so elements exist -->
-  <script>
-  (function () {
-    const STORAGE_KEY = "sh_theme";
-    const body = document.body;
-
-    function setTheme(mode) {
-      const isDark = mode === "dark";
-      body.classList.toggle("dark", isDark);
-
-      const btn = document.getElementById("theme-toggle");
-      if (btn) {
-        const icon = btn.querySelector(".theme-toggle-icon");
-        if (icon) icon.textContent = isDark ? "☀" : "☾";
-      }
-
-      localStorage.setItem(STORAGE_KEY, mode);
-    }
-
-    const saved = localStorage.getItem(STORAGE_KEY);
-    const systemPrefersDark =
-      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    setTheme(saved || (systemPrefersDark ? "dark" : "light"));
-
-    const btn = document.getElementById("theme-toggle");
-    if (!btn) return;
-
-    btn.addEventListener("click", () => {
-      setTheme(body.classList.contains("dark") ? "light" : "dark");
-    });
-  })();
-  </script>
 </body>
 </html>
