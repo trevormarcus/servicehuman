@@ -1,179 +1,457 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Verification – Service Human</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Service Human’s real-time verification system for donations, impact, and financial transparency. Radical transparency starts here.">
-  <link rel="stylesheet" href="/styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Service Human — Verification</title>
+  <meta name="description" content="Service Human’s verification system for donations, impact, and financial transparency. Radical transparency starts here." />
+
+  <style>
+    /* ============================================================
+       Service Human (site-wide continuity)
+       Same theme system as main + HUBs + LIVE:
+       - body.dark toggles
+       - localStorage key: sh_theme
+       ============================================================ */
+
+    :root {
+      --bg: #f5f5f5;
+      --text: #111;
+      --card-bg: #ffffff;
+      --card-bg-alt: #fafafa;
+      --border: #e0e0e0;
+      --border-soft: #eeeeee;
+      --muted: #666666;
+      --meta: #777777;
+      --link: #0056b3;
+      --accent: #111111;
+      --hover: #f2f6ff;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+      --radius: 18px;
+      --max: 980px;
+    }
+
+    body.dark {
+      --bg: #050505;
+      --text: #f5f5f5;
+      --card-bg: #111111;
+      --card-bg-alt: #181818;
+      --border: #333333;
+      --border-soft: #222222;
+      --muted: #aaaaaa;
+      --meta: #999999;
+      --link: #8fb5ff;
+      --accent: #f5f5f5;
+      --hover: #181818;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      padding: 28px 18px 10px;
+      border-bottom: 1px solid var(--border-soft);
+      background: linear-gradient(180deg, var(--card-bg) 0%, var(--card-bg-alt) 100%);
+    }
+
+    .wrap { max-width: var(--max); margin: 0 auto; }
+
+    .brand {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand h1 {
+      font-size: 28px;
+      margin: 0 0 6px;
+      letter-spacing: -0.02em;
+    }
+
+    .brand p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 70ch;
+    }
+
+    .tiny {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    nav {
+      margin-top: 14px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 10px 0 6px;
+      font-size: 0.95rem;
+    }
+
+    nav a {
+      font-weight: 600;
+      color: var(--text);
+      opacity: 0.85;
+      white-space: nowrap;
+    }
+
+    nav a.active {
+      opacity: 1;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+    }
+
+    /* Theme toggle (site-wide continuity) */
+    .theme-toggle {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: transparent;
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: var(--muted);
+    }
+
+    .theme-toggle:hover { background: rgba(0, 0, 0, 0.03); }
+    body.dark .theme-toggle:hover { background: rgba(255, 255, 255, 0.06); }
+    .theme-toggle-icon { font-size: 0.9rem; }
+
+    main { padding: 22px 18px 70px; }
+
+    .grid { display: grid; gap: 16px; }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .card p { margin: 0 0 12px; color: var(--muted); }
+
+    .list {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .list li { margin: 8px 0; }
+
+    /* Verification grid */
+    .verify-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    @media (min-width: 800px) {
+      .verify-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    .verify-card {
+      background: var(--card-bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .verify-card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .verify-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* CTA buttons */
+    .cta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .btn:hover { background: var(--hover); text-decoration: none; }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+    body:not(.dark) .btn.primary { color: #fff; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-soft);
+      padding: 22px 18px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+      background: var(--card-bg);
+    }
+
+    code {
+      background: var(--card-bg-alt);
+      border: 1px solid var(--border);
+      padding: 2px 6px;
+      border-radius: 8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      color: var(--text);
+    }
+  </style>
 </head>
 
 <body>
+  <header>
+    <div class="wrap">
+      <div class="brand">
+        <div>
+          <h1>Verification</h1>
+          <p>
+            Radical transparency, built into the system —
+            so trust is generated by infrastructure, not promises.
+          </p>
+          <p class="tiny">
+            Service Human doesn’t ask for blind faith. We build receipts into the product.
+          </p>
+        </div>
+      </div>
 
-<header class="page-header">
-  <h1>Verification</h1>
-  <p class="subtitle">Radical transparency, built into the system.</p>
-</header>
+      <nav aria-label="Primary">
+        <a href="/">About</a>
+        <a href="/#donate">Donate</a>
+        <a href="/#funds">How funds are used</a>
+        <a href="/#updates">Updates</a>
+        <a href="/#contact">Contact</a>
+        <a href="/hubs/">HUBs</a>
+        <a href="/live/">LIVE</a>
+        <a class="active" href="/verification/">Verification</a>
 
-<section class="content">
-
-  <h2>Why Verification Exists</h2>
-  <p>
-    Most nonprofits ask you to trust them.  
-    Service Human is built so you don’t have to.
-  </p>
-  <p>
-    Verification is the backbone of our platform. It ensures that every dollar,
-    every partner, and every impact claim can be independently confirmed through
-    financial institutions, corporate giving networks, and public records.
-  </p>
-
-  <p>
-    This is not marketing. This is infrastructure.
-  </p>
-
-</section>
-
-<section class="content">
-
-  <h2>What Is Being Verified?</h2>
-
-  <ul>
-    <li><strong>Our legal identity</strong> – State, federal, and nonprofit registration</li>
-    <li><strong>Our banking</strong> – Institutional financial verification</li>
-    <li><strong>Our eligibility</strong> – Corporate and workplace giving platforms</li>
-    <li><strong>Our financial flows</strong> – Where money enters and where it goes</li>
-    <li><strong>Our impact</strong> – Programs, grants, and deployments</li>
-  </ul>
-
-  <p>
-    These layers form a continuous chain of trust — not a single point of failure.
-  </p>
-
-</section>
-
-<section class="content">
-
-  <h2>Our Verification Networks</h2>
-
-  <p>
-    Service Human is registered, vetted, and monitored inside the same networks
-    used by the world’s largest employers, foundations, and financial institutions.
-  </p>
-
-  <div class="verification-grid">
-
-    <div class="verify-card">
-      <h3>Candid (GuideStar)</h3>
-      <p>
-        Confirms our nonprofit identity, leadership, mission, and IRS-recognized status.
-        This is the public record used by foundations, journalists, and donors.
-      </p>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
+          <span class="theme-toggle-icon">☾</span>
+          <span class="theme-toggle-label">Theme</span>
+        </button>
+      </nav>
     </div>
+  </header>
 
-    <div class="verify-card">
-      <h3>Benevity</h3>
-      <p>
-        The corporate giving platform used by companies like Microsoft, Apple, Google,
-        Disney, and thousands more. Benevity verifies our banking, compliance, and eligibility
-        for employee donations and matching.
-      </p>
+  <main>
+    <div class="wrap grid">
+
+      <section class="card">
+        <h2>Why verification exists</h2>
+        <p>
+          Most nonprofits ask you to trust them.
+          Service Human is built so you don’t have to.
+        </p>
+        <p>
+          Verification is the backbone of the platform:
+          every dollar, every partner, and every impact claim is designed to be independently confirmable —
+          through financial institutions, corporate giving networks, and public records.
+        </p>
+        <p><strong>This isn’t marketing. This is infrastructure.</strong></p>
+
+        <div class="cta">
+          <a class="btn primary" href="/live/">See LIVE accountability</a>
+          <a class="btn" href="/#donate">Fund the mission</a>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>What is being verified?</h2>
+        <ul class="list">
+          <li><strong>Legal identity:</strong> state + federal nonprofit registration and public record.</li>
+          <li><strong>Banking:</strong> institutional verification for legitimate fund flow.</li>
+          <li><strong>Eligibility:</strong> acceptance into workplace giving + corporate philanthropy systems.</li>
+          <li><strong>Financial flows:</strong> where money enters and where it goes.</li>
+          <li><strong>Impact:</strong> programs, grants, deployments, and outcomes.</li>
+        </ul>
+        <p>
+          These layers form a continuous chain of trust — not a single point of failure.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Our verification networks</h2>
+        <p>
+          Service Human is registered, vetted, and monitored inside the same networks used by
+          major employers, foundations, and the systems that move philanthropic money at scale.
+        </p>
+
+        <div class="verify-grid" aria-label="Verification networks">
+          <div class="verify-card">
+            <h3>Candid (GuideStar)</h3>
+            <p>
+              Confirms nonprofit identity, mission, and public-facing record used by foundations,
+              journalists, and donors.
+            </p>
+          </div>
+
+          <div class="verify-card">
+            <h3>Benevity</h3>
+            <p>
+              Corporate giving + matching infrastructure. Verifies nonprofits for employee donations,
+              eligibility, and compliance inside employer giving programs.
+            </p>
+          </div>
+
+          <div class="verify-card">
+            <h3>Bonterra</h3>
+            <p>
+              Workplace giving and grants management systems. Verifies nonprofits before they enter
+              corporate donor pipelines.
+            </p>
+          </div>
+
+          <div class="verify-card">
+            <h3>Blackbaud</h3>
+            <p>
+              Nonprofit fundraising and financial infrastructure used at scale. Supports traceability,
+              legitimacy, and compliance around charitable fund flow.
+            </p>
+          </div>
+        </div>
+
+        <p class="tiny">
+          Note: platform mechanics vary by employer and system, but the point is the same:
+          you’re not “trusting a website” — you’re verifying through established rails.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>What this means for donors</h2>
+        <p>
+          When you give to Service Human, your donation isn’t just accepted —
+          it’s supported by independent systems built for verification.
+        </p>
+        <ul class="list">
+          <li>Your employer can match it.</li>
+          <li>Your giving platform can verify it.</li>
+          <li>Your foundation can audit it.</li>
+          <li>Your accountant can trace it.</li>
+        </ul>
+        <p>
+          This reduces the two biggest risks in philanthropy:
+          <strong>misuse of funds</strong> and <strong>lack of accountability</strong>.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Why some organizations avoid verification</h2>
+        <p>
+          Verification requires disclosure.
+          It requires consistency.
+          It requires numbers that withstand scrutiny.
+        </p>
+        <p>
+          Many organizations choose opacity because it allows inefficiency, excessive overhead,
+          and vague impact claims to survive.
+        </p>
+        <p><strong>Service Human was built for the opposite.</strong></p>
+      </section>
+
+      <section class="card">
+        <h2>Radical transparency is our default</h2>
+        <p>
+          We don’t wait to be audited.
+          We don’t hide behind reports that arrive years later.
+          We don’t ask for blind faith.
+        </p>
+        <p>
+          The system is designed so trust is generated automatically —
+          through banks, platforms, records, and data.
+        </p>
+        <p>
+          This is how Service Human becomes the
+          <strong>Bloomberg Terminal of Human Impact</strong>.
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="/live/">Go to LIVE</a>
+          <a class="btn" href="/hubs/">See HUBs</a>
+        </div>
+      </section>
+
     </div>
+  </main>
 
-    <div class="verify-card">
-      <h3>Bonterra</h3>
-      <p>
-        Powers workplace giving, grants management, and corporate philanthropy.
-        Bonterra verifies nonprofits before allowing them into corporate donor pipelines.
-      </p>
-    </div>
-
-    <div class="verify-card">
-      <h3>Blackbaud</h3>
-      <p>
-        The global nonprofit financial and fundraising infrastructure used by universities,
-        hospitals, and large foundations. Blackbaud ensures that organizations receiving
-        funds are legitimate, traceable, and compliant.
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-<section class="content">
-
-  <h2>What This Means for Donors</h2>
-
-  <p>
-    When you give to Service Human, your donation is not just accepted — it is
-    validated by multiple independent systems.
-  </p>
-
-  <ul>
-    <li>Your employer can match it</li>
-    <li>Your payroll system can verify it</li>
-    <li>Your foundation can audit it</li>
-    <li>Your accountant can trace it</li>
-  </ul>
-
-  <p>
-    This eliminates the two biggest risks in philanthropy:
-    <strong>misuse of funds</strong> and <strong>lack of accountability</strong>.
-  </p>
-
-</section>
-
-<section class="content">
-
-  <h2>Why Some Organizations Avoid Verification</h2>
-
-  <p>
-    Verification requires disclosure.
-    It requires consistency.
-    It requires numbers that withstand scrutiny.
-  </p>
-
-  <p>
-    Many organizations choose opacity because it allows inefficiency, excessive overhead,
-    and vague impact claims to survive.
-  </p>
-
-  <p>
-    Service Human was built for the opposite.
-  </p>
-
-</section>
-
-<section class="content">
-
-  <h2>Radical Transparency Is Our Default</h2>
-
-  <p>
-    We don’t wait to be audited.
-    We don’t hide behind reports that arrive years later.
-    We don’t ask for blind faith.
-  </p>
-
-  <p>
-    Our systems are designed so that trust is generated automatically —
-    through banks, platforms, records, and data.
-  </p>
-
-  <p>
-    This is how Service Human becomes the
-    <strong>Bloomberg Terminal of Human Impact</strong>.
-  </p>
-
-</section>
-
-<footer class="page-footer">
-  <p>
+  <footer>
     Want to verify us yourself?
-    Check our listings on Benevity, Candid, Bonterra, or Blackbaud —
-    or ask your employer’s giving platform to look us up.
-  </p>
-</footer>
+    Look us up on your employer’s giving platform, or search for Service Human through networks like Candid, Benevity, Bonterra, or Blackbaud.
+  </footer>
 
+  <!-- Theme script (site-wide continuity) -->
+  <script>
+  (function () {
+    const STORAGE_KEY = "sh_theme";
+    const body = document.body;
+
+    function setTheme(mode) {
+      const isDark = mode === "dark";
+      body.classList.toggle("dark", isDark);
+
+      const btn = document.getElementById("theme-toggle");
+      if (btn) {
+        const icon = btn.querySelector(".theme-toggle-icon");
+        if (icon) icon.textContent = isDark ? "☀" : "☾";
+      }
+
+      localStorage.setItem(STORAGE_KEY, mode);
+    }
+
+    const saved = localStorage.getItem(STORAGE_KEY);
+    const systemPrefersDark =
+      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    setTheme(saved || (systemPrefersDark ? "dark" : "light"));
+
+    const btn = document.getElementById("theme-toggle");
+    if (!btn) return;
+
+    btn.addEventListener("click", () => {
+      setTheme(body.classList.contains("dark") ? "light" : "dark");
+    });
+  })();
+  </script>
 </body>
 </html>
