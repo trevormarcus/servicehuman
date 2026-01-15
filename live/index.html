@@ -4,401 +4,92 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Service Human — LIVE</title>
-  <meta name="description" content="The public heartbeat of Service Human: live transparency, goals, and measurable impact—without spin." />
+  <meta name="description" content="Live transparency: the public heartbeat of Service Human — funds in, funds out, humans helped." />
 
-  <style>
-    /* ============================================================
-       Service Human (site-wide continuity)
-       Same theme system as main + HUBs:
-       - body.dark toggles
-       - localStorage key: sh_theme
-       ============================================================ */
-
-    :root {
-      --bg: #f5f5f5;
-      --text: #111;
-      --card-bg: #ffffff;
-      --card-bg-alt: #fafafa;
-      --border: #e0e0e0;
-      --border-soft: #eeeeee;
-      --muted: #666666;
-      --meta: #777777;
-      --link: #0056b3;
-      --accent: #111111;
-      --hover: #f2f6ff;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-
-      --radius: 18px;
-      --max: 980px;
-    }
-
-    body.dark {
-      --bg: #050505;
-      --text: #f5f5f5;
-      --card-bg: #111111;
-      --card-bg-alt: #181818;
-      --border: #333333;
-      --border-soft: #222222;
-      --muted: #aaaaaa;
-      --meta: #999999;
-      --link: #8fb5ff;
-      --accent: #f5f5f5;
-      --hover: #181818;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a { color: var(--link); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    header {
-      padding: 28px 18px 10px;
-      border-bottom: 1px solid var(--border-soft);
-      background: linear-gradient(180deg, var(--card-bg) 0%, var(--card-bg-alt) 100%);
-    }
-
-    .wrap { max-width: var(--max); margin: 0 auto; }
-
-    .brand {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .brand h1 {
-      font-size: 28px;
-      margin: 0 0 6px;
-      letter-spacing: -0.02em;
-    }
-
-    .brand p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 62ch;
-    }
-
-    .tiny {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 10px;
-    }
-
-    nav {
-      margin-top: 14px;
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      align-items: center;
-      padding: 10px 0 6px;
-      font-size: 0.95rem;
-    }
-
-    nav a {
-      font-weight: 600;
-      color: var(--text);
-      opacity: 0.85;
-      white-space: nowrap;
-    }
-
-    nav a.active {
-      opacity: 1;
-      text-decoration: underline;
-      text-underline-offset: 6px;
-    }
-
-    /* Theme toggle (site-wide continuity) */
-    .theme-toggle {
-      margin-left: auto;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: transparent;
-      font-size: 0.8rem;
-      cursor: pointer;
-      color: var(--muted);
-    }
-
-    .theme-toggle:hover { background: rgba(0, 0, 0, 0.03); }
-    body.dark .theme-toggle:hover { background: rgba(255, 255, 255, 0.06); }
-    .theme-toggle-icon { font-size: 0.9rem; }
-
-    main { padding: 22px 18px 70px; }
-
-    .grid { display: grid; gap: 16px; }
-
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .card h2 {
-      margin: 0 0 10px;
-      font-size: 18px;
-      letter-spacing: -0.01em;
-    }
-
-    .card p { margin: 0 0 12px; color: var(--muted); }
-
-    /* Metrics */
-    .metrics {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .metric {
-      padding: 14px 14px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      background: var(--card-bg-alt);
-    }
-
-    .metric .label {
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 6px;
-    }
-
-    .metric .value {
-      font-size: 1.6rem;
-      font-weight: 650;
-      letter-spacing: -0.01em;
-      color: var(--text);
-    }
-
-    @media (min-width: 700px) {
-      .metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-    }
-
-    /* Progress */
-    .progress-wrap { margin-top: 14px; }
-
-    .progress-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 12px;
-      margin-bottom: 8px;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 12px;
-      border-radius: 999px;
-      background: var(--border-soft);
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
-    .progress-fill {
-      height: 100%;
-      width: 2.5%; /* set this manually for now; later swap to JS */
-      border-radius: 999px;
-      background: var(--accent);
-      transition: width 0.4s ease;
-    }
-
-    /* Optional CTA buttons */
-    .cta {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: var(--card-bg);
-      font-weight: 800;
-      color: var(--text);
-    }
-
-    .btn:hover { background: var(--hover); text-decoration: none; }
-
-    .btn.primary {
-      background: var(--accent);
-      color: #000;
-      border-color: var(--accent);
-    }
-    body:not(.dark) .btn.primary { color: #fff; }
-
-    footer {
-      border-top: 1px solid var(--border-soft);
-      padding: 22px 18px;
-      color: var(--muted);
-      font-size: 13px;
-      text-align: center;
-      background: var(--card-bg);
-    }
-  </style>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/theme.js" defer></script>
 </head>
 
 <body>
   <header>
-    <div class="wrap">
-      <div class="brand">
-        <div>
-          <h1>Service Human — LIVE</h1>
-          <p>
-            The public heartbeat: measurable impact in the open —
-            <strong>no filters, no spin, no PR layers</strong>.
-          </p>
-          <p class="tiny">
-            If numbers move, people were helped. If they don’t, they weren’t.
-          </p>
-        </div>
-      </div>
+    <div class="site-title">Service Human — LIVE</div>
+    <p class="site-subtitle">
+      The public heartbeat. If numbers move, people were helped. If they don’t, they weren’t.
+    </p>
+    <p class="meta-line">
+      Simple on purpose • Updated manually • Built to scale into verified panels
+    </p>
 
-      <nav aria-label="Primary">
-        <a href="/">About</a>
-        <a href="/#donate">Donate</a>
-        <a href="/#funds">How funds are used</a>
-        <a href="/#updates">Updates</a>
-        <a href="/#contact">Contact</a>
-        <a href="/hubs/">HUBs</a>
-        <a href="/verification/">Verification</a>
-        <a class="active" href="/live/">LIVE</a>
+    <nav aria-label="Primary">
+      <a href="/#about">About</a>
+      <a href="/hubs/">HUBs</a>
+      <a href="/verification/">Verification</a>
+      <a href="/#donate">Donate</a>
+      <a href="/#usage">How funds are used</a>
+      <a href="/#blog">Updates</a>
+      <a href="/#contact">Contact</a>
+      <a href="/live/" class="active">LIVE</a>
 
-        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
-          <span class="theme-toggle-icon">☾</span>
-          <span class="theme-toggle-label">Theme</span>
-        </button>
-      </nav>
-    </div>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
+        <span class="theme-toggle-icon">☾</span>
+        <span class="theme-toggle-label">Theme</span>
+      </button>
+    </nav>
   </header>
 
   <main>
-    <div class="wrap grid">
+    <section>
+      <h2>Global Impact</h2>
 
-      <section class="card">
-        <h2>Global Impact</h2>
-
-        <div class="metrics" role="list" aria-label="Live metrics">
-          <div class="metric" role="listitem">
-            <div class="label">Total raised</div>
-            <div class="value">$25</div>
-          </div>
-
-          <div class="metric" role="listitem">
-            <div class="label">Humans helped</div>
-            <div class="value">1</div>
-          </div>
-
-          <div class="metric" role="listitem">
-            <div class="label">HUBs</div>
-            <div class="value">1</div>
-          </div>
-
-          <div class="metric" role="listitem">
-            <div class="label">Next milestone</div>
-            <div class="value">$1,000,000</div>
-          </div>
+      <div class="metrics-grid">
+        <div class="metric">
+          <h2>$25</h2>
+          <span>Total Raised</span>
         </div>
-
-        <div class="progress-wrap" aria-label="Progress to next milestone">
-          <div class="progress-head">
-            <span>Progress</span>
-            <span>2.5%</span>
-          </div>
-          <div class="progress-bar" aria-hidden="true">
-            <div class="progress-fill"></div>
-          </div>
+        <div class="metric">
+          <h2>1</h2>
+          <span>Humans Helped</span>
         </div>
-
-        <div class="cta">
-          <a class="btn primary" href="/#donate">Donate</a>
-          <a class="btn" href="/verification/">How we verify</a>
+        <div class="metric">
+          <h2>1</h2>
+          <span>HUBs</span>
         </div>
-      </section>
+        <div class="metric">
+          <h2>$1,000,000</h2>
+          <span>Next Milestone</span>
+        </div>
+      </div>
 
-      <section class="card">
-        <h2>What this is</h2>
-        <p>
-          This page is the public heartbeat of Service Human.
-          Every dollar, every person helped, and every HUB built appears here — in the open —
-          without filters, spin, or PR layers.
-        </p>
-        <p>
-          Corporations, nonprofits, and partners will eventually have their own live tiles here
-          so anyone in the world can see impact in real time.
-        </p>
-      </section>
+      <div class="progress-bar" aria-label="Progress toward next milestone">
+        <div class="progress" style="width:2.5%"></div>
+      </div>
 
-      <section class="card">
-        <h2>Why it matters</h2>
-        <p>
-          Most organizations ask for trust.
-          We replace trust with visibility.
-        </p>
-        <p>
-          The goal isn’t to “look good.”
-          It’s to be accountable — publicly — by default.
-        </p>
-      </section>
+      <p class="small" style="margin-top:12px;">
+        This is a starter panel. The long-term vision is verified panels for partners, programs, companies,
+        and other nonprofits — all visible in one place.
+      </p>
+    </section>
 
-    </div>
+    <section>
+      <h2>What This Is</h2>
+      <p>
+        This page is the public heartbeat of Service Human.
+        Every dollar, every person helped, every HUB built appears here — in the open — without filters, spin, or PR layers.
+      </p>
+      <p>
+        Corporations, nonprofits, and partners will eventually have their own live tiles here so anyone in the world can see impact in real time.
+      </p>
+    </section>
+
+    <section>
+      <h2>Why It Matters</h2>
+      <p>Most organizations ask for trust. We replace trust with visibility.</p>
+      <p>If numbers move, people were helped. If they don’t, they weren’t.</p>
+    </section>
   </main>
 
   <footer>
-    Service Human, Inc. — Radical transparency in motion.
+    <p class="legal">Service Human, Inc. — Radical transparency in motion.</p>
   </footer>
-
-  <!-- Theme script (site-wide continuity) -->
-  <script>
-  (function () {
-    const STORAGE_KEY = "sh_theme";
-    const body = document.body;
-
-    function setTheme(mode) {
-      const isDark = mode === "dark";
-      body.classList.toggle("dark", isDark);
-
-      const btn = document.getElementById("theme-toggle");
-      if (btn) {
-        const icon = btn.querySelector(".theme-toggle-icon");
-        if (icon) icon.textContent = isDark ? "☀" : "☾";
-      }
-
-      localStorage.setItem(STORAGE_KEY, mode);
-    }
-
-    const saved = localStorage.getItem(STORAGE_KEY);
-    const systemPrefersDark =
-      window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    setTheme(saved || (systemPrefersDark ? "dark" : "light"));
-
-    const btn = document.getElementById("theme-toggle");
-    if (!btn) return;
-
-    btn.addEventListener("click", () => {
-      setTheme(body.classList.contains("dark") ? "light" : "dark");
-    });
-  })();
-  </script>
 </body>
 </html>
