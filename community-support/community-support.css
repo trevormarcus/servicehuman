@@ -98,3 +98,27 @@
 @media (max-width: 820px){
   .sh-grid{ grid-template-columns: 1fr; }
 }
+/* Keep the page rhythm consistent with the homepage */
+.sh-page{
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px 32px;
+}
+
+/* Hero: reduce dead space and match your site scale */
+.sh-hero{
+  padding: 18px 0 10px;   /* was likely too big */
+  margin: 0 0 14px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.sh-hero h1{
+  margin: 0 0 6px;
+  font-size: 2.0rem;      /* slightly smaller than your screenshot */
+  line-height: 1.2;
+}
+
+.sh-subtitle{
+  margin: 0;
+  color: var(--muted);
+}
