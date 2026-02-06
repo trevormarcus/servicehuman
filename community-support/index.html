@@ -6,52 +6,40 @@
 
   <!-- Social Preview -->
   <meta property="og:title" content="Community Support | Service Human, Inc.">
-  <meta property="og:description" content="Community Stabilization & Resource Support — a Service Human Hub initiative focused on dignity, lawful pathways, and trusted referrals.">
+  <meta property="og:description" content="Community Stabilization & Resource Support — dignity-first support, lawful pathways, and trusted referrals.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://servicehumaninc.org/community-support/">
   <meta property="og:image" content="https://servicehumaninc.org/sh-og.jpg">
-  <meta property="og:image:type" content="image/jpeg">
 
   <title>Community Support | Service Human, Inc.</title>
 
   <!-- Global site CSS -->
   <link rel="stylesheet" href="/styles.css" />
-  <!-- Page-specific CSS -->
+  <!-- Page CSS -->
   <link rel="stylesheet" href="/community-support/community-support.css" />
 </head>
 
 <body>
 
-<header>
-  <div class="site-title">Service Human, Inc.</div>
-  <p class="site-subtitle">
-    A 501(c)(3) nonprofit dedicated to helping human beings directly – with no corporate bloat,
-    no executive excess, and radical transparency.
+<header class="page-header">
+  <h1 class="page-title">Community Support</h1>
+  <p class="page-subtitle">
+    Community Stabilization &amp; Resource Support
+  </p>
+  <p class="page-kicker">
+    Dignity-first • Neutral stance • Lawful pathways • Trusted referrals
   </p>
 
-  <p class="meta-line">
-    <strong>EIN:</strong> 93-1924051 •
-    <a href="https://apps.irs.gov/app/eos/" target="_blank" rel="noopener">IRS Tax Exempt Organization Search</a>
-    <br>
-    Deductibility status: <strong>Public charity (PC)</strong> – contributions are generally tax-deductible
-    (up to 60% of AGI for cash gifts, subject to IRS limits).
-    <br>
-    Based in <strong>Tampa, Florida</strong>
-  </p>
-
-  <nav>
+  <nav aria-label="Primary navigation">
     <a href="/#about">About</a>
-    <a href="/hubs/">Hubs</a>
+    <a href="/hubs/">HUBs</a>
     <a href="/verification/">Verification</a>
-    <a href="/#media">Videos</a>
     <a href="/#donate">Donate</a>
     <a href="/#usage">How funds are used</a>
     <a href="/#blog">Updates</a>
     <a href="/#contact">Contact</a>
     <a href="/live/">LIVE</a>
-
-    <!-- neutral/non-inflammatory -->
-    <a class="nav-cta" href="/community-support/" aria-current="page">Community Support</a>
+    <a class="active" href="/community-support/" aria-current="page">Community Support</a>
 
     <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
       <span class="theme-toggle-icon">☾</span>
@@ -60,238 +48,127 @@
   </nav>
 </header>
 
-<main class="cs-page" aria-labelledby="cs-title">
+<main class="page-main">
 
-  <!-- HERO -->
-  <section class="cs-hero" aria-label="Community Support overview">
-    <div class="cs-hero-inner">
-      <h1 id="cs-title">Community Stabilization &amp; Resource Support</h1>
-      <p class="cs-subtitle">A Service Human Hub Initiative</p>
+  <section class="card">
+    <h2>What this is</h2>
+    <p>
+      Service Human HUBs provide <strong>stabilization, resource connection, and pathways to lawful support services</strong>
+      for individuals and families facing vulnerability.
+    </p>
 
-      <p class="cs-lead">
-        Service Human Hubs provide <strong>stabilization</strong>, <strong>resource connection</strong>, and
-        <strong>pathways to lawful support services</strong> for individuals and families facing vulnerability.
-      </p>
+    <div class="pillrow" aria-label="Guiding principles">
+      <span class="pill">Human Dignity</span>
+      <span class="pill">Legal Compliance</span>
+      <span class="pill">Community Stability</span>
+    </div>
 
-      <div class="cs-pillrow" aria-label="Guiding principles">
-        <span>Human Dignity</span>
-        <span>Legal Compliance</span>
-        <span>Community Stability</span>
+    <p class="small">
+      We serve people. We do not take political positions.
+    </p>
+
+    <div class="actions">
+      <a class="btn primary" href="/hubs/">Explore HUB services</a>
+      <a class="btn" href="/contact/">Partner / Refer</a>
+      <a class="link" href="#faq">Read FAQ</a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>What Service Human HUBs do</h2>
+
+    <div class="grid two">
+      <div class="card">
+        <h2>Stabilization</h2>
+        <ul>
+          <li>Basic needs support (food access, hygiene supplies, clothing resources)</li>
+          <li>Crisis navigation and referrals</li>
+          <li>Short-term planning to reduce immediate risk</li>
+        </ul>
       </div>
 
-      <p class="cs-neutral">We serve people. We do not take political positions.</p>
-
-      <div class="cs-actions" aria-label="Primary actions">
-        <a class="cs-btn primary" href="#get-help">Explore Hub Services</a>
-        <a class="cs-btn" href="#partner">Partner / Refer</a>
-        <a class="cs-link" href="#faq">Read FAQ</a>
+      <div class="card">
+        <h2>Resource connection</h2>
+        <ul>
+          <li>Trusted partner referrals (medical, housing, workforce, counseling)</li>
+          <li>Document and appointment readiness help (non-legal)</li>
+          <li>Community navigation and follow-ups</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- WHAT THIS IS / ISN'T -->
-  <section class="cs-card" aria-label="What we do and what we do not do">
-    <h2>What Community Support Means Here</h2>
+  <section class="card">
+    <h2>How we handle legal &amp; documentation questions</h2>
+    <p>
+      Service Human does <strong>not</strong> provide legal advice or strategy.
+      We connect people to <strong>qualified professionals</strong>, including licensed attorneys and accredited nonprofit providers,
+      and we share general information so people can access accurate, lawful guidance.
+    </p>
 
-    <div class="cs-two-col">
-      <div class="cs-mini">
-        <h3>What we do</h3>
+    <div class="grid two">
+      <div class="card">
+        <h2>Responsibility &amp; compliance</h2>
         <ul>
-          <li><strong>Basic Needs:</strong> food access, hygiene supplies, clothing resources, emergency essentials</li>
-          <li><strong>Wellness:</strong> crisis navigation, trauma-informed support, referrals to licensed providers</li>
-          <li><strong>Stability:</strong> benefits navigation, housing pathways, workforce readiness connections</li>
-          <li><strong>Documentation support:</strong> help understanding required forms and connecting to qualified services</li>
-        </ul>
-      </div>
-
-      <div class="cs-mini">
-        <h3>What we do not do</h3>
-        <ul>
-          <li>We do not provide legal advice or legal strategy.</li>
           <li>We do not interfere with law enforcement activity.</li>
           <li>We do not conceal individuals or obstruct investigations.</li>
-          <li>We do not ask people to disclose sensitive status unless a specific program requires it.</li>
+          <li>We maintain a neutral humanitarian stance focused on stability and lawful resource access.</li>
         </ul>
       </div>
-    </div>
 
-    <p class="cs-muted">
-      Our role is simple: help people stabilize and connect with lawful, appropriate resources — quickly and respectfully.
-    </p>
-  </section>
-
-  <!-- SERVICE AREAS -->
-  <section class="cs-grid" aria-label="Service areas">
-    <article class="cs-panel">
-      <h2>Stabilization</h2>
-      <ul>
-        <li>Emergency essentials</li>
-        <li>Short-term safety planning</li>
-        <li>Crisis navigation and warm handoffs</li>
-      </ul>
-    </article>
-
-    <article class="cs-panel">
-      <h2>Resource Connection</h2>
-      <ul>
-        <li>Food and hygiene access</li>
-        <li>Community partner referrals</li>
-        <li>Transportation and appointment coordination (when available)</li>
-      </ul>
-    </article>
-
-    <article class="cs-panel">
-      <h2>Pathways to Lawful Support</h2>
-      <ul>
-        <li>Referrals to licensed attorneys and accredited providers</li>
-        <li>Trusted nonprofit and community programs</li>
-        <li>General info on how to access official resources</li>
-      </ul>
-    </article>
-
-    <article class="cs-panel">
-      <h2>Privacy &amp; Trust</h2>
-      <ul>
-        <li>Minimal information collection</li>
-        <li>Confidential handling and ethical training</li>
-        <li>We focus on needs, not labels</li>
-      </ul>
-    </article>
-  </section>
-
-  <!-- GET HELP -->
-  <section id="get-help" class="cs-card" aria-label="How to get help">
-    <h2>Get Help</h2>
-    <p class="cs-muted">
-      If you (or someone you know) needs stabilization or connection to resources, start here.
-    </p>
-
-    <div class="cs-callouts">
-      <div class="cs-callout">
-        <h3>1) Immediate needs</h3>
-        <p>Food, hygiene, shelter options, safety planning, crisis navigation.</p>
-      </div>
-
-      <div class="cs-callout">
-        <h3>2) Ongoing support</h3>
-        <p>Referrals to community partners, wellness resources, and lawful pathways to services.</p>
-      </div>
-
-      <div class="cs-callout">
-        <h3>3) Documentation questions</h3>
-        <p>We’ll help you understand what’s required and connect you to qualified providers.</p>
-      </div>
-    </div>
-
-    <div class="cs-actions">
-      <a class="cs-btn primary"
-         href="mailto:trevor@servicehumaninc.org?subject=Community%20Support%20Request&body=Name%20(optional):%0A%0ACity/Area:%0A%0AWhat%20do%20you%20need%20help%20with%3F%0A%0AAny%20time%20constraints%3F%0A">
-        Request Support
-      </a>
-
-      <a class="cs-btn"
-         href="mailto:trevor@servicehumaninc.org?subject=Community%20Support%20-%20Resource%20Referral&body=Organization%20(or%20self):%0A%0AWhat%20resource%20are%20you%20seeking%3F%0A%0ALocation:%0A%0AContact%20method:%0A">
-        Ask for a Referral
-      </a>
-
-      <a class="cs-link" href="/#contact">Contact info</a>
-    </div>
-
-    <p class="cs-note">If this is an emergency, call local emergency services immediately.</p>
-  </section>
-
-  <!-- PARTNER -->
-  <section id="partner" class="cs-card" aria-label="Partner or refer">
-    <h2>Partner / Refer</h2>
-    <p class="cs-muted">
-      We work with community organizations, providers, and verified partners to connect people with the right help.
-      If your organization wants to collaborate, here’s the clean path.
-    </p>
-
-    <div class="cs-two-col">
-      <div class="cs-mini">
-        <h3>Good fits</h3>
+      <div class="card">
+        <h2>Privacy &amp; trust</h2>
         <ul>
-          <li>Food banks, shelters, outreach teams</li>
-          <li>Mental health and wellness providers</li>
-          <li>Workforce development programs</li>
-          <li>Licensed attorneys and accredited nonprofit providers</li>
-        </ul>
-      </div>
-
-      <div class="cs-mini">
-        <h3>How partnering works</h3>
-        <ul>
-          <li>Define referral criteria + capacity</li>
-          <li>Confirm lawful scope + documentation needs</li>
-          <li>Set a warm-handoff process</li>
-          <li>Review privacy and minimal data handling</li>
+          <li>We collect minimal information needed to connect someone with services.</li>
+          <li>We do not require immigration status unless a specific partner program requires it.</li>
+          <li>Staff are trained in confidentiality and ethical information handling.</li>
         </ul>
       </div>
     </div>
 
-    <div class="cs-actions">
-      <a class="cs-btn primary"
-         href="mailto:trevor@servicehumaninc.org?subject=Community%20Support%20-%20Partner%20Inquiry&body=Organization%20name:%0A%0AContact%20name:%0A%0ARole:%0A%0AWebsite:%0A%0AServices%20offered:%0A%0ACity/Area:%0A%0AReferral%20capacity:%0A">
-        Partner Inquiry
-      </a>
-
-      <a class="cs-btn"
-         href="mailto:trevor@servicehumaninc.org?subject=Community%20Support%20-%20Refer%20Someone&body=Referral%20summary%20(no%20sensitive%20details%20needed):%0A%0ALocation:%0A%0AImmediate%20needs:%0A%0ABest%20contact%20method:%0A">
-        Refer Someone
-      </a>
-
-      <a class="cs-link" href="#faq">FAQ</a>
-    </div>
+    <p class="small">
+      If you’re a partner organization: we can align intake fields to your requirements while keeping our default intake minimal.
+    </p>
   </section>
 
-  <!-- FAQ -->
-  <section id="faq" class="cs-card cs-faq" aria-label="Frequently asked questions">
+  <section class="card" id="faq">
     <h2>FAQ</h2>
 
-    <details class="cs-details">
-      <summary>Who can use Service Human Hub services?</summary>
+    <details class="faq-item">
+      <summary>Who can use Service Human HUB services?</summary>
       <p>
-        Anyone seeking stabilization or connection to lawful support resources. We focus on needs and safety first.
+        Anyone facing vulnerability who needs stabilization and referral support. Services vary by HUB capacity and local partners.
       </p>
     </details>
 
-    <details class="cs-details">
+    <details class="faq-item">
       <summary>Do you provide immigration or legal advice?</summary>
       <p>
-        No. We do not provide legal advice or strategy. We connect people to qualified professionals, including
-        licensed attorneys and accredited nonprofit providers, and we share general information about how to access
-        official resources.
+        No. We provide general information and connect people to qualified legal and accredited nonprofit providers.
       </p>
     </details>
 
-    <details class="cs-details">
+    <details class="faq-item">
       <summary>Do you collect immigration status or personal documentation?</summary>
       <p>
-        We collect minimal information needed to connect someone with services. We do not require immigration status
-        unless a specific partner program requires it, and we aim to keep intake respectful and limited.
+        We collect minimal information by default. We do not require immigration status unless a specific partner program requires it.
       </p>
     </details>
 
-    <details class="cs-details">
+    <details class="faq-item">
       <summary>Is this a “sanctuary” location?</summary>
       <p>
-        Service Human is a neutral humanitarian organization focused on stabilization and resource access. We do not
-        interfere with law enforcement activity, and we do not take political positions.
+        We don’t use political labels. We are a neutral service organization focused on lawful support pathways and community stability.
       </p>
     </details>
 
-    <details class="cs-details">
+    <details class="faq-item">
       <summary>How can organizations partner or refer people?</summary>
       <p>
-        Use the Partner / Refer section above. We’ll confirm scope, capacity, referral criteria, and privacy expectations
-        so referrals stay lawful, clean, and effective.
+        Email <a href="mailto:trevor@servicehumaninc.org">trevor@servicehumaninc.org</a> with your referral workflow, eligibility rules,
+        and the data fields you require. We’ll align intake to your program while keeping our default intake minimal.
       </p>
     </details>
-
-    <p class="cs-footnote">
-      We built this page to be clear and calm on purpose: humanitarian help, lawful pathways, and community stability.
-    </p>
   </section>
 
 </main>
@@ -302,24 +179,25 @@
     &copy; <span id="year"></span> Service Human, Inc. All rights reserved.
   </p>
   <p class="legal">
-    Questions about this page:
+    Questions or partnership requests:
     <a href="mailto:trevor@servicehumaninc.org">trevor@servicehumaninc.org</a>.
   </p>
 </footer>
 
 <script>
-  // Dynamic year
+  // Footer year
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 </script>
 
 <script>
-  // Theme toggle (same behavior as your homepage)
+  // Theme toggle (matches your site behavior)
   (() => {
     const btn = document.getElementById('theme-toggle');
     if (!btn) return;
 
     const KEY = 'sh_theme';
+
     function apply(theme) {
       document.body.classList.toggle('dark', theme === 'dark');
       const icon = btn.querySelector('.theme-toggle-icon');
@@ -327,7 +205,10 @@
     }
 
     const stored = localStorage.getItem(KEY);
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+
     apply(stored || (prefersDark ? 'dark' : 'light'));
 
     btn.addEventListener('click', () => {
