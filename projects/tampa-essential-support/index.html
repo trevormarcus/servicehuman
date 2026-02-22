@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Service Human | Tampa Essential Support Campaign</title>
+  <meta name="description" content="A corporate-ready, time-bound Tampa Bay initiative funding essential support packages—measurable, transparent, and reportable." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Service Human: Tampa Essential Support Campaign" />
+  <meta property="og:description" content="Fund essential support packages in Tampa Bay—structured, measurable, and transparent impact reporting." />
+  <meta property="og:type" content="website" />
+  <!-- Set to your real URL once published -->
+  <meta property="og:url" content="https://servicehuman.org/tampa-essential-support" />
+  <!-- Optional: add an image URL once you have one -->
+  <!-- <meta property="og:image" content="https://servicehuman.org/assets/tampa-essential-support-og.jpg" /> -->
+
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --panel:#101823;
+      --panel2:#0f1620;
+      --text:#e9f0f7;
+      --muted:#b8c4d3;
+      --line:rgba(255,255,255,.10);
+      --brand:#57b6ff;
+      --brand2:#ff8a3d;
+      --ok:#5fe38f;
+      --shadow: 0 12px 40px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 1080px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background: radial-gradient(1200px 600px at 20% 10%, rgba(87,182,255,.15), transparent 55%),
+                  radial-gradient(900px 500px at 80% 20%, rgba(255,138,61,.12), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:14px 18px; border:1px solid var(--line);
+      border-radius:999px; background:rgba(16,24,35,.65); backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      position: sticky; top: 14px; z-index: 20;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width: 220px;
+    }
+    .mark{
+      width:34px; height:34px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(87,182,255,.95), rgba(255,138,61,.95));
+      box-shadow: 0 10px 22px rgba(0,0,0,.35);
+    }
+    .brand strong{letter-spacing:.3px}
+    .nav{
+      display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .pill{
+      border:1px solid var(--line);
+      padding:9px 12px; border-radius:999px;
+      text-decoration:none;
+      color:var(--muted);
+      background: rgba(15,22,32,.6);
+    }
+    .pill:hover{color:var(--text); border-color:rgba(255,255,255,.2)}
+    .hero{
+      margin-top:18px;
+      padding:34px 22px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(16,24,35,.75), rgba(15,22,32,.65));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position: relative;
+    }
+    .hero:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(800px 240px at 20% 0%, rgba(87,182,255,.18), transparent 65%),
+                  radial-gradient(800px 240px at 80% 0%, rgba(255,138,61,.14), transparent 65%);
+      pointer-events:none;
+    }
+    .hero > *{position:relative}
+    h1{margin:0 0 10px; font-size: clamp(28px, 3.8vw, 44px); letter-spacing:.2px}
+    .sub{margin:0 0 18px; color:var(--muted); max-width: 70ch}
+    .ctaRow{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius: 14px;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(10,14,20,.45);
+      color: var(--text);
+      font-weight: 650;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(87,182,255,.95), rgba(255,138,61,.90));
+      border: none;
+      box-shadow: 0 14px 30px rgba(0,0,0,.35);
+      color:#06101a;
+    }
+    .btn.primary:hover{filter:brightness(1.04)}
+    .btn:hover{border-color:rgba(255,255,255,.28)}
+    .grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
+    }
+    @media (max-width: 940px){
+      .grid{grid-template-columns: 1fr}
+      .brand{min-width:auto}
+    }
+    .card{
+      padding:18px 18px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(16,24,35,.62);
+      box-shadow: var(--shadow);
+    }
+    .kpi{
+      display:grid; grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+    @media (max-width: 640px){ .kpi{grid-template-columns:1fr} }
+    .kpi .mini{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px 12px;
+      background: rgba(15,22,32,.7);
+    }
+    .mini .label{color:var(--muted); font-size:12px; letter-spacing:.25px}
+    .mini .value{font-size:20px; font-weight:800; margin-top:4px}
+    .tag{
+      display:inline-flex; gap:8px; align-items:center;
+      font-family: var(--mono);
+      font-size: 12px;
+      padding:8px 10px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(15,22,32,.75);
+      color: var(--muted);
+    }
+    .tag b{color:var(--text); font-weight:800}
+    h2{margin:0 0 10px; font-size:20px}
+    p{margin:0 0 10px}
+    ul{margin:10px 0 0 18px; color:var(--muted)}
+    li{margin:6px 0}
+    .muted{color:var(--muted)}
+    .hr{height:1px; background:var(--line); margin:14px 0}
+    .faq details{
+      border:1px solid var(--line);
+      border-radius: 16px;
+      padding:12px 12px;
+      background: rgba(15,22,32,.65);
+      margin:10px 0;
+    }
+    .faq summary{
+      cursor:pointer;
+      font-weight:700;
+    }
+    .footer{
+      margin-top:18px;
+      padding:18px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(16,24,35,.55);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .small{font-size:13px}
+    .note{
+      border-left: 3px solid rgba(87,182,255,.7);
+      padding:10px 12px;
+      background: rgba(87,182,255,.07);
+      border-radius: 12px;
+      color: var(--muted);
+    }
+    .sharebox{
+      display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;
+    }
+    .copy{
+      width:100%;
+      min-height:90px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(10,14,20,.45);
+      color: var(--text);
+      padding:12px;
+      font-family: var(--sans);
+      resize: vertical;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px; border-radius: 999px;
+      border:1px solid rgba(95,227,143,.25);
+      background: rgba(95,227,143,.08);
+      color: var(--ok);
+      font-weight:800;
+      font-size:12px;
+      letter-spacing:.2px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header class="topbar">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          <strong>Service Human</strong><br/>
+          <span class="small muted">Tampa Essential Support</span>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Page navigation">
+        <a class="pill" href="#overview">Overview</a>
+        <a class="pill" href="#use">Use of Funds</a>
+        <a class="pill" href="#reporting">Reporting</a>
+        <a class="pill" href="#faq">FAQ</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="overview">
+      <span class="tag"><b>Project</b> SH_TPA_ESSENTIAL_Q1_2026</span>
+      <h1>Tampa Essential Support Campaign</h1>
+      <p class="sub">
+        A corporate-ready, time-bound initiative delivering immediate stabilization support in Tampa Bay:
+        essential supplies + transportation support + intake coordination—paired with transparent reporting.
+      </p>
+
+      <div class="ctaRow">
+        <!-- Replace these with the most relevant actions for your audience -->
+        <a class="btn primary" href="#donate">Support this project</a>
+        <a class="btn" href="#share">Share with your company</a>
+        <a class="btn" href="#reporting">View reporting standards</a>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="kpi" aria-label="Project key metrics">
+        <div class="mini">
+          <div class="label">Campaign goal</div>
+          <div class="value">$12,500</div>
+          <div class="small muted">Targeted project funding</div>
+        </div>
+        <div class="mini">
+          <div class="label">Planned packages</div>
+          <div class="value">500</div>
+          <div class="small muted">Essential Support packages</div>
+        </div>
+        <div class="mini">
+          <div class="label">Campaign window</div>
+          <div class="value">Through May 31, 2026</div>
+          <div class="small muted">Update this if your Benevity expiry changes</div>
+        </div>
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="note">
+        <strong style="color:var(--text)">Designated funding:</strong>
+        Contributions to this project are allocated specifically to Tampa-based essential support operations
+        (not a general pool), with documentation and reporting aligned for institutional partners.
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>What this project funds</h2>
+        <p class="muted">
+          This campaign funds structured, immediate support for individuals facing housing instability in Tampa Bay.
+          The purpose is stabilization—fast, practical, and measurable—while connecting individuals to longer-term pathways.
+        </p>
+
+        <div class="hr"></div>
+
+        <h2 id="use">Use of funds (high-level)</h2>
+        <ul>
+          <li><strong>Essential supplies:</strong> hygiene items, basic necessities, and rapid-response support needs</li>
+          <li><strong>Food access:</strong> immediate nourishment support when needed for stabilization</li>
+          <li><strong>Transportation assistance:</strong> connecting individuals to services, appointments, and intake locations</li>
+          <li><strong>Intake coordination:</strong> documented service connection steps (case coordination notes)</li>
+          <li><strong>Local deployment costs:</strong> verified Tampa Bay operational expenses directly tied to delivery</li>
+        </ul>
+
+        <div class="hr"></div>
+
+        <h2>What success looks like</h2>
+        <ul>
+          <li>500 Essential Support packages delivered (or as many as fully funded)</li>
+          <li>Documented distribution totals and allocation summaries</li>
+          <li>Transparent project closeout summary at campaign end</li>
+        </ul>
+      </article>
+
+      <aside class="card" id="donate">
+        <h2>Support this project</h2>
+        <p class="muted">
+          If you’re donating through a workplace giving platform (ex: Benevity), search for:
+          <span class="tag" style="margin-top:8px; display:inline-flex;">Service Human: Tampa Essential Support</span>
+        </p>
+
+        <div class="hr"></div>
+
+        <p class="badge">Corporate-friendly • Trackable • Reportable</p>
+
+        <div class="hr"></div>
+
+        <h2>Suggested contribution levels</h2>
+        <ul>
+          <li><strong>$25</strong> — funds 1 Essential Support package</li>
+          <li><strong>$100</strong> — funds 4 packages</li>
+          <li><strong>$250</strong> — funds 10 packages</li>
+          <li><strong>$1,000</strong> — funds 40 packages</li>
+        </ul>
+
+        <div class="hr"></div>
+
+        <h2 class="small">Prefer a direct link?</h2>
+        <p class="muted small">
+          Add your Benevity project URL here once available, or link to your organization profile page.
+        </p>
+
+        <!-- Replace # with your real donation link(s) -->
+        <div class="ctaRow">
+          <a class="btn primary" href="#" aria-label="Donate via workplace giving">Donate via workplace giving</a>
+          <a class="btn" href="#" aria-label="Donate on Service Human">Donate on Service Human</a>
+        </div>
+
+        <p class="muted small" style="margin-top:10px">
+          Tip: Corporate donors often share internally—make sure this page URL is clean and permanent.
+        </p>
+      </aside>
+    </section>
+
+    <section class="card" id="reporting" style="margin-top:16px;">
+      <h2>Transparency & reporting</h2>
+      <p class="muted">
+        Service Human is built for institutional trust. This project will provide a campaign closeout summary that includes:
+      </p>
+      <ul>
+        <li>Funding totals allocated to the project</li>
+        <li>Distribution totals (packages delivered)</li>
+        <li>High-level breakdown of resource categories funded</li>
+        <li>Timestamped reporting cadence (project open → project close)</li>
+      </ul>
+
+      <div class="hr"></div>
+
+      <p class="muted small">
+        Want this to match your corporate compliance needs? Email or share your requirements and we’ll align reporting fields.
+      </p>
+    </section>
+
+    <section class="card" id="share" style="margin-top:16px;">
+      <h2>Share (internal-ready)</h2>
+      <p class="muted">Copy/paste this into Slack, Teams, or email:</p>
+
+      <textarea class="copy" readonly>Service Human: Tampa Essential Support Campaign
+A time-bound, corporate-ready project funding Essential Support packages in Tampa Bay (stabilization supplies + transportation assistance + intake coordination), with transparent reporting and campaign closeout summary.
+
+Project page: https://servicehuman.org/tampa-essential-support</textarea>
+
+      <div class="sharebox">
+        <!-- Optional: wire up a real share link when live -->
+        <a class="btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fservicehuman.org%2Ftampa-essential-support" target="_blank" rel="noopener">Share on LinkedIn</a>
+        <a class="btn" href="mailto:?subject=Service%20Human%3A%20Tampa%20Essential%20Support%20Campaign&body=Here%20is%20the%20project%20page%3A%20https%3A%2F%2Fservicehuman.org%2Ftampa-essential-support" target="_blank" rel="noopener">Email</a>
+      </div>
+
+      <p class="muted small" style="margin-top:10px;">
+        (When your Benevity project link is live, swap the “Project page” URL or add a second line with the Benevity link.)
+      </p>
+    </section>
+
+    <section class="card faq" id="faq" style="margin-top:16px;">
+      <h2>FAQ</h2>
+
+      <details>
+        <summary>Is this a general donation fund?</summary>
+        <p class="muted" style="margin-top:10px;">
+          No. This is a designated project. Funds attributed to this campaign are allocated specifically to Tampa-based essential support operations.
+        </p>
+      </details>
+
+      <details>
+        <summary>How is impact measured?</summary>
+        <p class="muted" style="margin-top:10px;">
+          We track funded package count, distribution totals, and high-level allocation categories. A campaign closeout summary is published at the end of the window.
+        </p>
+      </details>
+
+      <details>
+        <summary>Can my company sponsor or match this campaign?</summary>
+        <p class="muted" style="margin-top:10px;">
+          Yes. This campaign is structured for workplace giving platforms and corporate reporting requirements. We can align custom reporting fields if needed.
+        </p>
+      </details>
+
+      <details>
+        <summary>What happens if the campaign exceeds the goal?</summary>
+        <p class="muted" style="margin-top:10px;">
+          Additional funds extend the package count and/or the campaign scope within the same Tampa-based project definition, with reporting updated accordingly.
+        </p>
+      </details>
+    </section>
+
+    <footer class="footer">
+      <div><strong style="color:var(--text)">Service Human, Inc.</strong> — transparency-first humanitarian infrastructure.</div>
+      <div class="small" style="margin-top:8px;">
+        If you need a corporate deck, one-page PDF, or Benevity-ready “Project Summary” snippet for internal approvals, we can generate it in the same style as this page.
+      </div>
+
+      <div class="hr"></div>
+
+      <div class="small">
+        <span class="muted">Maintenance notes:</span><br/>
+        • Update campaign window text in the KPI block (one line).<br/>
+        • Replace the donation links in the “Support this project” section once you have the exact URLs.<br/>
+        • Optional: add an OG image for better sharing previews.
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
