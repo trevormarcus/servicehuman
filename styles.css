@@ -171,10 +171,19 @@ header {
 /* active page state */
 .primary-nav a.active,
 .secondary-nav a.active {
-  text-decoration: underline;
-  text-underline-offset: 0.18em;
-  text-decoration-thickness: 1.5px;
+  color: var(--text);
   font-weight: 600;
+}
+
+.primary-nav a.active::after,
+.secondary-nav a.active::after {
+  content: "";
+  display: block;
+  margin-top: 4px;
+  height: 2px;
+  width: 100%;
+  background: currentColor;
+  border-radius: 999px;
 }
 
 /* optional CTA in secondary row */
