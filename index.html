@@ -64,7 +64,6 @@
     --focus: rgba(255,255,255,0.28);
   }
 
-  /* Fix Talks & Video Messages section in dark mode (if ever shown again) */
   [data-theme="dark"] .section-heading,
   [data-theme="dark"] .section-heading p {
     color: var(--text-main);
@@ -119,25 +118,55 @@
     color: var(--meta);
   }
 
-  /* ---------- Nav + theme toggle ---------- */
-  nav {
-    margin-top: 12px;
-    font-size: 0.9rem;
+  /* ---------- Masthead nav refresh ---------- */
+  .site-nav-wrap {
+    margin-top: 14px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .site-nav-group {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .primary-nav,
+  .secondary-nav {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 4px 10px;
+    gap: 8px 18px;
   }
 
-  nav a {
-    margin-right: 12px;
+  .primary-nav {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .secondary-nav {
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .primary-nav a,
+  .secondary-nav a {
     white-space: nowrap;
   }
 
-  nav a[href="#media"] { display: none; } /* you had this already */
+  .secondary-nav a {
+    color: var(--link);
+  }
+
+  .secondary-nav .nav-cta {
+    font-weight: 500;
+  }
 
   .theme-toggle {
-    margin-left: auto;
+    flex: 0 0 auto;
+    margin-left: 8px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -154,6 +183,8 @@
   body.dark .theme-toggle:hover { background: rgba(255, 255, 255, 0.06); }
 
   .theme-toggle-icon { font-size: 0.9rem; }
+
+  nav a[href="#media"] { display: none; }
 
   /* ---------- Sections / cards ---------- */
   section {
@@ -249,10 +280,29 @@
   footer .legal { margin-top: 16px; color: var(--muted); }
 
   /* ---------- Responsive: core layout ---------- */
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     header, main, footer {
       padding-left: 12px;
       padding-right: 12px;
+    }
+
+    .site-nav-wrap {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+    }
+
+    .theme-toggle {
+      margin-left: 0;
+      align-self: flex-start;
+    }
+
+    .primary-nav {
+      gap: 10px 16px;
+    }
+
+    .secondary-nav {
+      gap: 8px 14px;
     }
   }
 
@@ -273,7 +323,6 @@
     margin: 0 auto;
   }
 
-  /* Toggle header button (the “card header”) */
   .update-toggle {
     width: 100%;
     display: flex;
@@ -287,7 +336,6 @@
     text-align: left;
   }
 
-  /* Title styling (THIS fixes your ghosted title issue) */
   .update-title {
     font-size: 32px;
     font-weight: 650;
@@ -296,7 +344,6 @@
     color: var(--update-title-strong);
   }
 
-  /* Date always readable */
   .update-date {
     font-size: 14px;
     color: var(--meta);
@@ -304,7 +351,6 @@
     margin: 0;
   }
 
-  /* Chevron indicator */
   .update-toggle::after {
     content: "▾";
     font-size: 16px;
@@ -315,7 +361,6 @@
     flex: 0 0 auto;
   }
 
-  /* Hover/focus polish */
   .update-toggle:hover .update-title { color: var(--update-title-strong); }
   .update-toggle:hover::after { color: var(--text); }
 
@@ -325,17 +370,14 @@
     border-radius: 10px;
   }
 
-  /* Expanded state (when JS flips aria-expanded=true) */
   .update-toggle[aria-expanded="true"]::after {
     transform: rotate(180deg) translateY(-1px);
   }
 
-  /* Collapsible body wrapper */
   .update-content {
     margin-top: 14px;
   }
 
-  /* Body typography */
   .update-body p {
     line-height: 1.6;
     margin: 0 0 16px;
@@ -343,19 +385,16 @@
     color: var(--text);
   }
 
-  /* subtle divider between header and body when expanded */
   .update-toggle[aria-expanded="true"] + .update-content {
     padding-top: 10px;
     border-top: 1px solid var(--border-soft);
   }
 
-  /* Highlight "new" updates */
   .update-block.is-new {
     border-left: 4px solid var(--accent);
     background: var(--new-bg);
   }
 
-  /* Tiny "NEW" pill next to the title */
   .update-title .new-pill {
     display: inline-block;
     margin-left: 10px;
@@ -370,7 +409,6 @@
     vertical-align: middle;
   }
 
-  /* Badge in the nav next to "Updates" */
   .nav-badge {
     display: inline-flex;
     align-items: center;
@@ -386,14 +424,13 @@
     color: var(--pill-text);
   }
 
-  /* Mobile: stack date under title (prevents squeeze) */
   @media (max-width: 700px) {
     .update-toggle {
       flex-direction: column;
       align-items: flex-start;
     }
     .update-toggle::after {
-      display: none; /* optional: remove chevron on mobile if you prefer */
+      display: none;
     }
     .update-date {
       margin-top: 10px;
@@ -404,10 +441,8 @@
   }
 
   /* ---------- Media / video stage ---------- */
-  /* You can hide media globally here (instead of inside desktop media query) */
   #media { display: none; }
 
-  /* If you later re-enable it, these styles remain valid */
   .video-stage {
     margin-top: 14px;
     padding: 16px;
@@ -595,24 +630,29 @@
     Based in <strong>Tampa, Florida</strong>
   </p>
 
-  <nav>
-  <a href="#about">About</a>
-  <a href="/hubs/">Hubs</a>
-  <a href="/verification/">Verification</a>
-  <a href="#media">Videos</a>
-  <a href="#donate">Donate</a>
-  <a href="#usage">How funds are used</a>
-  <a href="#blog">Updates</a>
-  <a href="#contact">Contact</a>
-  <a href="/live/">LIVE</a>
-  <a class="nav-cta" href="/community-support/">Community Support</a>
-  
-  <!-- Light / dark mode toggle -->
+<div class="site-nav-wrap">
+  <div class="site-nav-group">
+    <nav class="primary-nav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="/hubs/">HUBs</a>
+      <a href="/live/">LIVE</a>
+      <a href="/verification/">Verification</a>
+      <a href="#donate">Donate</a>
+    </nav>
+
+    <nav class="secondary-nav" aria-label="Secondary">
+      <a href="#usage">How funds are used</a>
+      <a href="#blog">Updates</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cta" href="/community-support/">Community Support</a>
+    </nav>
+  </div>
+
   <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
     <span class="theme-toggle-icon">☾</span>
     <span class="theme-toggle-label">Theme</span>
   </button>
-</nav>
+</div>
 </header>
 
 <main>
