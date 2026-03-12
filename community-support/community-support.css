@@ -1,4 +1,4 @@
-/* Community Support — match HUBs / Verification / LIVE “page hero” style */
+/* Community Support — match HUBs / Verification / LIVE page-hero style */
 
 .page-header {
   max-width: var(--max);
@@ -13,6 +13,7 @@
   font-size: 2.2rem;
   line-height: 1.15;
   font-weight: 650;
+  letter-spacing: -0.01em;
 }
 
 .page-subtitle {
@@ -71,7 +72,9 @@
   list-style: none;
 }
 
-.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
 
 .faq-item summary::after {
   content: "▾";
@@ -79,20 +82,29 @@
   color: var(--muted);
 }
 
-.faq-item[open] summary::after { content: "▴"; }
+.faq-item[open] summary::after {
+  content: "▴";
+}
 
 .faq-item p {
   margin: 10px 0 0;
   color: var(--muted);
 }
 
-/* Ensure nav “active” looks consistent */
-nav a.active {
-  text-decoration: underline;
-  text-underline-offset: 6px;
+/* Keep Community Support CTA current-page styling aligned with site nav */
+.secondary-nav .nav-cta.active {
+  text-decoration: none;
 }
 
 /* Mobile */
 @media (max-width: 600px) {
-  .page-title { font-size: 2.0rem; }
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .page-header,
+  .page-main {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
 }
