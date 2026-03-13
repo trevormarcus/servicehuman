@@ -198,6 +198,20 @@
         font-size: 1.15rem;
       }
     }
+
+      .calc-input {
+        width: 100%;
+        margin: 8px 0 16px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--card-bg-alt);
+        color: var(--text);
+    }
+
+    .calc-input:last-child {
+    margin-bottom: 0;
+    }
   </style>
 </head>
 
@@ -303,7 +317,60 @@
       <span class="math-line">3,250,000 × $25 = $81,250,000 one time</span>
       <span class="math-line">3,250,000 × $25 × 12 = $975,000,000 yearly</span>
     </section>
+    
+    <section>
+      <h2>Interactive scale calculator</h2>
+      <p>
+        Adjust the numbers and see what happens when participation moves at internet scale.
+      </p>
 
+      <div class="math-grid">
+        <div class="math-box">
+          <h3>Inputs</h3>
+
+          <label for="platform-size"><strong>Platform size</strong></label>
+          <input
+            id="platform-size"
+            type="number"
+            value="325000000"
+            step="1"
+            style="width:100%; margin:8px 0 16px; padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:var(--card-bg-alt); color:var(--text);"
+        >
+
+        <label for="participation-rate"><strong>Participation rate (%)</strong></label>
+        <input
+          id="participation-rate"
+          type="number"
+          value="1"
+          step="0.01"
+          style="width:100%; margin:8px 0 16px; padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:var(--card-bg-alt); color:var(--text);"
+        >
+
+        <label for="contribution-amount"><strong>Contribution amount ($)</strong></label>
+        <input
+          id="contribution-amount"
+          type="number"
+          value="25"
+          step="0.01"
+          style="width:100%; margin:8px 0 0; padding:10px 12px; border-radius:10px; border:1px solid var(--border); background:var(--card-bg-alt); color:var(--text);"
+        >
+      </div>
+
+      <div class="math-box">
+        <h3>Results</h3>
+
+        <span class="math-line" id="calc-participants">Participants: 3,250,000</span>
+        <span class="math-line" id="calc-once">One-time total: $81,250,000</span>
+        <span class="math-line" id="calc-monthly">Monthly total: $81,250,000</span>
+        <span class="math-line" id="calc-annual">Annual total: $975,000,000</span>
+
+        <p class="small" style="margin-top:14px;">
+          This calculator is for illustrative modeling only.
+        </p>
+      </div>
+    </div>
+  </section>
+    
     <section>
       <h2>Three ways to understand the same number</h2>
 
@@ -442,6 +509,58 @@
     <p class="legal">
       This page uses rough public numbers for illustrative purposes only. It is a thought experiment about scale, participation, trust, and humanitarian infrastructure.
     </p>
+
+<script>
+(function () {
+  const platformSize = document.getElementById('platform-size');
+  const participationRate = document.getElementById('participation-rate');
+  const contributionAmount = document.getElementById('contribution-amount');
+
+  const participantsOut = document.getElementById('calc-participants');
+  const onceOut = document.getElementById('calc-once');
+  const monthlyOut = document.getElementById('calc-monthly');
+  const annualOut = document.getElementById('calc-annual');
+
+  if (!platformSize || !participationRate || !contributionAmount) return;
+
+  function formatNumber(value) {
+    return new Intl.NumberFormat('en-US', {
+      maximumFractionDigits: 0
+    }).format(value);
+  }
+
+  function formatCurrency(value) {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: 0
+    }).format(value);
+  }
+
+  function updateCalculator() {
+    const size = parseFloat(platformSize.value) || 0;
+    const rate = parseFloat(participationRate.value) || 0;
+    const amount = parseFloat(contributionAmount.value) || 0;
+
+    const participants = size * (rate / 100);
+    const oneTime = participants * amount;
+    const monthly = participants * amount;
+    const annual = monthly * 12;
+
+    participantsOut.textContent = `Participants: ${formatNumber(participants)}`;
+    onceOut.textContent = `One-time total: ${formatCurrency(oneTime)}`;
+    monthlyOut.textContent = `Monthly total: ${formatCurrency(monthly)}`;
+    annualOut.textContent = `Annual total: ${formatCurrency(annual)}`;
+  }
+
+  [platformSize, participationRate, contributionAmount].forEach((input) => {
+    input.addEventListener('input', updateCalculator);
+  });
+
+  updateCalculator();
+})();
+</script>
+    
   </footer>
 </body>
 </html>
