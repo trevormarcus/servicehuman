@@ -1095,6 +1095,10 @@ figcaption {
   margin-top: 8px;
 }
 
+.hero-footnote {
+  margin-top: 16px;
+}
+
 @media (max-width: 700px) {
   .hero-scale {
     padding: 20px 18px;
