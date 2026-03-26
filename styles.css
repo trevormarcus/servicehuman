@@ -1051,3 +1051,56 @@ figcaption {
   background: var(--table-head-bg);
   font-weight: 600;
 }
+/* ---------- Homepage scale hero ---------- */
+.hero-scale {
+  padding: 24px 22px;
+  border-radius: 16px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card-bg-alt);
+  font-size: 0.78rem;
+  color: var(--meta);
+  margin-bottom: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero-scale h2 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.hero-lead {
+  font-size: 1.08rem;
+  max-width: 760px;
+  color: var(--text-main);
+  margin-bottom: 18px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+@media (max-width: 700px) {
+  .hero-scale {
+    padding: 20px 18px;
+  }
+
+  .hero-lead {
+    font-size: 1rem;
+  }
+}
