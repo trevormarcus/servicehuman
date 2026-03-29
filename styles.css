@@ -1116,3 +1116,32 @@ figcaption {
 #calculator {
   scroll-margin-top: 80px;
 }
+/* Intro overlay (soft gate) */
+.sh-intro {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  text-align: center;
+  padding: 20px;
+}
+
+.sh-intro-inner {
+  max-width: 500px;
+}
+
+.sh-intro h1 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.sh-intro-text {
+  font-size: 1.05rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
