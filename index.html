@@ -43,31 +43,6 @@
 </script>
 </head>
   
-<script>
-(function () {
-  const KEY = "sh_intro_seen";
-
-  const intro = document.getElementById("sh-intro");
-  const btn = document.getElementById("sh-enter");
-
-  if (!intro || !btn) return;
-
-  // If already seen → remove instantly
-  if (localStorage.getItem(KEY)) {
-    intro.remove();
-    return;
-  }
-
-  btn.addEventListener("click", () => {
-    localStorage.setItem(KEY, "1");
-    intro.style.transition = "opacity 0.3s ease";
-    intro.style.opacity = "0";
-
-    setTimeout(() => intro.remove(), 300);
-  });
-})();
-</script>
-  
 <body>
   
 <div id="sh-intro" class="sh-intro">
@@ -763,6 +738,30 @@ if (y) y.textContent = new Date().getFullYear();
     const next = document.body.classList.contains('dark') ? 'light' : 'dark';
     localStorage.setItem(KEY, next);
     apply(next);
+  });
+})();
+</script>
+<script>
+(function () {
+  const KEY = "sh_intro_seen";
+
+  const intro = document.getElementById("sh-intro");
+  const btn = document.getElementById("sh-enter");
+
+  if (!intro || !btn) return;
+
+  // If already seen → remove instantly
+  if (localStorage.getItem(KEY)) {
+    intro.remove();
+    return;
+  }
+
+  btn.addEventListener("click", () => {
+    localStorage.setItem(KEY, "1");
+    intro.style.transition = "opacity 0.3s ease";
+    intro.style.opacity = "0";
+
+    setTimeout(() => intro.remove(), 300);
   });
 })();
 </script>
