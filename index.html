@@ -42,8 +42,34 @@
 }
 </script>
 </head>
+  
+<script>
+(function () {
+  const KEY = "sh_intro_seen";
 
+  const intro = document.getElementById("sh-intro");
+  const btn = document.getElementById("sh-enter");
+
+  if (!intro || !btn) return;
+
+  // If already seen → remove instantly
+  if (localStorage.getItem(KEY)) {
+    intro.remove();
+    return;
+  }
+
+  btn.addEventListener("click", () => {
+    localStorage.setItem(KEY, "1");
+    intro.style.transition = "opacity 0.3s ease";
+    intro.style.opacity = "0";
+
+    setTimeout(() => intro.remove(), 300);
+  });
+})();
+</script>
+  
 <body>
+  
 <div id="sh-intro" class="sh-intro">
   <div class="sh-intro-inner">
     <h1>Service Human</h1>
@@ -60,6 +86,7 @@
     <button id="sh-enter" class="btn primary">Enter</button>
   </div>
 </div>
+  
 <header>
   <div class="site-title">Service Human, Inc.</div>
   <p class="site-subtitle">
