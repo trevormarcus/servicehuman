@@ -23,16 +23,15 @@
   <div class="site-nav-wrap">
     <div class="site-nav-group">
 
-      <!-- Primary navigation -->
       <nav class="primary-nav" aria-label="Primary">
         <a href="/#about">About</a>
         <a href="/hubs/">HUBs</a>
         <a href="/live/" class="active">LIVE</a>
         <a href="/verification/">Verification</a>
+        <a href="/scale/">Scale</a>
         <a href="/#donate">Donate</a>
       </nav>
 
-      <!-- Secondary navigation -->
       <nav class="secondary-nav" aria-label="Secondary">
         <a href="/#usage">How funds are used</a>
         <a href="/#blog">Updates</a>
@@ -42,7 +41,6 @@
 
     </div>
 
-    <!-- Theme toggle -->
     <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
       <span class="theme-toggle-icon">☾</span>
       <span class="theme-toggle-label">Theme</span>
@@ -51,31 +49,31 @@
   </div>
 </header>
 
- <main>
+<main>
   <section>
     <h2>Global Impact</h2>
 
     <div class="metrics-grid">
       <div class="metric">
-        <h2>$25</h2>
+        <h2 id="metric-total-raised">$25</h2>
         <span>Total Raised</span>
       </div>
       <div class="metric">
-        <h2>1</h2>
+        <h2 id="metric-humans-helped">1</h2>
         <span>Humans Helped</span>
       </div>
       <div class="metric">
-        <h2>1</h2>
+        <h2 id="metric-hubs">1</h2>
         <span>HUBs</span>
       </div>
       <div class="metric">
-        <h2>$250,000</h2>
+        <h2 id="metric-next-milestone">$250,000</h2>
         <span>Next Milestone</span>
       </div>
     </div>
 
     <div class="progress-bar" aria-label="Progress toward next milestone">
-      <div class="progress" style="width:2.5%"></div>
+      <div id="live-progress" class="progress" style="width:0.01%"></div>
     </div>
 
     <p class="small" style="margin-top:12px;">
@@ -111,6 +109,14 @@
   </section>
 
   <section>
+    <h2>Recent Activity</h2>
+    <p class="small">
+      Public ledger entries shown without personal identifying information.
+    </p>
+    <div id="activity-log"></div>
+  </section>
+
+  <section>
     <h2>What This Is</h2>
     <p>
       This page is the public heartbeat of Service Human.
@@ -128,8 +134,80 @@
   </section>
 </main>
 
-  <footer>
-    <p class="legal">Service Human, Inc. — Radical transparency in motion.</p>
-  </footer>
+<footer>
+  <p class="legal">Service Human, Inc. — Radical transparency in motion.</p>
+</footer>
+
+<script>
+async function loadLedger() {
+  try {
+    const res = await fetch('/data/ledger.json');
+    const data = await res.json();
+
+    const container = document.getElementById('activity-log');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    const totalRaised = data.reduce((sum, entry) => sum + (Number(entry.amount) || 0), 0);
+    const nextMilestone = 250000;
+    const progressPct = Math.min((totalRaised / nextMilestone) * 100, 100);
+
+    const totalRaisedEl = document.getElementById('metric-total-raised');
+    const nextMilestoneEl = document.getElementById('metric-next-milestone');
+    const progressEl = document.getElementById('live-progress');
+
+    if (totalRaisedEl) {
+      totalRaisedEl.textContent = '$' + totalRaised.toLocaleString();
+    }
+
+    if (nextMilestoneEl) {
+      nextMilestoneEl.textContent = '$' + nextMilestone.toLocaleString();
+    }
+
+    if (progressEl) {
+      progressEl.style.width = Math.max(progressPct, 0.01) + '%';
+    }
+
+    data
+      .slice()
+      .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+      .forEach(entry => {
+        const el = document.createElement('div');
+        el.className = 'log-entry';
+
+        const amount = '$' + Number(entry.amount || 0).toLocaleString();
+        const time = entry.timestamp
+          ? new Date(entry.timestamp).toLocaleString()
+          : '—';
+
+        el.innerHTML = `
+          <div class="log-row">
+            <span class="log-status ${entry.status || 'received'}"></span>
+            <strong>${entry.note || 'Ledger entry'}</strong> ${amount}
+            ${entry.receipt ? '• ' + entry.receipt : ''}
+            ${entry.reference ? '• ' + entry.reference : ''}
+          </div>
+          <div class="log-meta">
+            Time: ${time}
+            ${entry.receipt ? `• <a href="/verification/?r=${encodeURIComponent(entry.receipt)}">Verify</a>` : ''}
+          </div>
+        `;
+
+        container.appendChild(el);
+      });
+
+  } catch (err) {
+    console.error('Ledger load failed:', err);
+
+    const container = document.getElementById('activity-log');
+    if (container) {
+      container.innerHTML = '<p class="small">Ledger unavailable right now.</p>';
+    }
+  }
+}
+
+loadLedger();
+</script>
 </body>
 </html>
