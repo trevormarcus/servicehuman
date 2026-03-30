@@ -1,0 +1,11 @@
+[
+  {
+    "id": "sh_0001",
+    "receipt": "#1088-1725",
+    "amount": 25,
+    "timestamp": "2025-11-09T14:55:00",
+    "status": "completed",
+    "note": "First donation received",
+    "reference": "id...9pZq"
+  }
+]
