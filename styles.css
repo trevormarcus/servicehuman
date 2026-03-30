@@ -1145,3 +1145,46 @@ figcaption {
   line-height: 1.6;
   margin-bottom: 24px;
 }
+.log-entry {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.log-entry:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.log-row {
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.log-meta {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.log-status {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.log-status.received {
+  background: #999999;
+}
+
+.log-status.allocated {
+  background: orange;
+}
+
+.log-status.completed {
+  background: #4caf50;
+}
