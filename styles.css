@@ -225,6 +225,13 @@ header {
   border-color: rgba(139, 177, 255, 0.7);
   color: var(--text);
 }
+.quick-help-btn {
+  transition: all 0.18s ease;
+}
+
+.quick-help-btn:hover {
+  transform: translateY(-1px);
+}
 /* fallback for older pages still using plain nav */
 nav[aria-label="Primary"]:not(.primary-nav):not(.secondary-nav) {
   margin-top: 12px;
