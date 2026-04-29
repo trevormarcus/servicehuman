@@ -247,7 +247,7 @@ body.dark .theme-toggle:hover {
 .theme-toggle-icon {
   font-size: 0.9rem;
 }
-.quick-help-btn {
+.primary-nav a.quick-help-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -263,7 +263,7 @@ body.dark .theme-toggle:hover {
   box-shadow: 0 0 0 1px rgba(139, 177, 255, 0.08) inset;
 }
 
-.quick-help-btn:hover {
+.primary-nav a.quick-help-btn:hover {
   background: rgba(139, 177, 255, 0.2);
   border-color: rgba(139, 177, 255, 0.7);
   color: var(--text);
