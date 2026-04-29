@@ -226,7 +226,7 @@ header {
   color: var(--text);
 }
 .quick-help-btn {
-  transition: all 0.18s ease;
+  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
 }
 
 .quick-help-btn:hover {
