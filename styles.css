@@ -1371,3 +1371,7 @@ figcaption {
 #momentum-loop .loop-arrow {
   color: var(--muted);
 }
+#momentum-loop .loop-step.active + .loop-arrow {
+  color: var(--link);
+  opacity: 0.8;
+}
