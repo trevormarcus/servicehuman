@@ -270,7 +270,16 @@ nav[aria-label="Primary"]:not(.primary-nav):not(.secondary-nav) a {
 .theme-toggle:hover {
   background: rgba(0, 0, 0, 0.03);
 }
+.theme-toggle {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  justify-content: center;
+}
 
+.theme-toggle span:not(.theme-toggle-icon) {
+  display: none;
+}
 body.dark .theme-toggle:hover {
   background: rgba(255, 255, 255, 0.06);
 }
