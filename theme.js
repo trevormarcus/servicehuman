@@ -25,3 +25,15 @@
     apply(next);
   });
 })();
+(function () {
+  const steps = document.querySelectorAll('#momentum-loop .loop-step');
+  if (!steps.length) return;
+
+  let i = 0;
+
+  setInterval(() => {
+    steps.forEach(s => s.classList.remove('active'));
+    steps[i].classList.add('active');
+    i = (i + 1) % steps.length;
+  }, 1200);
+})();
