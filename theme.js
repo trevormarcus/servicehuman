@@ -18,7 +18,7 @@
   apply(stored || (prefersDark ? 'dark' : 'light'));
 
   document.addEventListener('click', (e) => {
-    const btn = e.target.closest && e.target.closest('#theme-toggle');
+    const btn = e.target.closest && e.target.closest('#theme-toggle, .theme-toggle');
     if (!btn) return;
     const next = document.body.classList.contains('dark') ? 'light' : 'dark';
     localStorage.setItem(KEY, next);
