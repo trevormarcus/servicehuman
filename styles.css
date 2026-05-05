@@ -246,7 +246,11 @@ nav[aria-label="Primary"]:not(.primary-nav):not(.secondary-nav) a {
   margin-right: 12px;
   white-space: nowrap;
 }
-
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 /* ---------- Theme toggle ---------- */
 .theme-toggle {
   flex: 0 0 auto;
