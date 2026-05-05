@@ -1375,29 +1375,6 @@ figcaption {
   color: var(--link);
   opacity: 0.8;
 }
-.faq-section {
-  margin-top: 48px;
-}
-
-.faq-section h2 {
-  margin-bottom: 20px;
-}
-
-.faq-item {
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.faq-item h3 {
-  font-size: 1rem;
-  margin-bottom: 6px;
-  color: var(--text);
-}
-
-.faq-item p {
-  color: var(--muted);
-  line-height: 1.6;
-}
 /* FAQ accordion */
 .faq-item {
   cursor: pointer;
@@ -1438,4 +1415,28 @@ figcaption {
 .faq-item.open h3::after {
   transform: rotate(180deg);
   color: var(--accent);
+}
+
+.faq-section {
+  margin-top: 48px;
+}
+
+.faq-section h2 {
+  margin-bottom: 20px;
+}
+
+.faq-item {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-item h3 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.faq-item p {
+  color: var(--muted);
+  line-height: 1.6;
 }
