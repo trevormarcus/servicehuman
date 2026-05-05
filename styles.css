@@ -1493,3 +1493,9 @@ figcaption {
   transform: rotate(180deg);
   color: var(--accent);
 }
+.faq-item h3 {
+  cursor: pointer;
+}
+.faq-item:hover {
+  background: rgba(255,255,255,0.03);
+}
