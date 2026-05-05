@@ -692,33 +692,42 @@ No billionaires required. Just people.
       </li>
     </ul>
   </section>
-
   <section class="faq-section">
   <h2>Frequently Asked Questions</h2>
 
   <div class="faq-item">
     <h3>What is Service Human, Inc.?</h3>
+    <div class="faq-answer">
     <p>A nonprofit built to make it easier for one human being to help another—directly, transparently, and at scale.</p>
   </div>
-
+  </div>
+    
   <div class="faq-item">
     <h3>Where does the money go?</h3>
+    <div class="faq-answer">
     <p>Primarily to direct human support. A small portion sustains the infrastructure required to deliver that support consistently and transparently. See it <a href="/live/">live</a>.</p>
   </div>
-
+  </div>
+    
   <div class="faq-item">
     <h3>How is this different from other charities?</h3>
+    <div class="faq-answer">
     <p>Service Human is designed around visibility. You don’t have to trust claims &mdash; you can <a href="/verification/">verify outcomes</a> in real time.</p>
   </div>
-
+  </div>
+    
   <div class="faq-item">
     <h3>What is a Service Human HUB?</h3>
+    <div class="faq-answer">
     <p>A <a href="/hubs/">Service Human HUB</a> is a local support center providing stabilization, coordination, and direct pathways to resources.</p>
   </div>
-
+  </div>
+    
   <div class="faq-item">
     <h3>Do you guarantee outcomes or returns?</h3>
+    <div class="faq-answer">
     <p>No. This is human support infrastructure — not an investment product. The goal is participation, visibility, and consistent delivery of help.</p>
+  </div>
   </div>
 </section>
   
@@ -876,6 +885,21 @@ if (y) y.textContent = new Date().getFullYear();
     setTimeout(() => intro.remove(), 300);
   });
 })();
+</script>
+  <script>
+document.querySelectorAll('.faq-item').forEach(item => {
+  const question = item.querySelector('h3');
+
+  question.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+
+    if (!isOpen) {
+      item.classList.add('open');
+    }
+  });
+});
 </script>
 </body>
 </html>
