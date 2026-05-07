@@ -37,3 +37,11 @@
     i = (i + 1) % steps.length;
   }, 1600);
 })();
+const menuToggle = document.querySelector('.menu-toggle');
+const navWrap = document.querySelector('.site-nav-wrap');
+
+if (menuToggle && navWrap) {
+  menuToggle.addEventListener('click', () => {
+    navWrap.classList.toggle('open');
+  });
+}
