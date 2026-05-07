@@ -1509,23 +1509,14 @@ figcaption {
     display: inline-flex !important;
   }
 
-  header .site-nav-wrap {
+  #site-nav-wrap {
     display: none !important;
   }
 
-  header .site-nav-wrap.open {
+  #site-nav-wrap.open {
     display: flex !important;
     flex-direction: column;
     align-items: flex-start;
     gap: 18px;
-  }
-
-  header .site-nav-wrap.open .site-nav-group,
-  header .site-nav-wrap.open .primary-nav,
-  header .site-nav-wrap.open .secondary-nav {
-    display: flex !important;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
   }
 }
