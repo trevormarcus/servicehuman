@@ -38,7 +38,7 @@
   }, 1600);
 })();
 const menuToggle = document.querySelector('.menu-toggle');
-const navWrap = document.querySelector('.site-nav-wrap');
+const navWrap = document.getElementById('site-nav-wrap');
 
 if (menuToggle && navWrap) {
   menuToggle.addEventListener('click', () => {
