@@ -1505,53 +1505,6 @@ figcaption {
 }
 
 @media (max-width: 768px) {
-
-   .site-nav-wrap {
-     display: none;
-}
-
-   .site-nav-wrap.open {
-     display: flex;
-}
-  .menu-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.12);
-    background: rgba(255,255,255,0.03);
-    color: var(--text);
-    font-size: 1.4rem;
-    cursor: pointer;
-    margin-bottom: 18px;
-  }
-
-  .site-nav-wrap {
-    display: none;
-    flex-direction: column;
-    gap: 18px;
-    margin-top: 12px;
-  }
-
-  .site-nav-wrap.open {
-    display: flex;
-  }
-
-  .primary-nav,
-  .secondary-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .primary-nav a,
-  .secondary-nav a {
-    width: fit-content;
-  }
-}
-@media (max-width: 768px) {
   .menu-toggle {
     display: inline-flex !important;
   }
