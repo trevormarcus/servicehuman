@@ -204,7 +204,7 @@ header {
   text-decoration: none;
   background: var(--hover);
 }
-.primary-nav a.quick-help-btn {
+.quick-help-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
