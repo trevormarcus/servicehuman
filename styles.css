@@ -1506,6 +1506,13 @@ figcaption {
 
 @media (max-width: 768px) {
 
+   .site-nav-wrap {
+     display: none;
+}
+
+   .site-nav-wrap.open {
+     display: flex;
+}
   .menu-toggle {
     display: flex;
     align-items: center;
