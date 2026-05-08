@@ -1520,3 +1520,20 @@ figcaption {
     gap: 18px;
   }
 }
+.top-actions{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  width:100%;
+  margin-top:18px;
+}
+
+.top-actions .quick-help-btn{
+  flex:1;
+}
+
+.top-actions .menu-toggle{
+  margin-left:auto;
+  flex-shrink:0;
+}
