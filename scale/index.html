@@ -12,7 +12,7 @@
   <meta property="og:image" content="https://servicehumaninc.org/sh-og.jpg">
 
   <link rel="stylesheet" href="/styles.css">
-  <script src="/theme.js" defer></script>
+  
 
   <style>
     .scale-hero {
@@ -242,7 +242,11 @@
       Built from public approximate numbers • Meant to illustrate scale, not make claims about any platform
     </p>
 
-    <div class="site-nav-wrap">
+<button class="menu-toggle" aria-label="Open navigation">
+  ☰
+</button>
+    
+    <div class="site-nav-wrap" id="site-nav-wrap">
       <div class="site-nav-group">
         <nav class="primary-nav" aria-label="Primary">
           <a href="/#about">About</a>
@@ -650,5 +654,8 @@
     })();
     </script>
   </footer>
+
+<script src="/theme.js?v=menu5" defer></script>
+  
 </body>
 </html>
