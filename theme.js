@@ -45,3 +45,20 @@ if (menuToggle && navWrap) {
     navWrap.classList.toggle('open');
   });
 }
+document.addEventListener('click', (e) => {
+  const question = e.target.closest('.faq-item h3, .faq-question, .faq-item button');
+  if (!question) return;
+
+  const item = question.closest('.faq-item');
+  if (!item) return;
+
+  const isOpen = item.classList.contains('open');
+
+  document.querySelectorAll('.faq-item').forEach(i => {
+    i.classList.remove('open');
+  });
+
+  if (!isOpen) {
+    item.classList.add('open');
+  }
+});
