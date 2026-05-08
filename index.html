@@ -946,26 +946,27 @@ document.querySelectorAll('.faq-item').forEach(item => {
     const isOpen = item.classList.contains('open');
 
 <script>
-document.querySelectorAll('.faq-item').forEach(item => {
-  const question = item.querySelector('h3, button, .faq-question');
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const question = item.querySelector('h3, button, .faq-question');
+    if (!question) return;
 
-  if (!question) return;
+    question.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
 
-  question.addEventListener('click', () => {
-    const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+      });
 
-    document.querySelectorAll('.faq-item').forEach(i => {
-      i.classList.remove('open');
+      if (!isOpen) {
+        item.classList.add('open');
+      }
     });
-
-    if (!isOpen) {
-      item.classList.add('open');
-    }
   });
 });
 </script>
 
-<script src="/theme.js?v=menu3" defer></script>
+<script src="/theme.js?v=menu4" defer></script>
 
 </body>
 </html>
