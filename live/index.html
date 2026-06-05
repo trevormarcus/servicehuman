@@ -1,73 +1,120 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Service Human — LIVE</title>
-  <meta name="description" content="Live transparency: the public heartbeat of Service Human — funds in, funds out, humans helped." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="/styles.css">
+  <title>LIVE Accountability | Service Human, Inc.</title>
+  <meta name="description" content="LIVE accountability for Service Human, Inc. — public activity, donation reporting, deployment progress, and transparency records.">
+
+  <link rel="canonical" href="https://servicehumaninc.org/live/">
+  <meta property="og:title" content="LIVE Accountability | Service Human, Inc.">
+  <meta property="og:description" content="Funds in. Activity visible. Public accountability for Service Human, Inc.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://servicehumaninc.org/live/">
+  <meta property="og:image" content="https://servicehumaninc.org/sh-og-final.jpeg">
+
+  <link rel="stylesheet" href="/styles.css?v=live-v2">
   <script src="/theme.js?v=menu5" defer></script>
 </head>
 
 <body>
+
 <header>
   <div class="site-title">Service Human — LIVE</div>
   <p class="site-subtitle">
-    The public heartbeat. If numbers move, people were helped. If they don’t, they weren’t.
+    Public accountability, activity reporting, and transparency records.
   </p>
   <p class="meta-line">
-    Simple on purpose • Updated manually • Built to scale into verified panels
+    Funds in • Funds out • Humans helped • Updated manually
   </p>
 
-  <button class="menu-toggle" aria-label="Open navigation">
-    ☰
-  </button>
-  
-<div class="site-nav-wrap" id="site-nav-wrap">
-  <div class="site-nav-group">
-    <nav class="primary-nav" aria-label="Primary">
-      <a href="#about" class="active">About</a>
-      <a href="/hubs/">HUBs</a>
-      <a href="/live/">LIVE</a>
-      <a href="#donate">Donate</a>
-    </nav>
+  <div class="top-actions">
+    <a
+      class="quick-help-btn"
+      href="https://donate.stripe.com/eVqaEY7MTbpi4iR7SZ9Zm04"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Donate $25 to help one human today"
+    >
+      $25 • Help One Human Today
+    </a>
 
-    <nav class="secondary-nav" aria-label="More">
-      <a href="/verification/">Verification</a>
-      <a href="/scale/">Scale</a>
-      <a href="/momentum/">Momentum</a>
-      <a href="#usage">How funds are used</a>
-      <a href="#blog">Updates</a>
-      <a href="#contact">Contact</a>
-      <a href="/community-support/">Community Support</a>
-    </nav>
+    <button class="menu-toggle" aria-label="Open navigation">
+      ☰
+    </button>
   </div>
 
+  <div class="site-nav-wrap" id="site-nav-wrap">
+    <div class="site-nav-group">
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="/">Mission</a>
+        <a href="/hubs/">HUBs</a>
+        <a href="/live/" class="active">LIVE</a>
+        <a href="/#donate">Donate</a>
+      </nav>
+
+      <nav class="secondary-nav" aria-label="More">
+        <a href="/verification/">Verification</a>
+        <a href="/scale/">Scale</a>
+        <a href="/momentum/">Momentum</a>
+        <a href="/community-support/">Community Support</a>
+        <a href="/updates/">Updates</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </div>
+
     <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
-      <span class="theme-toggle-icon">☾</span>
+      <span class="theme-toggle-icon">◐</span>
       <span class="theme-toggle-label">Theme</span>
     </button>
   </div>
 </header>
 
 <main>
-  <section>
-    <h2>Global Impact</h2>
+
+  <section class="hero-scale">
+    <p class="eyebrow">LIVE Accountability</p>
+    <h2>If numbers move, people were helped.</h2>
+
+    <p class="hero-lead">
+      Service Human was built around a simple idea: public activity should be visible.
+      LIVE serves as the public heartbeat of the organization, displaying fundraising activity,
+      deployment progress, and organizational milestones.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn primary" href="/verification/">Verify Service Human</a>
+      <a class="btn" href="/updates/">View Updates</a>
+    </div>
+
+    <p class="hero-footnote small">
+      Visibility over marketing. Evidence over claims.
+    </p>
+  </section>
+
+  <section id="status">
+    <h2>Service Human right now</h2>
+    <p class="small">
+      A public snapshot of current organizational activity and progress.
+    </p>
 
     <div class="metrics-grid">
       <div class="metric">
         <h2 id="metric-total-raised">$25</h2>
         <span>Total Raised</span>
       </div>
+
       <div class="metric">
         <h2 id="metric-humans-helped">1</h2>
         <span>Humans Helped</span>
       </div>
+
       <div class="metric">
         <h2 id="metric-hubs">1</h2>
         <span>HUBs</span>
       </div>
+
       <div class="metric">
         <h2 id="metric-next-milestone">$250,000</h2>
         <span>Next Milestone</span>
@@ -79,65 +126,127 @@
     </div>
 
     <p class="small" style="margin-top:12px;">
-      This is a starter panel. The long-term vision is verified panels for partners, programs, companies,
-      and other nonprofits — all visible in one place.
+      <strong>Last Updated:</strong> June 2026
     </p>
+
+    <div class="hero-actions">
+      <a class="btn primary" href="/verification/">Verify Service Human</a>
+      <a class="btn" href="/updates/">View Updates</a>
+    </div>
   </section>
 
   <section>
-    <h2>Active Deployment</h2>
+    <h2>Current Deployment</h2>
 
-    <p>
-      Service Human operates through focused, time-bound project deployments. Each project has a defined
-      scope, funding target, and transparent reporting structure aligned for both individual supporters and
-      institutional partners.
-    </p>
+    <div class="grid two">
+      <div>
+        <p class="small">Current project:</p>
 
-    <p class="small">Current project:</p>
+        <h3>Tampa Essential Support Campaign</h3>
 
-    <p>
-      <strong>Tampa Essential Support Campaign</strong><br>
-      Immediate stabilization support in Tampa Bay through essential supplies, transportation assistance,
-      and intake coordination — paired with transparent campaign reporting.
-    </p>
+        <p>
+          Immediate stabilization support focused on essential supplies,
+          transportation assistance, and intake coordination within the Tampa Bay region.
+        </p>
 
-    <p>
-      <a href="/projects/tampa-essential-support/">View project details →</a>
-    </p>
+        <p>
+          All activity is paired with public reporting and future scalability into
+          Service Human HUB systems.
+        </p>
 
-    <p class="tiny">
-      Campaign funding goal: $12,500 · Planned support packages: 500
-    </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="/projects/tampa-essential-support/">View Project</a>
+        </div>
+      </div>
+
+      <div class="status-card">
+        <div class="status-label">Status</div>
+        <div class="status-value">Active</div>
+
+        <p class="small">
+          Goal: $12,500<br>
+          Planned support packages: 500
+        </p>
+      </div>
+    </div>
   </section>
 
   <section>
     <h2>Recent Activity</h2>
     <p class="small">
-      Public ledger entries shown without personal identifying information.
+      Public ledger entries displayed without personal identifying information.
     </p>
+
     <div id="activity-log"></div>
   </section>
 
   <section>
-    <h2>What This Is</h2>
+    <h2>Why LIVE exists</h2>
+
     <p>
-      This page is the public heartbeat of Service Human.
-      Every dollar, every person helped, every HUB built appears here — in the open — without filters, spin, or PR layers.
+      Most organizations ask the public to trust them.
     </p>
+
     <p>
-      Corporations, nonprofits, and partners will eventually have their own live tiles here so anyone in the world can see impact in real time.
+      Service Human attempts to reduce the amount of trust required by increasing
+      the amount of information available.
+    </p>
+
+    <p>
+      The goal is not perfection.
+    </p>
+
+    <p>
+      The goal is visibility.
     </p>
   </section>
 
   <section>
-    <h2>Why It Matters</h2>
-    <p>Most organizations ask for trust. We replace trust with visibility.</p>
-    <p>If numbers move, people were helped. If they don’t, they weren’t.</p>
+    <h2>Future LIVE Network</h2>
+
+    <p>
+      The long-term vision is a network of public panels showing activity across
+      Service Human HUBs, partner efforts, community projects, and future campaigns.
+    </p>
+
+    <div class="grid three">
+      <div class="card">
+        <h2>HUB Panels</h2>
+        <p>
+          Funds in, funds out, people served, local activity, and regional outcomes.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Partner Panels</h2>
+        <p>
+          Shared accountability, shared reporting, and shared visibility across trusted partners.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>National View</h2>
+        <p>
+          A future network of public impact dashboards built around the same transparency standards.
+        </p>
+      </div>
+    </div>
   </section>
+
 </main>
 
 <footer>
-  <p class="legal">Service Human, Inc. — Radical transparency in motion.</p>
+  <p class="legal">
+    Service Human, Inc. is a 501(c)(3) nonprofit organization.<br>
+    EIN: 93-1924051 • Tampa, Florida
+  </p>
+
+  <p class="legal">
+    <a href="/">Home</a> •
+    <a href="/verification/">Verification</a> •
+    <a href="/updates/">Updates</a> •
+    <a href="mailto:info@servicehumaninc.org">Contact</a>
+  </p>
 </footer>
 
 <script>
@@ -211,5 +320,6 @@ async function loadLedger() {
 
 loadLedger();
 </script>
+
 </body>
 </html>
