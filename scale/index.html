@@ -1,113 +1,31 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The $25 Thought Experiment | Service Human, Inc.</title>
-  <meta name="description" content="What happens when ordinary people contribute small amounts at internet scale? A Service Human thought experiment on scale, trust, and humanitarian infrastructure." />
-  <meta property="og:title" content="The $25 Thought Experiment | Service Human, Inc.">
-  <meta property="og:description" content="What happens when ordinary people contribute small amounts at internet scale?">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Scale Model | Service Human, Inc.</title>
+  <meta name="description" content="A Service Human scale model exploring participation, trust infrastructure, and humanitarian systems at internet scale.">
+
+  <link rel="canonical" href="https://servicehumaninc.org/scale/">
+  <meta property="og:title" content="Scale Model | Service Human, Inc.">
+  <meta property="og:description" content="Scale is not a fundraising problem. It is a trust problem.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://servicehumaninc.org/scale/">
-  <meta property="og:image" content="https://servicehumaninc.org/sh-og.jpg">
+  <meta property="og:image" content="https://servicehumaninc.org/sh-og-final.jpeg">
 
-  <link rel="stylesheet" href="/styles.css">
-  
+  <link rel="stylesheet" href="/styles.css?v=scale-v2">
+  <script src="/theme.js?v=menu5" defer></script>
 
   <style>
-    .scale-hero {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(143,181,255,0.12), transparent 35%),
-        radial-gradient(circle at 80% 30%, rgba(255,170,120,0.10), transparent 35%),
-        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
-    }
-
-    .scale-hero h2 {
-      font-size: 3rem;
-      line-height: 1.05;
-      margin-bottom: 12px;
-      border-bottom: 0;
-      padding-bottom: 0;
-      letter-spacing: -0.03em;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      padding: 6px 12px;
-      border-radius: 999px;
+    .calc-input {
+      width: 100%;
+      margin: 8px 0 16px;
+      padding: 10px 12px;
+      border-radius: 10px;
       border: 1px solid var(--border);
       background: var(--card-bg-alt);
-      font-size: 0.8rem;
-      color: var(--meta);
-      margin-bottom: 14px;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-    }
-
-    .lead {
-      font-size: 1.15rem;
       color: var(--text);
-      max-width: 900px;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .stat-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 18px 18px 16px;
-    }
-
-    .stat-label {
-      font-size: 0.82rem;
-      color: var(--meta);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 8px;
-    }
-
-    .stat-value {
-      font-size: 2.2rem;
-      line-height: 1.05;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      margin: 0 0 6px;
-    }
-
-    .stat-note {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin: 0;
-    }
-
-    .math-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-      margin-top: 14px;
-    }
-
-    .math-box {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-    }
-
-    .math-box h3 {
-      margin: 0 0 10px;
-      font-size: 1.45rem;
-      line-height: 1.15;
     }
 
     .math-line {
@@ -119,543 +37,434 @@
       border: 1px solid var(--border);
       background: var(--card-bg-alt);
       color: var(--text);
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       white-space: nowrap;
       overflow-x: auto;
-    }
-
-    .compare-band {
-      border-left: 4px solid var(--accent);
-      background: var(--new-bg);
-    }
-
-    .compare-band p:last-child {
-      margin-bottom: 0;
-    }
-
-    .quote-line {
-      font-size: 1.35rem;
-      line-height: 1.35;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      margin: 0;
-    }
-
-    .mini-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .mini-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px 18px;
-    }
-
-    .mini-card h3 {
-      margin: 0 0 8px;
-      font-size: 1.05rem;
-    }
-
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .scale-note {
-      margin: 14px 0 0;
-      font-size: 1rem;
-    }
-
-    .va-section {
-      margin-top: 0;
-    }
-
-    .va-section .math-grid {
-      margin-top: 18px;
-    }
-
-    #calculator {
-      scroll-margin-top: 80px;
-    }
-
-    .calc-input {
-      width: 100%;
-      margin: 8px 0 16px;
-      padding: 10px 12px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--card-bg-alt);
-      color: var(--text);
-    }
-
-    .calc-input:last-child {
-      margin-bottom: 0;
-    }
-
-    @media (min-width: 700px) {
-      .stats-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
-      .math-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .mini-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 700px) {
-      .scale-hero h2 {
-        font-size: 2.2rem;
-      }
-
-      .lead {
-        font-size: 1.02rem;
-      }
-
-      .stat-value {
-        font-size: 1.9rem;
-      }
-
-      .quote-line {
-        font-size: 1.15rem;
-      }
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="site-title">Service Human — Scale</div>
-    <p class="site-subtitle">
-      A thought experiment on small contributions, massive participation, and humanitarian infrastructure.
-    </p>
-    <p class="meta-line">
-      Built from public approximate numbers • Meant to illustrate scale, not make claims about any platform
-    </p>
 
-<button class="menu-toggle" aria-label="Open navigation">
-  ☰
-</button>
-    
-<div class="site-nav-wrap" id="site-nav-wrap">
-  <div class="site-nav-group">
-    <nav class="primary-nav" aria-label="Primary">
-      <a href="#about" class="active">About</a>
-      <a href="/hubs/">HUBs</a>
-      <a href="/live/">LIVE</a>
-      <a href="#donate">Donate</a>
-    </nav>
+<header>
+  <div class="site-title">Service Human — Scale</div>
+  <p class="site-subtitle">
+    Participation, trust infrastructure, and humanitarian systems at internet scale.
+  </p>
+  <p class="meta-line">
+    Trust • Participation • Infrastructure
+  </p>
 
-    <nav class="secondary-nav" aria-label="More">
-      <a href="/verification/">Verification</a>
-      <a href="/scale/">Scale</a>
-      <a href="/momentum/">Momentum</a>
-      <a href="#usage">How funds are used</a>
-      <a href="#blog">Updates</a>
-      <a href="#contact">Contact</a>
-      <a href="/community-support/">Community Support</a>
-    </nav>
+  <div class="top-actions">
+    <a
+      class="quick-help-btn"
+      href="https://donate.stripe.com/eVqaEY7MTbpi4iR7SZ9Zm04"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Donate $25 to help one human today"
+    >
+      $25 • Help One Human Today
+    </a>
+
+    <button class="menu-toggle" aria-label="Open navigation">
+      ☰
+    </button>
   </div>
 
-      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
-        <span class="theme-toggle-icon">☾</span>
-        <span class="theme-toggle-label">Theme</span>
-      </button>
+  <div class="site-nav-wrap" id="site-nav-wrap">
+    <div class="site-nav-group">
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="/">Mission</a>
+        <a href="/hubs/">HUBs</a>
+        <a href="/live/">LIVE</a>
+        <a href="/#donate">Donate</a>
+      </nav>
+
+      <nav class="secondary-nav" aria-label="More">
+        <a href="/verification/">Verification</a>
+        <a href="/scale/" class="active">Scale</a>
+        <a href="/momentum/">Momentum</a>
+        <a href="/community-support/">Community Support</a>
+        <a href="/updates/">Updates</a>
+        <a href="/#contact">Contact</a>
+      </nav>
     </div>
-  </header>
 
-  <main>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
+      <span class="theme-toggle-icon">◐</span>
+      <span class="theme-toggle-label">Theme</span>
+    </button>
+  </div>
+</header>
 
-    <section class="scale-hero">
-      <div class="eyebrow">Scale Thought Experiment</div>
-      <h2>The $25 Thought Experiment</h2>
-      <p style="margin-top:10px; max-width: 900px; color: var(--muted); font-size: 1rem;">
-        This model shows why Service Human focuses on building trust infrastructure rather than running fundraising campaigns.
-      </p>
-      <p class="lead">
-        Every day, millions of people pay for small digital subscriptions — streaming, music, apps, and online services.
-        Many of those subscriptions cost about the same amount: <strong>$20–$30 per month</strong>.
-      </p>
-      <p class="lead">
-        So a simple question emerges: <strong>What happens if even a tiny percentage of those same people contribute a similar
-        amount to humanitarian work?</strong>
-      </p>
+<main>
 
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-label">Example platform size</div>
-          <div class="stat-value">325M</div>
-          <p class="stat-note">Approximate paid subscribers</p>
-        </div>
+  <section class="hero-scale">
+    <p class="eyebrow">Scale Model</p>
+    <h2>Scale is not a fundraising problem. It is a trust problem.</h2>
 
-        <div class="stat-card">
-          <div class="stat-label">Participation scenario</div>
-          <div class="stat-value">1%</div>
-          <p class="stat-note">A very small share of users</p>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-label">One-time result</div>
-          <div class="stat-value">$81.25M</div>
-          <p class="stat-note">If 1% gave $25 once</p>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-label">Annual result</div>
-          <div class="stat-value">$975M</div>
-          <p class="stat-note">If 1% gave $25 monthly</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="compare-band">
-      <h2>Why this matters</h2>
-      <p class="quote-line">
-        The internet does not lack people. It does not lack generosity. It lacks systems people trust enough to use at scale.
-      </p>
-    </section>
-
-    <section>
-      <h2>The example</h2>
-      <p>
-        This page uses rough public numbers from a large subscription platform to illustrate what participation looks like at internet scale.
-        The point is not the platform itself. The point is the math.
-      </p>
-      <p>
-        If a service has roughly <strong>325 million paid subscribers</strong>, then even a very small participation rate can create
-        humanitarian funding at institutional scale.
-      </p>
-
-      <span class="math-line">325,000,000 × 1% = 3,250,000 participants</span>
-      <span class="math-line">3,250,000 × $25 = $81,250,000 one time</span>
-      <span class="math-line">3,250,000 × $25 × 12 = $975,000,000 yearly</span>
-    </section>
-
-    <section class="scale-bridge">
-      <h2>What does participation actually look like?</h2>
-      <p>
-        This model shows what happens when everyday people contribute small,
-        consistent amounts — and how quickly that becomes real infrastructure.
-      </p>
-    </section>
-
-    <section>
-      <h2>Interactive scale calculator</h2>
-      <p>
-        Adjust the numbers and see what happens when participation moves at internet scale.
-      </p>
-
-      <div id="calculator" class="math-grid">
-        <div class="math-box">
-          <h3>Inputs</h3>
-
-          <label for="platform-size"><strong>Platform size</strong></label>
-          <input
-            id="platform-size"
-            class="calc-input"
-            type="number"
-            value="325000000"
-            step="1"
-          >
-
-          <label for="participation-rate"><strong>Participation rate (%)</strong></label>
-          <input
-            id="participation-rate"
-            class="calc-input"
-            type="number"
-            value="1"
-            step="0.01"
-          >
-
-          <label for="contribution-amount"><strong>Contribution amount ($)</strong></label>
-          <input
-            id="contribution-amount"
-            class="calc-input"
-            type="number"
-            value="25"
-            step="0.01"
-          >
-        </div>
-
-        <div class="math-box">
-          <h3>Results</h3>
-
-          <span class="math-line" id="calc-participants">Participants: 3,250,000</span>
-          <span class="math-line" id="calc-once">One-time total: $81,250,000</span>
-          <span class="math-line" id="calc-monthly">Monthly total: $81,250,000</span>
-          <span class="math-line" id="calc-annual">Annual total: $975,000,000</span>
-
-          <p class="small" style="margin-top:14px;">
-            This calculator is for illustrative modeling only.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Three ways to understand the same number</h2>
-
-      <div class="mini-grid">
-        <div class="mini-card">
-          <h3>Participation</h3>
-          <p><strong>1 out of 100</strong> people choosing to participate is enough to move tens of millions of dollars.</p>
-        </div>
-
-        <div class="mini-card">
-          <h3>Human scale</h3>
-          <p><strong>3.25 million people</strong> sounds huge, but on a platform that large, it is still only a tiny fraction.</p>
-        </div>
-
-        <div class="mini-card">
-          <h3>Institution scale</h3>
-          <p><strong>$81.25 million once</strong> or <strong>$975 million yearly</strong> moves into the range of major nonprofit systems.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>1% participation</h2>
-
-      <div class="math-grid">
-        <div class="math-box">
-          <h3>One-time participation</h3>
-          <p>If just 1% of a 325 million-user platform contributed $25 once:</p>
-          <span class="math-line">325,000,000 × 0.01 × $25 = $81,250,000</span>
-          <p class="small">
-            That is enough to fund large-scale direct support, logistics, staffing, reporting, and infrastructure across multiple regions.
-          </p>
-        </div>
-
-        <div class="math-box">
-          <h3>Monthly participation</h3>
-          <p>If that same 1% contributed $25 per month:</p>
-          <span class="math-line">325,000,000 × 0.01 × $25 × 12 = $975,000,000</span>
-          <p class="small">
-            Nearly one billion dollars annually — generated not by a single benefactor, but by ordinary people participating in a trusted system.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>0.1% participation</h2>
-      <p>
-        The scale still holds even when participation drops to just one-tenth of one percent.
-      </p>
-
-      <div class="math-grid">
-        <div class="math-box">
-          <h3>One-time participation</h3>
-          <span class="math-line">325,000,000 × 0.001 = 325,000 participants</span>
-          <span class="math-line">325,000 × $25 = $8,125,000</span>
-          <p class="small">
-            More than eight million dollars from a participation rate so small most people would barely notice it.
-          </p>
-        </div>
-
-        <div class="math-box">
-          <h3>Monthly participation</h3>
-          <span class="math-line">325,000 × $25 × 12 = $97,500,000</span>
-          <p class="small">
-            Nearly one hundred million dollars annually from 0.1% participation.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="compare-band">
-      <h2>If this sounds unrealistic, it already exists in another form.</h2>
-      <p class="quote-line">
-        Large-scale human support infrastructure is not a fantasy. The question is who it is built for.
-      </p>
-    </section>
-
-    <section class="va-section">
-      <h2>What If We Funded Humanity Like We Fund the VA?</h2>
-
-      <p>
-        Large-scale support infrastructure already exists.
-      </p>
-
-      <p>
-        In 2025, the United States is projected to allocate approximately
-        <strong>$370 billion annually</strong> to the Department of Veterans Affairs.
-      </p>
-
-      <p>
-        That system supports healthcare, housing assistance, benefits processing,
-        and long-term care for millions of veterans across the country.
-      </p>
-
-      <p>
-        The point is not comparison for its own sake. The point is that durable,
-        large-scale support systems are already possible because they already exist.
-      </p>
-
-      <div class="math-grid">
-        <div class="math-box">
-          <h3>1% — $3.7B</h3>
-          <p class="small">
-            Enough to begin multi-city HUB rollout, fund essential support distribution,
-            build intake and navigation systems, staff operations, and maintain public verification infrastructure.
-          </p>
-        </div>
-
-        <div class="math-box">
-          <h3>5% — $18.5B</h3>
-          <p class="small">
-            Enough to expand regional HUB coverage, support short-term stabilization access,
-            deepen logistics and case coordination, and strengthen real-time transparency systems.
-          </p>
-        </div>
-
-        <div class="math-box">
-          <h3>10% — $37B</h3>
-          <p class="small">
-            Enough to move toward durable national support infrastructure with broader access,
-            consistent operations, stronger staffing, and visible accountability at scale.
-          </p>
-        </div>
-      </div>
-
-      <p class="scale-note">
-        The system already exists. This is not theory. This is a question of allocation, not possibility.
-      </p>
-      <p class="scale-note">
-        The question is not whether reliable support infrastructure can exist. The question is who it is built to reach.
-      </p>
-    </section>
-
-    <section>
-      <h2>The real constraint</h2>
-      <p>
-        The world does not lack generosity. What it lacks is confidence in where money goes, what impact it produces,
-        and whether failure can be hidden behind marketing.
-      </p>
-
-      <p>
-        People are already comfortable paying subscription-level amounts every month. The real barrier is not the size
-        of the contribution. The real barrier is <strong>trust infrastructure</strong>.
-      </p>
-
-      <div class="mini-grid">
-        <div class="mini-card">
-          <h3>Clarity</h3>
-          <p>People want to know exactly what their participation funds.</p>
-        </div>
-
-        <div class="mini-card">
-          <h3>Transparency</h3>
-          <p>People want visible reporting, not abstract promises.</p>
-        </div>
-
-        <div class="mini-card">
-          <h3>Feedback</h3>
-          <p>People want to see that the system actually moves when support comes in.</p>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Why Service Human thinks this way</h2>
-      <p>
-        Service Human is designed around a simple principle: trust should not depend on branding alone.
-        It should come from visible systems, clear allocations, public reporting, and operational transparency.
-      </p>
-      <p>
-        That is why the LIVE dashboard exists. If numbers move, people were helped. If they don’t, they weren’t.
-      </p>
-
-      <div class="cta-row">
-        <a class="btn primary" href="/live/">View LIVE dashboard</a>
-        <a class="btn" href="/verification/">View verification systems</a>
-      </div>
-    </section>
-
-    <section>
-      <h2>The bigger picture</h2>
-      <p>
-        The internet connects billions of people. Even extremely small participation rates can generate enormous resources when the
-        underlying system is trustworthy.
-      </p>
-      <p>
-        The goal of Service Human is not simply to ask for generosity. It is to build the infrastructure that allows human generosity
-        to operate at internet scale.
-      </p>
-    </section>
-
-  </main>
-
-  <footer>
-    <p class="legal">
-      Service Human, Inc. — transparency-first humanitarian infrastructure.
-    </p>
-    <p class="legal">
-      This page uses rough public numbers for illustrative purposes only. It is a thought experiment about scale, participation, trust, and humanitarian infrastructure.
+    <p class="hero-lead">
+      The internet already moves billions of dollars every day. This page explores what becomes
+      possible when even small levels of participation are paired with transparent humanitarian infrastructure.
     </p>
 
-    <script>
-    (function () {
-      const platformSize = document.getElementById('platform-size');
-      const participationRate = document.getElementById('participation-rate');
-      const contributionAmount = document.getElementById('contribution-amount');
+    <div class="hero-actions">
+      <a class="btn primary" href="/live/">View LIVE</a>
+      <a class="btn" href="/verification/">Verify Service Human</a>
+    </div>
 
-      const participantsOut = document.getElementById('calc-participants');
-      const onceOut = document.getElementById('calc-once');
-      const monthlyOut = document.getElementById('calc-monthly');
-      const annualOut = document.getElementById('calc-annual');
+    <p class="hero-footnote small">
+      Participation scales when trust scales.
+    </p>
+  </section>
 
-      if (!platformSize || !participationRate || !contributionAmount) return;
+  <section>
+    <h2>The core idea</h2>
 
-      function formatNumber(value) {
-        return new Intl.NumberFormat('en-US', {
-          maximumFractionDigits: 0
-        }).format(value);
-      }
+    <p>
+      The world does not lack people.
+    </p>
 
-      function formatCurrency(value) {
-        return new Intl.NumberFormat('en-US', {
-          style: 'currency',
-          currency: 'USD',
-          maximumFractionDigits: 0
-        }).format(value);
-      }
+    <p>
+      The world does not lack generosity.
+    </p>
 
-      function updateCalculator() {
-        const size = parseFloat(platformSize.value) || 0;
-        const rate = parseFloat(participationRate.value) || 0;
-        const amount = parseFloat(contributionAmount.value) || 0;
+    <p>
+      The world lacks systems people trust enough to use at scale.
+    </p>
 
-        const participants = size * (rate / 100);
-        const oneTime = participants * amount;
-        const monthly = participants * amount;
-        const annual = monthly * 12;
+    <p>
+      Service Human exists to explore what becomes possible when transparency, accountability,
+      and public verification are built into the infrastructure itself.
+    </p>
+  </section>
 
-        participantsOut.textContent = `Participants: ${formatNumber(participants)}`;
-        onceOut.textContent = `One-time total: ${formatCurrency(oneTime)}`;
-        monthlyOut.textContent = `Monthly total: ${formatCurrency(monthly)}`;
-        annualOut.textContent = `Annual total: ${formatCurrency(annual)}`;
-      }
+  <section>
+    <h2>The $25 example</h2>
+    <p>
+      This is an illustrative model using approximate public subscriber figures from a large digital platform.
+      The point is not the platform itself. The point is the math.
+    </p>
 
-      [platformSize, participationRate, contributionAmount].forEach((input) => {
-        input.addEventListener('input', updateCalculator);
-      });
+    <div class="metrics-grid">
+      <div class="metric">
+        <h2>325M</h2>
+        <span>Example Platform Size</span>
+      </div>
 
-      updateCalculator();
-    })();
-    </script>
-  </footer>
+      <div class="metric">
+        <h2>1%</h2>
+        <span>Participation Rate</span>
+      </div>
 
-<script src="/theme.js?v=menu5" defer></script>
-  
+      <div class="metric">
+        <h2>$81.25M</h2>
+        <span>One-Time Result</span>
+      </div>
+
+      <div class="metric">
+        <h2>$975M</h2>
+        <span>Annual Result</span>
+      </div>
+    </div>
+
+    <p class="small" style="margin-top:12px;">
+      Illustrative example only. No claim is made about participation by any specific platform or user base.
+    </p>
+  </section>
+
+  <section>
+    <h2>Interactive scale calculator</h2>
+    <p>
+      Adjust the numbers and see what happens when participation moves at internet scale.
+    </p>
+
+    <div id="calculator" class="grid two">
+      <div class="card">
+        <h2>Inputs</h2>
+
+        <label for="platform-size"><strong>Platform size</strong></label>
+        <input id="platform-size" class="calc-input" type="number" value="325000000" step="1">
+
+        <label for="participation-rate"><strong>Participation rate (%)</strong></label>
+        <input id="participation-rate" class="calc-input" type="number" value="1" step="0.01">
+
+        <label for="contribution-amount"><strong>Contribution amount ($)</strong></label>
+        <input id="contribution-amount" class="calc-input" type="number" value="25" step="0.01">
+      </div>
+
+      <div class="card">
+        <h2>Results</h2>
+
+        <span class="math-line" id="calc-participants">Participants: 3,250,000</span>
+        <span class="math-line" id="calc-once">One-time total: $81,250,000</span>
+        <span class="math-line" id="calc-monthly">Monthly total: $81,250,000</span>
+        <span class="math-line" id="calc-annual">Annual total: $975,000,000</span>
+
+        <p class="small" style="margin-top:14px;">
+          This calculator is for illustrative modeling only.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What participation looks like</h2>
+
+    <div class="grid two">
+      <div class="card">
+        <h2>1% Participation</h2>
+        <p>
+          325 million × 1% = 3.25 million participants.
+        </p>
+
+        <span class="math-line">3,250,000 × $25 = $81,250,000</span>
+        <span class="math-line">3,250,000 × $25 × 12 = $975,000,000</span>
+
+        <p class="small">
+          A tiny participation rate can still create institutional-scale resources.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>0.1% Participation</h2>
+        <p>
+          325 million × 0.1% = 325,000 participants.
+        </p>
+
+        <span class="math-line">325,000 × $25 = $8,125,000</span>
+        <span class="math-line">325,000 × $25 × 12 = $97,500,000</span>
+
+        <p class="small">
+          Even one-tenth of one percent can create meaningful humanitarian capacity.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Large-scale human infrastructure already exists</h2>
+
+    <p>
+      Durable support infrastructure is not a fantasy. Large-scale systems already exist
+      for healthcare, housing assistance, benefits processing, and long-term care.
+    </p>
+
+    <p>
+      One example is the United States Department of Veterans Affairs, which operates
+      at large national scale to support millions of people through healthcare, benefits,
+      housing-related support, and long-term care systems.
+    </p>
+
+    <p>
+      The point is not comparison for its own sake. The point is that durable,
+      large-scale support systems are possible because they already exist.
+    </p>
+
+    <div class="grid three">
+      <div class="card">
+        <h2>1%</h2>
+        <p>
+          A small fraction of large-scale public infrastructure funding can begin multi-city
+          support models, intake systems, staffing, logistics, and verification infrastructure.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>5%</h2>
+        <p>
+          A larger allocation model could support regional HUB coverage, stabilization access,
+          logistics, case coordination, and transparency systems.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>10%</h2>
+        <p>
+          At national scale, consistent operations, staffing, access, and public accountability
+          become infrastructure questions rather than charity questions.
+        </p>
+      </div>
+    </div>
+
+    <p class="small">
+      This section is an infrastructure comparison, not a funding request, policy proposal, or claim about federal allocations.
+    </p>
+  </section>
+
+  <section>
+    <h2>The real constraint</h2>
+
+    <p>
+      People are already comfortable paying subscription-level amounts every month.
+      The real barrier is not always the size of the contribution.
+    </p>
+
+    <p>
+      The real barrier is trust infrastructure.
+    </p>
+
+    <div class="grid three">
+      <div class="card">
+        <h2>Clarity</h2>
+        <p>
+          People want to know what their participation funds.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Transparency</h2>
+        <p>
+          People want visible reporting, not abstract promises.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Feedback</h2>
+        <p>
+          People want evidence that the system moved when support came in.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Scale + LIVE + Verification</h2>
+
+    <p>
+      Service Human’s public-facing system is designed so these pieces reinforce each other.
+    </p>
+
+    <div class="grid three">
+      <div class="card">
+        <h2>Scale</h2>
+        <p>
+          Shows what becomes possible when participation happens through trusted infrastructure.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>LIVE</h2>
+        <p>
+          Shows current organizational activity, donation activity, and public progress.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="/live/">View LIVE</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Verification</h2>
+        <p>
+          Shows how identity, activity, and systems can be independently confirmed.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="/verification/">Verify Service Human</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Why Service Human thinks this way</h2>
+
+    <p>
+      Service Human is not built around fundraising campaigns.
+    </p>
+
+    <p>
+      It is built around trust infrastructure.
+    </p>
+
+    <p>
+      The goal is to create systems where participation scales because accountability scales.
+    </p>
+
+    <p>
+      The question is not whether people are willing to help.
+      The question is whether they can clearly see what happens when they do.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn primary" href="/live/">View LIVE</a>
+      <a class="btn" href="/verification/">Verification</a>
+      <a class="btn" href="/#donate">Support Service Human</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p class="legal">
+    Service Human, Inc. is a 501(c)(3) nonprofit organization.<br>
+    EIN: 93-1924051 • Tampa, Florida
+  </p>
+
+  <p class="legal">
+    <a href="/">Home</a> •
+    <a href="/live/">LIVE</a> •
+    <a href="/verification/">Verification</a> •
+    <a href="/updates/">Updates</a> •
+    <a href="mailto:info@servicehumaninc.org">Contact</a>
+  </p>
+
+  <p class="legal">
+    This page uses illustrative models for thinking about scale, participation, trust, and humanitarian infrastructure.
+  </p>
+</footer>
+
+<script>
+(function () {
+  const platformSize = document.getElementById('platform-size');
+  const participationRate = document.getElementById('participation-rate');
+  const contributionAmount = document.getElementById('contribution-amount');
+
+  const participantsOut = document.getElementById('calc-participants');
+  const onceOut = document.getElementById('calc-once');
+  const monthlyOut = document.getElementById('calc-monthly');
+  const annualOut = document.getElementById('calc-annual');
+
+  if (!platformSize || !participationRate || !contributionAmount) return;
+
+  function formatNumber(value) {
+    return new Intl.NumberFormat('en-US', {
+      maximumFractionDigits: 0
+    }).format(value);
+  }
+
+  function formatCurrency(value) {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: 0
+    }).format(value);
+  }
+
+  function updateCalculator() {
+    const size = parseFloat(platformSize.value) || 0;
+    const rate = parseFloat(participationRate.value) || 0;
+    const amount = parseFloat(contributionAmount.value) || 0;
+
+    const participants = size * (rate / 100);
+    const oneTime = participants * amount;
+    const monthly = participants * amount;
+    const annual = monthly * 12;
+
+    participantsOut.textContent = `Participants: ${formatNumber(participants)}`;
+    onceOut.textContent = `One-time total: ${formatCurrency(oneTime)}`;
+    monthlyOut.textContent = `Monthly total: ${formatCurrency(monthly)}`;
+    annualOut.textContent = `Annual total: ${formatCurrency(annual)}`;
+  }
+
+  [platformSize, participationRate, contributionAmount].forEach((input) => {
+    input.addEventListener('input', updateCalculator);
+  });
+
+  updateCalculator();
+})();
+</script>
+
 </body>
 </html>
