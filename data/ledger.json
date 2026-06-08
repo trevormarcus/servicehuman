@@ -1,10 +1,16 @@
 [
   {
     "id": "sh_0001",
+    "type": "donation",
+    "source": "direct",
+    "channel": "Stripe",
     "receipt": "#1088-1725",
     "amount": 25,
+    "currency": "USD",
     "timestamp": "2025-11-09T14:55:00",
     "status": "completed",
+    "restricted": false,
+    "project": null,
     "note": "First donation received",
     "reference": "id...9pZq"
   }
