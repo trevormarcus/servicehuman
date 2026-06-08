@@ -349,36 +349,26 @@
 <section id="updates">
   <h2>Latest organizational update</h2>
 
-  <section class="update-block" data-published="2026-05-31">
+  <section class="update-block" id="latest-update-block" data-published="">
     <div class="update-container">
       <button
         class="update-toggle"
         type="button"
         aria-expanded="false"
-        aria-controls="update-2026-05-summary"
+        aria-controls="latest-update-content"
       >
-        <span class="update-title">May 2026 — Organizational Activities Summary</span>
-        <span class="update-date">May 2026</span>
+        <span class="update-title" id="latest-update-title">Loading latest update...</span>
+        <span class="update-date" id="latest-update-date"></span>
       </button>
 
-      <div id="update-2026-05-summary" class="update-content" hidden>
+      <div id="latest-update-content" class="update-content" hidden>
         <div class="update-body">
-          <p>
-            May 2026 focused on institutional foundation building, including website architecture improvements,
-            transparency infrastructure development, compliance review, HUB concept refinement, and public trust systems.
+          <p id="latest-update-summary">
+            Loading the latest organizational update.
           </p>
 
           <p>
-            Work included the major homepage redesign, improved donation visibility, expanded verification messaging,
-            public reporting enhancements, and continued development of Service Human’s long-term HUB framework.
-          </p>
-
-          <p>
-            Direct support systems remained operational while HUB development remained in planning and concept refinement stages.
-          </p>
-
-          <p>
-            <a href="/updates/">Read the full Updates archive</a>
+            <a id="latest-update-link" href="/updates/">Read the full Updates archive</a>
           </p>
         </div>
       </div>
@@ -387,9 +377,32 @@
 
   <p class="small">
     Additional organizational updates are maintained in the public Updates archive.
-    <a href="/updates/">View all updates</a>.
+    <a href="/updates/">View all updates.</a>
   </p>
 </section>
+
+<script>
+  fetch('/data/updates.json')
+    .then(response => response.json())
+    .then(updates => {
+      if (!Array.isArray(updates) || !updates.length) return;
+
+      const latest = updates[0];
+
+      document.getElementById('latest-update-block').dataset.published = latest.published || '';
+      document.getElementById('latest-update-title').textContent = latest.title || 'Latest organizational update';
+      document.getElementById('latest-update-date').textContent = latest.date || '';
+      document.getElementById('latest-update-summary').textContent = latest.summary || '';
+      document.getElementById('latest-update-link').href = latest.url || '/updates/';
+    })
+    .catch(() => {
+      document.getElementById('latest-update-title').textContent = 'Latest updates';
+      document.getElementById('latest-update-date').textContent = '';
+      document.getElementById('latest-update-summary').textContent =
+        'Latest organizational updates are available in the public Updates archive.';
+      document.getElementById('latest-update-link').href = '/updates/';
+    });
+</script>
 
   <section class="faq-section">
     <h2>Frequently Asked Questions</h2>
