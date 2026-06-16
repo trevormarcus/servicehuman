@@ -1537,3 +1537,52 @@ figcaption {
   margin-left:auto;
   flex-shrink:0;
 }
+.feature-quote {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 1rem 0;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.status-pill {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: .5rem .9rem;
+  font-weight: 700;
+  font-size: .9rem;
+  background: var(--surface);
+}
+
+.mini-card.wide {
+  grid-column: 1 / -1;
+}
+
+.statement {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-top: 1rem;
+}
+
+.disclosure-card {
+  border-style: dashed;
+}
+
+@media (max-width: 720px) {
+  .profile-header {
+    display: block;
+  }
+
+  .status-pill {
+    display: inline-block;
+    margin-top: .75rem;
+  }
+}
