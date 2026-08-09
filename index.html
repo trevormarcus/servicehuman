@@ -382,25 +382,54 @@
 </section>
 
 <script>
-  fetch('/data/updates.json')
-    .then(response => response.json())
-    .then(updates => {
-      if (!Array.isArray(updates) || !updates.length) return;
+  fetch('/data/updates.json', { cache: 'no-store' })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Updates request failed: ${response.status}`);
+      }
 
-      const latest = updates[0];
-
-      document.getElementById('latest-update-block').dataset.published = latest.published || '';
-      document.getElementById('latest-update-title').textContent = latest.title || 'Latest organizational update';
-      document.getElementById('latest-update-date').textContent = latest.date || '';
-      document.getElementById('latest-update-summary').textContent = latest.summary || '';
-      document.getElementById('latest-update-link').href = latest.url || '/updates/';
+      return response.json();
     })
-    .catch(() => {
-      document.getElementById('latest-update-title').textContent = 'Latest updates';
+    .then(updates => {
+      if (!Array.isArray(updates) || updates.length === 0) {
+        throw new Error('Updates data is empty or invalid.');
+      }
+
+      // Future-proofing:
+      // always determine the newest update by published date
+      // instead of relying entirely on JSON array order.
+      const latest = [...updates].sort((a, b) => {
+        return new Date(b.published || 0) - new Date(a.published || 0);
+      })[0];
+
+      const block = document.getElementById('latest-update-block');
+      const title = document.getElementById('latest-update-title');
+      const date = document.getElementById('latest-update-date');
+      const summary = document.getElementById('latest-update-summary');
+      const link = document.getElementById('latest-update-link');
+
+      block.dataset.published = latest.published || '';
+      title.textContent = latest.title || 'Latest organizational update';
+      date.textContent = latest.date || '';
+      summary.textContent =
+        latest.summary || 'View the complete organizational update in the public archive.';
+      link.href = latest.url || '/updates/';
+      link.textContent = 'Read the full report';
+    })
+    .catch(error => {
+      console.error('Latest update could not be loaded:', error);
+
+      document.getElementById('latest-update-title').textContent =
+        'Latest organizational update';
+
       document.getElementById('latest-update-date').textContent = '';
+
       document.getElementById('latest-update-summary').textContent =
-        'Latest organizational updates are available in the public Updates archive.';
-      document.getElementById('latest-update-link').href = '/updates/';
+        'The latest organizational report is available in the public Updates archive.';
+
+      const link = document.getElementById('latest-update-link');
+      link.href = '/updates/';
+      link.textContent = 'View Updates archive';
     });
 </script>
 
